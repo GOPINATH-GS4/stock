@@ -12,6 +12,6 @@
     "request": "2.42.0",
     "redis": "0.12.1", 
     "winston": "0.7.3",
-    "yahoo-finance": "0.2.9"
+    "moment":"2.8.3" 
   }
 }

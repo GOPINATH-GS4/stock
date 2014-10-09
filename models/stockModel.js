@@ -60,6 +60,7 @@ var StockModel = function() {
     var Ticker = new Schema({
         ticker: {type: String, trim:true, required: true, index: { unique: true, sparse: true } }
         ,name:        String      
+        ,exchange:     String
         ,profile:     [Profile]     
         //,dataTypes              : {type: [DataTypes],required:true}
 

@@ -9,27 +9,35 @@ if (process.argv.length < 3) {
     console.log('\nUsage data-file');
     process.exit(1);
 }
+
 var file = process.argv[2];
 
-var data = fs.readFileSync(file,'utf8').split('\n'); 
+var data = _.compact(fs.readFileSync(file,'utf8').split('\n')); 
 
-_.each(data, function(record, index, records) {
+console.log(util.inspect(data));
+stock.Tickers.remove({}, function(err) {
 
-  if (index === records.length -1) {
-    stock.db.close();
-  }
-  else {
+  if(err) console.log(err);
+
+  var totalCount = data.length;
+  var count = 0;
+  data.forEach(function(record, index, records) {
+
     var tickerArray = record.split('|');
+
     var ticker = {
-        ticker: tickerArray[0]
-        ,name: tickerArray[1]
-        ,profile:[]
+      ticker: tickerArray[0]
+      ,name: tickerArray[1]
+      ,exchange: tickerArray[2]
+      ,profile:[]
     };
-    stock.Tickers(ticker).save(function(err, ticker) {
-      if(err) 
-        console.log('Error saving ticker ' + index + ' Error :' + err);
-      else 
-        console.log('Saved ' + util.inspect(ticker));
+    stock.Tickers(ticker).save(function(err, t) {
+      if(err) console.log(err);
+      else console.log('Saved ' + util.inspect(t));
+      count ++;
+
+      if(count === totalCount) stock.db.close();
     });
-  }
+  });
 });
+
