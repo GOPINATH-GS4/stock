@@ -119,3 +119,37 @@ status: 1001,
 message: "no result found"
 }````
 
+
+### Installation instructions 
+
+to set up the framework and library 
+
+1. git clone git@github.com:GOPINATH-GS4/stock.git
+2. npm install 
+3. Install mongodd, please refer to 
+[Mongodb Installation](http://docs.mongodb.org/manual/installation/ "Link to mongodb install document")
+
+##### Creating Ticker master data 
+
+create data before starting the getStock.js program, an example file called ````dfile```` is provided under scripts directory 
+
+node createTickerFromFile.js dfile 
+
+#### Running stock data collection 
+
+nohup node getStock.js & 
+
+
+#### Starting the server   
+
+Under the root folder execute 
+
+. ./.env.development 
+start mongodb 
+
+node server.js 
+
+All data will be stored into a database called stock 
+
+
+
