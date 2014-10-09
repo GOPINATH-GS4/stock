@@ -8,14 +8,16 @@ var stock = new stockModel();
 var getStock = function(ticker, exchange) {
   request.get(
    'http://finance.google.com/finance/info?client=ig&q=' + exchange + ':'+ ticker, {}, function (error, response, body) {
-    var resp = JSON.parse(body.replace(/\n/g,'').replace(/\//g,''));
-    resp.forEach(function(x,index) {
-      console.log(util.inspect(x));
-      stock.Stocks(x).save(function(err, s) {
-        if(err) console.log('Error saving stock ' + err);
-        else console.log(s);
+    if(body != null) {
+      var resp = JSON.parse(body.replace(/\n/g,'').replace(/\//g,''));
+      resp.forEach(function(x,index) {
+        console.log(util.inspect(x));
+        stock.Stocks(x).save(function(err, s) {
+          if(err) console.log('Error saving stock ' + err);
+          else console.log(s);
+        });
       });
-    });
+    }
   });
 };
 
