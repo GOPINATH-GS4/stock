@@ -1,0 +1,23 @@
+doctype html 
+html(lang='en', xmlns='http://www.w3.org/1999/html')
+head
+  meta(charset='UTF-8')
+  meta(name='viewport', content='width=device-width, initial-scale = 0.8, user-scalable = yes')
+  meta(name='robots', content='noindex')
+  meta(name='googlebot',content='noindex')
+  meta(name='googlebot-news',content='nosnippet')
+  link(href='//fonts.googleapis.com/css?family=Roboto' type='text/css' rel='stylesheet')
+  title stock analysis
+  link(href='assets/css/log-in/css/style.css', type='text/css', rel='stylesheet', media='screen and (min-width: 100px)')
+body
+  div.login-card
+    h1 Login 
+      form(name="login", action="/login", method="post")
+        input(type="text", name="username", placeholder="username")
+        input(type="password", name="password", placeholder="password")
+        input(type="submit", value="login", class="login login-submit")
+      div.login-help
+        div.left
+          a(href="/register") Register
+        div.right
+          a(href="/reset") Forgot Password

@@ -145,6 +145,7 @@ nohup node getStock.js &
 Under the root folder execute 
 
 . ./.env.development 
+
 start mongodb 
 
 node server.js 
