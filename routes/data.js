@@ -1,24 +1,32 @@
 module.exports = function(app, stock, constants, utils, log) {
-  // 
-  // data.js
-  //
-  var data = function(req, res) {
-    var query = req.query;
-    if(typeof query['ticker'] === 'undefined' || query['ticker'] === '') {
-      utils.writeResponse(req, res, constants.E1000);
-    }
-    else {
-      var ticker = query['ticker'];
-      stock.Stocks.find({t:ticker}, {}, {sort: {lt_dts:-1}}, function(err, tickers) {
-        if(typeof tickers === 'undefined' || tickers.length === 0) {
-          utils.writeResponse(req, res, constants.E1001);
+    // 
+    // data.js
+    //
+    var data = function(req, res) {
+        var query = req.query;
+        if (typeof query['ticker'] === 'undefined' || query['ticker'] === '') {
+            utils.writeResponse(req, res, constants.E1000);
+        } else {
+            var ticker = query['ticker'];
+            stock.Stocks.find({
+                t: ticker
+            }, {}, {
+                sort: {
+                    lt_dts: -1
+                }
+            }, function(err, tickers) {
+                if (typeof tickers === 'undefined' || tickers.length === 0) {
+                    utils.writeResponse(req, res, constants.E1001);
+                } else {
+                    var message = {
+                        http_status: constants.SUCCESS.status,
+                        status: constants.SUCCESS.status,
+                        data: tickers
+                    };
+                    utils.writeResponse(req, res, message);
+                }
+            });
         }
-        else {
-          var message = {http_status:constants.SUCCESS.status, status: constants.SUCCESS.status, data: tickers};
-          utils.writeResponse(req, res, message);
-        }
-      });
-    }
-  };
-  app.get('/data', data);
+    };
+    app.get('/data', data);
 }
