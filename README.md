@@ -102,11 +102,15 @@ Displays the ticker from ````Tickers```` collections above
 ###### Data 
 | parameter   | value                                                                |
 |-------------| ---------------------------------------------------------------------|
-| end point   | /data?ticker=""  // e.g AAPL                                             |
+| end point   | /data?ticker=""&limit=""  // e.g AAPL                                             |
 | verb        | GET                                                                 |
 
 
 Displays all the stock data for a given ticker ordered by date-timestamp desc 
+
+The limit parameter limits the number of rows returned 
+
+example : /data?ticker=AAPL&limit=10
 
 If the URL query syntax is incorrect you will get ````{
 status: 1000,
