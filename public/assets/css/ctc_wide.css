@@ -46,7 +46,7 @@
     height:60px;
     padding-top:40px;
     display: block;
-    border-bottom:5px solid #00FF15;
+    border-bottom:5px solid #00B1B5;
     cursor:pointer;
 }
 .action {
@@ -94,7 +94,7 @@
     padding:0 1em;
 }
 .menuItem:hover {
-    border-bottom:5px solid #00FF15;
+    border-bottom:5px solid #00B1B5;
 }
 .main {
     width:100%;
