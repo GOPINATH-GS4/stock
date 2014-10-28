@@ -1,0 +1,469 @@
+#myApp {
+    clear:both;
+    overflow: hidden;
+}
+.bgpic {
+    background-image: url('../img/wide_splash.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width:100%;
+    height:100%;
+    display:block;
+    position: fixed;
+    z-index: -1;
+}
+.action {
+    font-size:0.8em;
+    line-height: 45px;
+    padding:0 1em;
+    cursor: pointer;
+}
+.action:hover {
+    background-color:#00B1B5;
+    color:#efefef;
+}
+.action i {
+    margin-right:0.5em;
+}
+.header {
+    width:100%;
+    height:50px;
+    position: fixed;
+    z-index:1010;
+    display: block;
+    box-shadow: 0 1 1px rgba(0, 0, 0, 0.1);
+}
+.footer {
+    width:100%;
+    height:200px;
+    display: block;
+}
+.nav {
+    line-height: 50px;
+    width:100%;
+    height:50px;
+    display: block;
+}
+.leftNav {
+    display: none;
+}
+.menu {
+    display: block;
+    height: 50px;
+    font-size:0.8em;
+    text-transform: uppercase;
+}
+.menuItem {
+    height:50px;
+    line-height: 50px!important;
+}
+.main {
+    width:100%;
+    min-height:700px;
+    height:auto!important;
+    overflow: hidden;
+    z-index: 1;
+    top:50px;
+    position: relative;;
+}
+h2 {
+    margin-top:0;
+}
+.panel {
+    margin:2em 5%;
+    width:90%;
+    padding:2em;
+    height:auto!important;
+    display: block;
+    clear: both;
+    overflow: hidden;
+    opacity:0.95;
+}
+.spacerPanel {
+    padding:1em 2em !important;
+}
+.panel label {
+    width:100%;
+    font-size:1.2em;
+    padding:0.5em 0;
+    display: block;
+    margin:0;
+}
+.panel select {
+    width:100%;
+    margin:0;
+    display: block;
+    -webkit-appearance: none;
+    font-family: 'Roboto';
+    font-size:1em;
+    padding:0.5em 1.2em;
+    border:0;
+}
+.offsetPanel {
+    position:relative;
+    z-index: 10;
+    top:100px;
+    opacity:0.97;
+}
+.panel h3 {
+    padding-left:1.2em;
+}
+.panel h4 {
+    margin:0;
+    padding:0;
+    width:100%;
+    margin-bottom:1em;
+    font-weight: 200;
+    letter-spacing: 1px;
+    font-size:1.2em;
+    line-height: 45px;
+}
+.panel h5 {
+    margin:0;
+    padding:0;
+    width:100%;
+    margin-bottom:1em;
+    font-weight: 500;
+    font-size:1.1em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.panel h6 {
+    margin:0;
+    padding:0;
+    margin-bottom:0.5em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.boxShadow {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
+}
+.smallPanel {
+    padding:1em 10%;
+    width:100%;
+    height:auto!important;
+    display: block;
+    clear: both;
+    overflow: hidden;
+}
+form {
+    padding:0 1.2em 1.2em 1.2em;
+    height:auto!important;
+    overflow: hidden;
+}
+.button {
+    border:0;
+    border-radius: 0;
+    margin:1em 0 0.5em 0;
+    padding:0.5em 2em;
+    height:3em;
+    width:auto;
+    font-weight: bold;
+    display: block;
+    -webkit-appearance: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+label {
+    width:100%;
+    margin:1em 0 0.5em 0;
+    display: block;
+    letter-spacing: 0.1em;
+}
+input {
+    border:0;
+    border-radius: 0;
+    margin:1em 0;
+    padding:0.5em 1.2em;
+    width:100%;
+    display: block;
+    -webkit-appearance: none;
+    font-family: 'Roboto';
+    font-size:1em;
+}
+input[type=text] {
+    background-color:#efefef;
+    height:3em;
+}
+input[type=email] {
+    background-color:#efefef;
+    height:3em;
+}
+input[type=password] {
+    background-color:#efefef;
+    height:3em;
+}
+.linkButton {
+    border:0;
+    border-radius: 0;
+    margin:1em 0;
+    padding:0.5em 1.2em;
+    font-size:1em;
+    width:auto;
+    font-weight: normal;
+    display: block;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+input[type="button"] {
+    border:0;
+    border-radius: 0;
+    padding:0.5em 1.2em;
+    width:auto;
+    display: block;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+input[type="submit"] {
+    border:0;
+    border-radius: 0;
+    padding:0.5em 1.2em;
+    width:auto;
+    font-size:1em;
+    display: block;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+.fullWidth {
+    width:100% !important;
+    padding-left:0 !important;
+    padding-right:0 !important;
+    text-align: center !important;
+}
+input[type="checkbox"] {
+    border-radius: 0;
+    margin:0.8em 0 0.5em 0;
+    padding:0;
+    height:1.5em;
+    width:1.5em;
+    display: block;
+    line-height: 1.5em;
+}
+input[type="radio"] {
+    border-radius: 0;
+    margin:1.5em 0 0.5em 0;
+    padding:0;
+    height:1.5em;
+    width:1.5em;
+    display: block;
+    line-height: 1.5em;
+}
+/* summary metric */
+.programName {
+    text-transform: uppercase;
+    padding-bottom: 1em !important;
+}
+.panel .metrics {
+    width:50%;
+    overflow: hidden;
+    height:auto!important;
+    display: block;
+}
+.panel .fullWidthMetric {
+    width:100%;
+    min-height:50px;
+    overflow: hidden;
+    height:auto!important;
+    display: block;
+}
+.fullWidthMetric h5 {
+    line-height: 45px;
+    padding-left:60px;
+    font-size:1em;
+}
+.iconMetric {
+    width:100%;
+    height:1.5em;
+    margin-bottom:0.75em;
+    display: block;
+}
+.iconMetric .caption {
+    width:75%;
+    height:1.5em;
+    line-height: 1.5em;
+    font-size:0.8em;
+    display: block;
+}
+.iconMetric .value{
+    width:25%;
+    height:1.5em;
+    font-size:1.6em;
+    line-height: 1em;
+    display: block;
+}
+/**number metric**/
+.numberMetric {
+    width:48%;
+    padding:1em;
+    height:auto!important;
+    overflow: hidden;
+    display: block;
+    text-align: center;
+}
+.numberMetric .icon {
+    width:45px;
+    height:45px;
+    display: block;
+    margin: 0 auto;
+}
+.numberMetric .caption {
+    width:100%;
+    height: 1em;
+    line-height: 1em;
+    font-size:0.8em;
+    font-weight: 200;
+    text-transform: uppercase;
+    display: block;
+}
+.numberMetric .value{
+    width:100%;
+    font-size:2em;
+    line-height: 2em;
+    font-weight: 700;
+    display: block;
+}
+.numberMetric .valueDate {
+
+}
+.numberMetric .valueLabel {
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+.panelCaption {
+
+}
+.surveyQuestion {
+    font-weight: 200;
+    font-size:0.9em;
+}
+.surveyAnswer {
+    font-size:1em;
+    font-weight: 300;
+}
+/**program metric**/
+.programMetric {
+    width:48%;
+    padding:1em 0;
+    height:auto!important;
+    overflow: hidden;
+    display: block;
+}
+.programMetric h5 {
+
+}
+.programMetric .caption {
+    width:100%;
+    height: 1em;
+    line-height: 1em;
+    font-size:0.8em;
+    font-weight: 200;
+    text-transform: uppercase;
+    display: block;
+}
+.programMetric .value{
+    width:100%;
+    font-size:1.4em;
+    line-height: 1.4em;
+    font-weight: 700;
+    display: block;
+}
+.programMetric .value a {
+    font-size:0.8em !important;
+}
+/** bar chart**/
+.chartContainer {
+
+}
+.chartContainer h5 {
+
+}
+/**data count metric**/
+p .value {
+    font-size:2em;
+    line-height: 2em;
+    font-weight: 700;
+}
+.dataCountMetric {
+    width:25%;
+    padding:1em;
+    height:auto!important;
+    overflow: hidden;
+    display: block;
+    text-align: center;
+}
+.dataCountMetric .icon {
+    width:45px;
+    height:45px;
+    display: block;
+    margin: 0 auto;
+}
+.dataCountMetric .caption {
+    width:100%;
+    height: 1em;
+    line-height: 1em;
+    font-size:0.8em;
+    font-weight: 200;
+    text-transform: uppercase;
+    display: block;
+}
+.dataCountMetric .value{
+    width:100%;
+    font-size:2em;
+    line-height: 2em;
+    font-weight: 700;
+    display: block;
+}
+.iconBarMetric {
+    height:45px;
+    width:100%;
+    display:block;
+}
+.iconBarMetric .icon {
+    width:45px;
+    height:45px;
+    display: block;
+    margin: 0 auto;
+}
+.iconBarMetric .barMetric {
+    width: 50%;
+    height:45px;
+    display: block;
+}
+.iconBarMetric .caption {
+    height:15px;
+    line-height: 15px;
+    font-size:0.8em;
+    display: block;
+}
+.iconBarMetric .value {
+    height:30px;
+    line-height: 30px;
+    font-size:1em;
+    display: block;
+}
+.iconBarMetric .barOuter {
+    width: 50%;
+    height:45px;
+    display: block;
+    position: relative;
+}
+.iconBarMetric .barInner {
+    width: 40%;
+    height:45px;
+    display: block;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:1;
+}
+.iconBarMetric .barInnerCaption {
+    width: 100%;
+    padding-left:1em;
+    height:45px;
+    line-height: 45px;
+    display: block;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:2;
+}

@@ -1,0 +1,156 @@
+.brandname {
+    font-size: 1.4em;
+    font-weight: bold;
+}
+.health {
+    font-size: 1.4em;
+    text-transform: uppercase;
+    margin-left: 0.1em;
+}
+.menu {
+    height: 100%;
+    text-transform: uppercase;
+    display: block;
+}
+.menuItem {
+    padding: 0 18px;
+    height: 100%;
+    display: block;
+}
+.stepPanel {
+    width:210px;
+    height:50px;
+    position: relative;
+    left:50%;
+    margin-left:-105px;
+}
+.buttonPanel {
+    width:210px;
+    height:50px;
+    position: relative;
+}
+.step {
+    width:50px;
+    height:50px;
+    margin:0 10px;
+    display: block;
+    border-radius: 25px;
+    border-width:2px;
+    border-style: solid;
+    font-size:2em;
+    font-weight: 700;
+    text-align: center;
+    line-height: 50px;
+}
+.stepInText {
+    position: relative;
+    width:25px;
+    height:25px;
+    margin:0 5px;
+    display: block;
+    border-radius: 12px;
+    border-width:1px;
+    border-style: solid;
+    font-size:1em;
+    font-weight: 700;
+    text-align: center;
+    line-height: 25px;
+    font-weight: bold;
+
+}
+.statPanel {
+    width:280px;
+    height:200px;
+    display:block;
+    position: relative;
+    left:50%;
+    margin-left:-140px;
+}
+.stat {
+    width:120px;
+    height:120px;
+    margin:10px;
+    display: block;
+    border-radius: 60px;
+    border-width:2px;
+    border-style: solid;
+    text-align: center;
+}
+.statValue {
+    height:2em;
+    font-size:2em;
+    line-height: 3em;
+    display: block;
+}
+.statCaption {
+    height:0.8em;
+    font-size:0.8em;
+    line-height: .8em;
+    display: block;
+}
+.allDone {
+    height:130px;
+    width:100%;
+    display: block;
+    background-image: asset-data-url('done.png');
+    background-position: center center;
+    background-size:125px 125px;
+    background-repeat: no-repeat;
+}
+.username {
+    padding:0 0 0 10%;
+    display: block;
+}
+.header input[type="button"] {
+    border:0;
+    border-radius: 0;
+    margin:0 10% 0 0;
+    width:auto;
+    line-height: 50px;
+    height:50px;
+    display: block;
+    text-transform: uppercase;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+.device {
+    padding:10px;
+    height:100px;
+    display: block;
+    border-bottom:1px dotted;
+    position: relative;
+    left:50%;
+    margin-left:-150px;
+}
+.deviceLogo {
+    width:60px;
+    height:60px;
+    margin:0 10px;
+    display: block;
+}
+.deviceCaption {
+    min-width:170px;
+    height:auto;
+    display: block;
+    overflow: hidden;
+}
+.deviceCaption h4 {
+    width:150px;
+    margin:0;
+    padding:0;
+    padding-left:10px;
+}
+.deviceCaption h6 {
+    width:150px;
+    margin:0;
+    margin-top:0.4em;
+    padding:0;
+    padding-left:10px;
+    font-weight: 300;
+}
+.device_error {
+    background:asset-data-url('device_error.png') top right no-repeat;
+}
+.device_ok {
+    background:asset-data-url('device_ok.png') top right no-repeat;
+}

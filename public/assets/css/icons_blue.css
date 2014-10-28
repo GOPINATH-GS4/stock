@@ -1,0 +1,28 @@
+.icon {
+    background-image: url('../img/icons/icons_blue_sprite.png');
+    background-repeat: no-repeat !important;
+}
+.icon_bloodglucose_blue_45{ background-position: 0 0; width: 45px; height: 45px; }
+.icon_bloodpressure_blue_45{ background-position: 0 -105px; width: 45px; height: 45px; }
+.icon_burncalories_blue_45{ background-position: 0 -210px; width: 45px; height: 45px; }
+.icon_calendar_blue_45{ background-position: 0 -315px; width: 45px; height: 45px; }
+.icon_calories_blue_45{ background-position: 0 -420px; width: 45px; height: 45px; }
+.icon_clinic_blue_45{ background-position: 0 -525px; width: 45px; height: 45px; }
+.icon_distance_blue_45{ background-position: 0 -630px; width: 45px; height: 45px; }
+.icon_doctor_blue_45{ background-position: 0 -735px; width: 45px; height: 45px; }
+.icon_done_blue_45{ background-position: 0 -840px; width: 45px; height: 45px; }
+.icon_exercise_blue_45{ background-position: 0 -945px; width: 45px; height: 45px; }
+.icon_food_blue_45{ background-position: 0 -1050px; width: 45px; height: 45px; }
+.icon_health_blue_45{ background-position: 0 -1155px; width: 45px; height: 45px; }
+.icon_heartrate_blue_45{ background-position: 0 -1260px; width: 45px; height: 45px; }
+.icon_insulin_blue_45{ background-position: 0 -1365px; width: 45px; height: 45px; }
+.icon_meal_blue_45{ background-position: 0 -1470px; width: 45px; height: 45px; }
+.icon_medication_blue_45{ background-position: 0 -1575px; width: 45px; height: 45px; }
+.icon_notification_blue_45{ background-position: 0 -1680px; width: 45px; height: 45px; }
+.icon_progress_blue_45{ background-position: 0 -1785px; width: 45px; height: 45px; }
+.icon_sleep2_blue_45{ background-position: 0 -1890px; width: 45px; height: 45px; }
+.icon_sleep_blue_45{ background-position: -105px 0; width: 45px; height: 45px; }
+.icon_steps_blue_45{ background-position: -105px -105px; width: 45px; height: 45px; }
+.icon_water_blue_45{ background-position: -105px -210px; width: 45px; height: 45px; }
+.icon_weight_blue_45{ background-position: -105px -315px; width: 45px; height: 45px; }
+.icon_user_blue_45 {background-image: url('../img/icons/user.png');width: 45px; height: 45px;}

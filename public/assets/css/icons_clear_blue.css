@@ -1,0 +1,27 @@
+.icon_clear {
+    background-image: url('../img/icons/icons_blue_clear_sprite.png');
+    background-repeat: no-repeat !important;
+}
+.icon_clear_bloodglycose_blue_45{ background-position: 0 0; width: 23px; height: 23px; }
+.icon_clear_bloodpressure_blue_45{ background-position: 0 -73px; width: 31px; height: 32px; }
+.icon_clear_burncalories_blue_45{ background-position: 0 -155px; width: 21px; height: 28px; }
+.icon_clear_calendar_blue_45{ background-position: 0 -233px; width: 23px; height: 22px; }
+.icon_clear_calories_blue_45{ background-position: 0 -305px; width: 29px; height: 12px; }
+.icon_clear_clinic_blue_45{ background-position: 0 -367px; width: 21px; height: 21px; }
+.icon_clear_distance_blue_45{ background-position: 0 -438px; width: 19px; height: 24px; }
+.icon_clear_doctor_blue_45{ background-position: 0 -512px; width: 27px; height: 28px; }
+.icon_clear_done_blue_45{ background-position: 0 -590px; width: 21px; height: 16px; }
+.icon_clear_exercise_blue_45{ background-position: 0 -656px; width: 31px; height: 30px; }
+.icon_clear_food_blue_45{ background-position: 0 -736px; width: 19px; height: 21px; }
+.icon_clear_health_blue_45{ background-position: 0 -807px; width: 24px; height: 20px; }
+.icon_clear_heartrate_blue_45{ background-position: 0 -877px; width: 26px; height: 20px; }
+.icon_clear_insulin_blue_45{ background-position: 0 -947px; width: 25px; height: 25px; }
+.icon_clear_meal_blue_45{ background-position: 0 -1022px; width: 15px; height: 27px; }
+.icon_clear_medication_blue_45{ background-position: 0 -1099px; width: 21px; height: 21px; }
+.icon_clear_notification_blue_45{ background-position: 0 -1170px; width: 21px; height: 23px; }
+.icon_clear_progress_blue_45{ background-position: 0 -1243px; width: 21px; height: 25px; }
+.icon_clear_sleep2_blue_45{ background-position: 0 -1318px; width: 20px; height: 25px; }
+.icon_clear_sleep_blue_45{ background-position: 0 -1393px; width: 21px; height: 28px; }
+.icon_clear_steps_blue_45{ background-position: 0 -1471px; width: 21px; height: 29px; }
+.icon_clear_water_blue_45{ background-position: 0 -1550px; width: 17px; height: 25px; }
+.icon_clear_weight_blue_45{ background-position: 0 -1625px; width: 23px; height: 23px; } 
