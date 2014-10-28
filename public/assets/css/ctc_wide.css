@@ -48,8 +48,7 @@
     height:60px;
     padding-top:40px;
     display: block;
-/*    border-left:3px solid #00B1B5; */
-    border-left:5px solid red;
+    border-left:5px solid #00FF15;
     cursor:pointer;
 }
 .action {
@@ -98,8 +97,7 @@
     border-top:5px solid #fff;
 }
 .menuItem:hover {
-    /* border-top:5px solid #00B1B5; */
-    border-top:5px solid red;
+    border-top:5px solid #00FF15;
 }
 .main {
     width:100%;
@@ -147,7 +145,7 @@ h2 {
     border:0;
 }
 .searchPanel{
-    width:70%;
+    width:90%;
     margin:2em 0%;
     display: block;
     -webkit-appearance: none;
@@ -260,6 +258,10 @@ input {
 }
 input[type=text] {
     background-color:#efefef;
+    height:3em;
+}
+input[type=text]:hover {
+    background-color:#efefff;
     height:3em;
 }
 input[type=email] {

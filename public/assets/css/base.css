@@ -75,37 +75,6 @@ body {
   -webkit-appearance: none;
 }
 
-.login {
-  text-align: center;
-  font-size: 14px;
-  font-family: 'Arial', sans-serif;
-  font-weight: 700;
-  height: 36px;
-  padding: 0 8px;
-  border: 0;
-  border-radius: 0;
-  -webkit-appearance: none;
-/* border-radius: 3px; */
-/* -webkit-user-select: none;
-  user-select: none; */
-}
-
-.login-submit {
-  /* border: 1px solid #3079ed; */
-  border: 0px;
-  color: #fff;
-  text-shadow: 0 1px rgba(0,0,0,0.1); 
-  background-color: #424242;
-  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
-}
-
-.login-submit:hover {
-  /* border: 1px solid #2f5bb7; */
-  border: 0px;
-  text-shadow: 0 1px rgba(0,0,0,0.3);
-  background-color:#8A0808;
-  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
-}
 
 .left {
   float: left;
@@ -224,10 +193,10 @@ body {
 
 .login {
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
   font-family: 'Arial', sans-serif;
-  font-weight: 700;
-  height: 36px;
+  font-weight: 400;
+  height: 45px;
   padding: 0 8px;
 /* border-radius: 3px; */
 /* -webkit-user-select: none;
