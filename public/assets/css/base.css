@@ -164,16 +164,6 @@ body {
     height:50px;
     display: block;
 }
-.menuItem {
-    height:45px;
-    line-height: 45px!important;
-    text-transform: uppercase;
-    padding:0 1em;
-    border-top:5px solid #fff;
-}
-.menuItem:hover {
-    border-top:5px solid #00B1B5;
-}
 .panel {
     padding:0 10%;
     width:100%;
