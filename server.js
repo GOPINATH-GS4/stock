@@ -57,9 +57,9 @@
     }
 
     var index = require('./routes/index.js')(app, stock, constants, utils, log);
-    var tiker = require('./routes/ticker.js')(app, stock, constants, utils, log);
-    var data = require('./routes/data.js')(app, stock, constants, utils, log);
     var login = require('./routes/login.js')(app, stock, constants, utils, log);
+    var search = require('./routes/search.js')(app, stock, constants, utils, log);
+    var collections = require('./routes/collections.js')(app, stock, constants, utils, log);
 
     https.createServer(options, app).listen(app.get('port'), function() {
         log.info('Express server listening on port ' + app.get('port'));

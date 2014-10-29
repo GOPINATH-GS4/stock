@@ -24,7 +24,7 @@
     background-size: auto 50px!important;
 }
 .leftNav {
-    width:80px;
+    width:85px;
     height:100%;
     display: block;
     position: fixed;
@@ -38,7 +38,7 @@
     padding-top:40px;
     display: block;
     text-transform: uppercase;
-    font-size:0.8em;
+    font-size:0.7em;
     text-align: center;
 }
 .leftNav .sideMenuItem:hover {

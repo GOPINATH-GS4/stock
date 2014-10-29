@@ -23,6 +23,22 @@ body
     div.main.right.leftOffset.mbottom3
       div.profile.clear
         div.searchPanel
-          form(name="search", action="/search", method="post")
-            input(type="text", name="searchText").bg_white.mtop2
-            input(type="submit", value="Search Catalog").bg_red.white
+          div.panel.bg_white.mtop2.boxShadow.summary
+            div.programMetric.left.blue
+              h5 NCTID
+              div.value. 
+                #{data[0].nctid}
+            div.programMetric.right.blue
+              h5.rightText Description
+              div.value.rightText. 
+                #{data[1].description}
+            div.programMetric.left.blue  Treatment Groups
+            - var trt = data[2].trt_groups
+            - for (var i = 0; i < trt.length; i++) 
+              div.value.left.blue #{JSON.stringify(trt[i])}
+
+            
+
+
+            
+

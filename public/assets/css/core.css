@@ -36,6 +36,9 @@ body {
 .centerText {
     text-align: center;
 }
+.rightText {
+  text-align: right;
+}
 .smallText {
     font-size:0.8em;
 }
