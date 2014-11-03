@@ -28,7 +28,8 @@ module.exports = function(app, stock, constants, utils, log) {
             switch (response.status) {
 
                 case 200:
-                    res.render('home');
+                    var resp = {status:200, data:{results:[]}};
+                    res.render('home' , {resp:resp});
                     break;
 
                 case 1000:

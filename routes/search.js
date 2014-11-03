@@ -11,21 +11,23 @@ module.exports = function(app, stock, constants, utils, log) {
       // 2. 
       console.log('Body : ' + 
         'http://api.lillycoi.com/v1/trials/search.json?query=cond:' + req.body.searchText);
-      var x = {};
+      var resp = {status:200, data:{results:[]}};
       request.get(
         'http://api.lillycoi.com/v1/trials/search.json?query=cond:' + req.body.searchText + ',count=100', {},
         function(error, response, body) {
-           var resp = JSON.parse(body);
-
-           console.log('Number of studies for ' + req.body.searchText  + ' = '  + resp.results.length);
            if(error) {
-             x = {status: 500, data: error};
+             resp = {status: 500, data: error};
+             res.render('home', {resp: resp});
            }
            else {
-             x = {status:200, data:response.body};
+            var data = JSON.parse(body);
+            console.log('data.length ' + data.results.length);
+             resp = {status:200, data:data};
+             res.render('home', {resp:resp});
            }
       });
-      res.render('home' , x);
+      console.log('Resp.data' || resp.data);
+      res.render('home' , {resp:resp});
     };
     app.post('/search', search);
 }
