@@ -1,0 +1,21 @@
+doctype html 
+html(lang='en', xmlns='http://www.w3.org/1999/html')
+
+include ./dronehead.jade
+link(href='assets/css/base.css', type='text/css', rel='stylesheet', media='screen and (min-width: 100px)')
+link(href='assets/css/core.css', type='text/css', rel='stylesheet', media='screen and (min-width: 100px)')
+link(href='assets/css/ctc_wide.css', type='text/css', rel='stylesheet', media='screen and (min-width: 100px)')
+
+body
+  div#droneApp
+    div.header.boxShadow.ctc_bg_black
+      div.menu.left.mleft2
+        a(href="/Call 911").right.menuItem.white Emergency
+      div.menu.right.mright2
+        a(href="/logout").right.menuItem.white Logout
+    div.leftNav.left.ctc_bg_light_gray
+      img(src="img/ar-drone.jpeg").middle
+    div.main.right.leftOffset.mbottom3
+      div.profile.clear
+        div#map-canvas
+include ./processDroneLoop.jade

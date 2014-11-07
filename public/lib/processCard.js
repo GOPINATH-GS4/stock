@@ -6,6 +6,7 @@
       this.$el.html(val);
     }
   });  
+  
 
   app.cardList  = Backbone.View.extend({
     el: '#cardList'
@@ -40,6 +41,7 @@
 
 
   var cardView = new app.cardView();
+ 
   setTimeout(function() {
       for (var card = 0; card < 20; card++) {
         var v = new app.cardView('Card num ' + card);

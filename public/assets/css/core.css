@@ -4,7 +4,7 @@ body {
     font-size:1em;
     margin:0;
     padding:0;
-    background-color:#00B1B5;
+/*    background-color:#00B1B5; */
     /* background-color:#2D28AF; */
 }
 .fullsize {
@@ -183,6 +183,9 @@ a .linkButton {
 }
 .ctc_bg_gray {
     background-color:#3c495a;
+}
+.ctc_bg_black {
+    background-color:#000000;
 }
 .ctc_bg_light_gray {
     background-color: #efefef;
