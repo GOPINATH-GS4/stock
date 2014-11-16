@@ -1,51 +1,70 @@
-  var app = {};
-
-  app.pView = Backbone.View.extend({
-    tagName: 'p',
-    setValue: function(val) {
-      this.$el.html(val);
+var guid = (function() {
+    function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000)
+            .toString(16)
+            .substring(1);
     }
-  });  
-  
+    return function() {
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+            s4() + '-' + s4() + s4() + s4();
+    };
+})();
 
-  app.cardList  = Backbone.View.extend({
-    el: '#cardList'
-  });
+document.getElementById('searchText').addEventListener('keydown', checkEnter);
+document.getElementById('searchButton').addEventListener('click', searchCtc);
 
-  app.cardView = Backbone.View.extend({
-    tagName: 'div',
-    initialize: function(cardNum) {
-      var p = new app.pView();
-      p.$el.html(cardNum);
-      p.$el.addClass('centerText');
-      p.$el.addClass('bigText');
-      this.$el.html(p.el);
-    },
-    addView: function(cardNum) {
-      this.$el.addClass('card');
-      this.$el.addClass('bg_white');
-      var cl = new app.cardList();
-      cl.$el.append(this.el);
-    },
-    addData: function(val) {
-      var pView = new app.pView();
-      pView.$el.addClass('blue');
-      pView.$el.html(val);
-      this.$el.append(pView.el);
-    },
-    render: function(val) {
-      this.addData(val);
-      this.addView();
-    }
-  });
+function checkEnter(event) {
 
+    if (event.keyCode === 13)
+        searchCtc();
+}
 
-  var cardView = new app.cardView();
- 
-  setTimeout(function() {
-      for (var card = 0; card < 20; card++) {
-        var v = new app.cardView('Card num ' + card);
-        for (var i = 0; i < 10; i++)
-          v.render('Random value : ' + Math.floor(Math.random()* 100) + 1);
-      }
-  }, 3000);
+function removeCards() {
+
+    var cardList = document.getElementById('cardList');
+    while (cardList && cardList.firstChild)
+        cardList.removeChild(cardList.firstChild);
+}
+
+function processModels(search) {
+    _.each(search, function(data) {
+        var card = new app.cardView('NCTID : ' + data.nct_id);
+
+        for (var i = 0; i < data.condition.length; i++) {
+            card.render('<li>' + data.condition[i] + '</li>', '#cardList', 'card');
+        }
+    });
+};
+
+function searchCtc() {
+    removeCards();
+    var searchText = document.getElementById('searchText').value;
+    var sessionToken = guid();
+    HTTPRequest.post('/search', {
+        searchText: searchText,
+        sessionToken: sessionToken
+    }, function(status, headers, content) {
+
+        var data = JSON.parse(content);
+        switch (data.status) {
+            case 200:
+                var searchs = new app.SearchCollection({
+                    session_token: sessionToken
+                });
+                searchs.fetch({
+                    reset: true,
+                    success: function(e, response) {
+                        processModels(response);
+                    },
+                    error: function(e, response) {
+                        console.log('Something went wrong ... ' + JSON.stringify(response));
+                    }
+                });
+                searchs.bind('reset', function() {
+                    searchs.each(function(x) {
+                        console.log('x : ' + JSON.stringify(x));
+                    });
+                });
+        }
+    });
+}

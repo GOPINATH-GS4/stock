@@ -14,8 +14,11 @@ body
       div.menu.right.mright2
         a(href="/logout").right.menuItem.white Logout
     div.leftNav.left.ctc_bg_light_gray
-      img(src="img/ar-drone.jpeg").middle
+      img(id="drone1",src="img/ar-drone.jpeg",draggable="true" ondragstart="drag(event)").middle
+      img(id="drone2",src="img/ar-drone.jpeg",draggable="true" ondragstart="drag(event)").middle
+      img(id="drone3",src="img/ar-drone.jpeg",draggable="true" ondragstart="drag(event)").middle
+      img(id="drone4",value="drone4",src="img/ar-drone.jpeg",draggable="true" ondragstart="drag(event)").middle
     div.main.right.leftOffset.mbottom3
       div.profile.clear
-        div#map-canvas
+        div(id="map-canvas", ondrop="drop(event)",ondragover="allowDrop(event)")
 include ./processDroneLoop.jade

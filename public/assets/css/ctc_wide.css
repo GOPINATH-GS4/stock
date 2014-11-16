@@ -41,6 +41,19 @@
     border:0;
   
 }
+#map-card {
+    width:85%;
+    height:400px;
+    margin-top:2%;
+    margin-left:10%;
+    margin-right:5%;
+    display: block;
+    -webkit-appearance: none;
+    font-family: 'Roboto';
+    background-color:#efefef;
+    font-size:1em;
+    border:0;
+}
 
 .leftNav {
     width:15%;
@@ -179,6 +192,7 @@ h2 {
     font-family: 'Roboto';
     font-size:1em;
     padding:0.5em 1.2em;
+    background-color:#efefef;
     border:0;
 }
 .subPanel {

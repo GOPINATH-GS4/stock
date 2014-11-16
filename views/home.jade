@@ -16,8 +16,7 @@ body
     div.main.right.leftOffset.mbottom3
       div.profile.clear
         div.searchPanel.bg_blueGreen
-          form(name="search", action="/search", method="post")
-            input(type="text", name="searchText").bg_white.mtop2
-            input(type="submit", value="Search Catalog").bg_red.white
+            input#searchText(type="text", name="searchText").bg_white.mtop2
+            input#searchButton(type="button", value="Search").bg_red.white
         #cardList
-include ./process.jade
+include ./processHome.jade

@@ -1,4 +1,4 @@
-module.exports = function(app, stock, constants, utils, log) {
+module.exports = function(app, constants, utils, log) {
     // 
     // File: login.js
     // Author: Janakiraman Gopinath 
@@ -28,16 +28,27 @@ module.exports = function(app, stock, constants, utils, log) {
             switch (response.status) {
 
                 case 200:
-                    var resp = {status:200, data:{results:[]}};
-                    res.render('home' , {resp:resp});
+                    var resp = {
+                        status: 200,
+                        data: {
+                            results: []
+                        }
+                    };
+                    res.render('home', {
+                        resp: resp
+                    });
                     break;
 
                 case 1000:
-                    res.render('index', {error : response.message});
+                    res.render('index', {
+                        error: response.message
+                    });
                     break;
 
                 default:
-                    res.render('index', {error: 'Unexpected error'});
+                    res.render('index', {
+                        error: 'Unexpected error'
+                    });
                     break;
             }
         });

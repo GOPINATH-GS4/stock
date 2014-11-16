@@ -7,9 +7,9 @@
         path = require('path'),
         fs = require('fs'),
         log = require('winston'),
-        stockModel = require('./models/stockModel.js').stockModel,
         session = require('redis'),
         UTILS = require('./lib/utils.js').utils,
+        CTCMODEL = require('./models/ctcModel.js').ctcModel,
         constants = require('./lib/constants.js')
 
     // Initialize log and add a transport file 
@@ -18,10 +18,11 @@
     });
 
     var app = express();
-    var stock = new stockModel();
     var utils = new UTILS(log);
+    var ctcModel = new CTCMODEL();
 
     // Set this in all environments
+    //
 
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
@@ -56,11 +57,11 @@
 
     }
 
-    var index = require('./routes/index.js')(app, stock, constants, utils, log);
-    var login = require('./routes/login.js')(app, stock, constants, utils, log);
-    var search = require('./routes/search.js')(app, stock, constants, utils, log);
-    var collections = require('./routes/collections.js')(app, stock, constants, utils, log);
-    var drone = require('./routes/drone.js')(app, stock, constants, utils, log);
+    var index = require('./routes/index.js')(app, constants, utils, log);
+    var login = require('./routes/login.js')(app, constants, utils, log);
+    var search = require('./routes/search.js')(app, ctcModel, constants, utils, log);
+    var collections = require('./routes/collections.js')(app, constants, utils, log);
+    var drone = require('./routes/drone.js')(app, constants, utils, log);
 
     https.createServer(options, app).listen(app.get('port'), function() {
         log.info('Express server listening on port ' + app.get('port'));

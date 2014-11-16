@@ -3,7 +3,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     ObjectId = Schema.ObjectId;
 
-var StockModel = function() {
+var CtcModel = function() {
 
     /**
      *
@@ -78,22 +78,6 @@ var StockModel = function() {
 
     });
 
-    var Ticker = new Schema({
-        ticker: {
-            type: String,
-            trim: true,
-            required: true,
-            index: {
-                unique: true,
-                sparse: true
-            }
-        },
-        name: String,
-        exchange: String,
-        profile: [Profile]
-            //,dataTypes              : {type: [DataTypes],required:true}
-
-    });
 
     var Profile = new Schema({
         name: String
@@ -115,31 +99,38 @@ var StockModel = function() {
 
     });
 
-    var Stock = new Schema({
-        id: Number,
-        t: String,
-        e: String,
-        l: Number,
-        l_fix: Number,
-        l_cur: Number,
-        s: Number,
-        ltt: String,
-        lt_dts: Date,
-        c: String,
-        c_fix: String,
-        cp: Number,
-        cp_fix: Number,
-        ccol: String,
-        pcls_fix: Number
+    var Search = new Schema({
+        search_text: String,
+        session_token: String,
+        ctcs: [Ctc]
+    });
+
+    var Ctc = new Schema({
+        nct_id: String,
+        brief_summary: String,
+        study_type: String,
+        conditions: [String],
+        primary_outcomes: [Outcomes],
+        secondary_outcomes: [Outcomes]
+    }, {
+        _id: false
+    });
+
+    var Outcomes = new Schema({
+        measure: String,
+        description: String,
+        timeframe: String,
+        safetyIssue: String
+    }, {
+        _id: false
     });
 
     this.Logs = db.model('Logs', Log);
     this.Users = db.model('Users', User);
     this.AccessTokens = db.model('AccessTokens', AccessToken);
     this.RefreshTokens = db.model('RefreshTokens', RefreshToken);
-    this.Tickers = db.model('Tickers', Ticker);
-    this.Stocks = db.model('Stocks', Stock);
+    this.Searchs = db.model('Searchs', Search);
     this.db = db;
 
 };
-exports.stockModel = StockModel;
+exports.ctcModel = CtcModel;
