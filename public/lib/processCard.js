@@ -19,25 +19,39 @@ function checkEnter(event) {
         searchCtc();
 }
 
-function removeCards() {
+function removeElements(elementName) {
 
-    var cardList = document.getElementById('cardList');
-    while (cardList && cardList.firstChild)
-        cardList.removeChild(cardList.firstChild);
+    var elem = document.getElementById(elementName);
+    while (elem && elem.firstChild)
+        elem.removeChild(elem.firstChild);
 }
 
 function processModels(search) {
     _.each(search, function(data) {
-        var card = new app.cardView('NCTID : ' + data.nct_id);
+        var card = new app.cardView(data.nct_id);
 
         for (var i = 0; i < data.condition.length; i++) {
             card.render('<li>' + data.condition[i] + '</li>', '#cardList', 'card');
         }
     });
 };
+function addSpinner() {
+  var spinner = document.getElementById('spinner');
+  var div;
+  div = document.createElement('div');
+  div.className = 'spinner boxc';
+  spinner.appendChild(div);
+  for (var i = 1; i <= 12; i++) {
+    var d = document.createElement('div');
+    d.className = 'bar' + i;
+    div.appendChild(d);
+  }
+}
 
 function searchCtc() {
-    removeCards();
+    removeElements('cardList');
+    addSpinner();
+
     var searchText = document.getElementById('searchText').value;
     var sessionToken = guid();
     HTTPRequest.post('/search', {
@@ -55,6 +69,7 @@ function searchCtc() {
                     reset: true,
                     success: function(e, response) {
                         processModels(response);
+                        removeElements('spinner');
                     },
                     error: function(e, response) {
                         console.log('Something went wrong ... ' + JSON.stringify(response));
