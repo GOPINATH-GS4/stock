@@ -27,8 +27,8 @@ function removeElements(elementName) {
 }
 
 function processModels(search) {
-    _.each(search, function(data) {
-        var card = new app.cardView(data.nct_id);
+    _.each(search, function(data, index) {
+        var card = new app.cardView(data.nct_id + ':' + index);
 
         for (var i = 0; i < data.condition.length; i++) {
             card.render('<li>' + data.condition[i] + '</li>', '#cardList', 'card');
