@@ -33,17 +33,17 @@ function processModels(search) {
         card.render(cardList);
     });
 };
+
 function addSpinner() {
-  var spinner = document.getElementById('spinner');
-  var div;
-  div = document.createElement('div');
-  div.className = 'spinner boxc';
-  spinner.appendChild(div);
-  for (var i = 1; i <= 12; i++) {
-    var d = document.createElement('div');
-    d.className = 'bar' + i;
-    div.appendChild(d);
-  }
+    var spinner = document.getElementById('spinner');
+    var div = document.createElement('div');
+    div.className = 'spinner boxc';
+    spinner.appendChild(div);
+    for (var i = 1; i <= 12; i++) {
+        var d = document.createElement('div');
+        d.className = 'bar' + i;
+        div.appendChild(d);
+    }
 }
 
 function searchCtc() {
@@ -73,10 +73,6 @@ function searchCtc() {
                         removeElements('spinner');
                         console.log('Something went wrong ... ' + JSON.stringify(response));
                     }
-                });
-                searchs.bind('reset', function() {
-                    searchs.each(function(x) {
-                    });
                 });
         }
     });

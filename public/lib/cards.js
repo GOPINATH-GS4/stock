@@ -10,7 +10,7 @@
       }
   });
 
-// Collections 
+  // Collections 
   app.SearchCollection = Backbone.Collection.extend({
       model: app.SearchModel,
       url: function() {
@@ -28,20 +28,22 @@
   // Views 
 
   app.cardList = Backbone.View.extend({
-    el: '#cardList'
+      el: '#cardList'
   });
 
- 
+
   app.cardView = Backbone.View.extend({
-    tagName: 'div',
-    initialize: function(card) {
-      this.card = card;
-    },
-    template: _.template($("#card-template").html()),
-    render: function(cardList) {
-        this.$el.html(this.template({card:this.card}));
-        this.$el.addClass('card');
-        cardList.$el.append(this.el);
-        return this;
-    }
-  }); 
+      tagName: 'div',
+      initialize: function(card) {
+          this.card = card;
+      },
+      template: _.template($("#card-template").html()),
+      render: function(cardList) {
+          this.$el.html(this.template({
+              card: this.card
+          }));
+          this.$el.addClass('card');
+          cardList.$el.append(this.el);
+          return this;
+      }
+  });
