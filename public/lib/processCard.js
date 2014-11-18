@@ -31,11 +31,6 @@ function processModels(search) {
     _.each(search, function(data, index) {
         var card = new app.cardView(data);
         card.render(cardList);
-        /*
-        for (var i = 0; i < data.condition.length; i++) {
-            card.render('<li>' + data.condition[i] + '</li>', '#cardList', 'card');
-        }
-        */
     });
 };
 function addSpinner() {
