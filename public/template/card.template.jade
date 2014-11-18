@@ -1,0 +1,16 @@
+script#card-template(type="text/template")
+  p.bigText.centerText <%= card.nct_id %>  
+  p.panel.leftPanel.bg_white.mtop2.boxShadow.summary <%= card.summary %>
+  div.profile.clear
+    div.panel.leftPanel.bg_white.mtop2.boxShadow.summary Conditions Treated
+      <% _.each(card.condition, function(cond) { %>
+      li.normaltext.blue <%= cond %>
+      <% }); %>
+    div.panel.leftPanel.bg_white.mtop2.boxShadow.summary Primary outcomes 
+      <% _.each(card.primary_outcomes, function(outcome) { %>
+      p.normaltext.blue <%= outcome.measure %>
+      <% }); %>
+    div.panel.rightPanel.bg_white.mtop2.boxShadow.summary Secondary outcomes 
+      <% _.each(card.secondary_outcomes, function(outcome) { %>
+      p.normaltext.blue <%= outcome.measure %>
+      <% }); %>

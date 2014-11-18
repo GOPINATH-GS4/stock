@@ -27,12 +27,15 @@ function removeElements(elementName) {
 }
 
 function processModels(search) {
+    var cardList = new app.cardList();
     _.each(search, function(data, index) {
-        var card = new app.cardView(data.nct_id + ':' + index);
-
+        var card = new app.cardView(data);
+        card.render(cardList);
+        /*
         for (var i = 0; i < data.condition.length; i++) {
             card.render('<li>' + data.condition[i] + '</li>', '#cardList', 'card');
         }
+        */
     });
 };
 function addSpinner() {
@@ -68,16 +71,16 @@ function searchCtc() {
                 searchs.fetch({
                     reset: true,
                     success: function(e, response) {
-                        processModels(response);
                         removeElements('spinner');
+                        processModels(response);
                     },
                     error: function(e, response) {
+                        removeElements('spinner');
                         console.log('Something went wrong ... ' + JSON.stringify(response));
                     }
                 });
                 searchs.bind('reset', function() {
                     searchs.each(function(x) {
-                        console.log('x : ' + JSON.stringify(x));
                     });
                 });
         }

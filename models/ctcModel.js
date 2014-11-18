@@ -108,6 +108,7 @@ var CtcModel = function() {
     var Ctc = new Schema({
         nct_id: String,
         brief_summary: String,
+        overall_status: String,
         study_type: String,
         conditions: [String],
         primary_outcomes: [Outcomes],

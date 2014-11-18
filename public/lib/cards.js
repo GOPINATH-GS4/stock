@@ -10,6 +10,7 @@
       }
   });
 
+// Collections 
   app.SearchCollection = Backbone.Collection.extend({
       model: app.SearchModel,
       url: function() {
@@ -25,44 +26,22 @@
   });
 
   // Views 
-  app.pView = Backbone.View.extend({
-      tagName: 'p',
-      setValue: function(val) {
-          this.$el.html(val);
-      }
-  });
-
 
   app.cardList = Backbone.View.extend({
-      initialize: function(x) {
-          this.setElement(x);
-      }
+    el: '#cardList'
   });
 
+ 
   app.cardView = Backbone.View.extend({
-      tagName: 'div',
-      initialize: function(cardNum) {
-          var p = new app.pView();
-          p.$el.html(cardNum);
-          p.$el.addClass('centerText');
-          p.$el.addClass('bigText');
-          this.$el.html(p.el);
-      },
-      addView: function(tag, view) {
-          this.$el.addClass(view);
-          this.$el.addClass('bg_white');
-          var cl = new app.cardList(tag);
-          cl.$el.append(this.el);
-      },
-      addData: function(val) {
-          var pView = new app.pView();
-          pView.$el.addClass('blue');
-          pView.$el.html(val);
-          this.$el.append(pView.el);
-      },
-      render: function(val, tag, view) {
-          this.addData(val);
-          this.addView(tag, view);
-      }
-  });
-  var cardView = new app.cardView();
+    tagName: 'div',
+    initialize: function(card) {
+      this.card = card;
+    },
+    template: _.template($("#card-template").html()),
+    render: function(cardList) {
+        this.$el.html(this.template({card:this.card}));
+        this.$el.addClass('card');
+        cardList.$el.append(this.el);
+        return this;
+    }
+  }); 
