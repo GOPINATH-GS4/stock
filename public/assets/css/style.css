@@ -1,0 +1,251 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+.navbar-default {
+    background-color: #16547e;
+    border-color: transparent;//#674937;
+    text-transform: uppercase;
+    font-size:11px;
+}
+
+.navbar-brand {
+    padding: 15px 0px;
+}
+
+.navbar>.container-fluid .navbar-brand {
+    margin-left: 0px;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
+    color:#FF8000; 
+    background-color: transparent;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #ccc; //#7BD4F6;
+    background-color: transparent;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #fff;
+}
+
+.dropdown-menu>li>a {
+    font-size:12px;
+    text-transform:none;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
+    color: #fff;
+    background-color: transparent;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+}
+
+.navbar-toggle .icon-bar {
+    display: block;
+    width: 28px;
+    height: 4px;
+    border-radius: 2px;
+}
+
+.navbar-default .navbar-toggle:hover {
+    background-color: #d6ba98;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #F5BEC7;
+}
+
+.navbar-nav {
+    padding: 2px 0px;
+}
+
+#navbar .signup>li>a {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin: 10px 5px;
+    color: #999;
+}
+
+.navbar {
+    margin-bottom: 0px;
+}
+
+#sidebar-left {
+    background-color: #EDF1F5;
+    padding-top: 23px;
+    color: #fff;
+    height:500px;
+}
+
+#sidebar-left>.nav>li>a{
+    color: #999;
+    border-bottom: 1px solid #69aaac;
+
+}
+#sidebar-left>.nav>li>a:hover{
+    color: #16547E;
+}
+#sidebar-left>.nav>li>a>span {
+  padding-left:10px;
+}
+
+#content {
+    margin-top: 23px;
+}
+
+.btn-default {
+
+    background-color: transparent;
+    border: solid 2px #fff;
+    margin-right:15px;
+}
+
+.btn-default:hover {
+    color:#ccc;
+    background-color:transparent;
+    border:solid 1px ;
+}
+
+.entry-page-title.container {
+    background: #ccc !important;
+    border-radius: 20px 20px 0 0;
+    margin-top: 30px;
+    color: #333;
+}
+
+.form-horizontal .form-group {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.login-input {
+    height: 45px;
+    width: 100%;
+    padding: 8px 10px;
+    //border: 1px solid darkgray;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+.site-footer {
+    background: #4C575C !important;
+    //border-top: 6px solid #69aaac;
+    padding-top: 10px!important;
+    padding-bottom: 30px!important;
+    color:#fff;
+}
+
+.site-footer .site-info {
+    padding: 0;
+}
+
+.site-footer .site-info .listblck h1 {
+    margin-bottom: 6px;
+//margin-top: 40px;
+}
+
+.site-footer .footer-widget-title {
+    letter-spacing: 0;
+    text-transform: none;
+//margin-bottom: 0;
+}
+
+.footer-widget-title {
+    font: 400 16px 'Montserrat', sans-serif;
+    color: #69aaac;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.social-footer{
+    list-style: none;
+    margin-left: 5px;
+    padding-left: 0px;
+    font-size:14px;
+
+}
+
+.social-footer>li>a{
+    color:#fff;
+}
+.facebook> a:hover {
+    text-decoration: none;
+    color: #3B5998;
+}
+.twitter> a:hover {
+    text-decoration: none;
+    color: #00ABF1;
+}
+.gplus> a:hover {
+    text-decoration: none;
+    color: #E02F2F;
+}
+
+.github>a:hover{
+    color:#333333;
+    text-decoration:none;
+}
+
+.container .text-muted {
+    margin: 20px 0;
+}
+
+.footer > .container {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #36454A;
+    font-size:10px;
+}
+
+.footer-menu {
+    margin: 20px 0;
+}
+
+.copyrights {
+    background: #3E4246;
+    padding: 0;
+    font-size: 12px;
+    border-top: 1px solid #3E4246;
+    margin-top: 15px;
+}
+.footer-menu ul >li {
+    list-style: none;
+    list-style-position: outside;
+    float: right;
+    display: inline;
+    margin: 5px;
+}
+
+menu, dir {
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+}

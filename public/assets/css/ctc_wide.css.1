@@ -1,4 +1,4 @@
-#ctcApp {
+#myApp {
     clear:both;
     overflow: hidden;
 }
@@ -13,50 +13,18 @@
     z-index: -1;
     top:0px;
 }
-.ctcWideMoniker {
-    width:80px!important;
-    background-color:#3c495a;
+.khWideMoniker {
+    width:100px!important;
+    background-color:rgb(153,5,86);
 }
 .widecorplogo {
-    background-image:url('../img/icons/logo_ctc_landscape_small.png')!important;
+    background-image:url('../img/icons/logo_koneksa_landscape_small.png')!important;
     width:200px!important;
     height:50px!important;
     background-size: auto 50px!important;
 }
-.middle {
-  padding-top: 10%;
-  padding-left:15%;
-  max-width: 100%;
-}
-#map-canvas {
-    width:85%;
-    height:400px;
-    margin-top:2%;
-    margin-left:10%;
-    margin-right:5%;
-    display: block;
-    -webkit-appearance: none;
-    font-family: 'Roboto';
-    font-size:1em;
-    border:0;
-  
-}
-#map-card {
-    width:85%;
-    height:400px;
-    margin-top:2%;
-    margin-left:10%;
-    margin-right:5%;
-    display: block;
-    -webkit-appearance: none;
-    font-family: 'Roboto';
-    background-color:#efefef;
-    font-size:1em;
-    border:0;
-}
-
 .leftNav {
-    width:15%;
+    width:100px;
     height:100%;
     display: block;
     position: fixed;
@@ -65,20 +33,21 @@
 
 }
 .leftNav .sideMenuItem {
-    width:77px;
+    width:97px;
     height:60px;
     padding-top:40px;
     display: block;
     text-transform: uppercase;
-    font-size:0.7em;
+    font-size:0.8em;
     text-align: center;
+    border-left:3px solid rgb(153,5,86);
 }
 .leftNav .sideMenuItem:hover {
     width:77px;
     height:60px;
     padding-top:40px;
     display: block;
-    border-bottom:5px solid #00B1B5;
+    border-left:3px solid #00B1B5;
     cursor:pointer;
 }
 .action {
@@ -87,20 +56,14 @@
     padding:0 1em;
     cursor: pointer;
 }
-.action:hover {
-    background-color:#00B1B5;
-    color:#efefef;
-}
 .action i {
     margin-right:0.5em;
 }
 .header {
     width:100%;
     height:50px;
-    position: fixed;
-    z-index:1010;
+    position: relative;
     display: block;
-    box-shadow: 0 1 1px rgba(0, 0, 0, 0.1);
 }
 .footer {
     width:100%;
@@ -143,11 +106,10 @@
     height:auto!important;
     overflow: hidden;
     z-index: 1;
-    top:50px;
     position: relative;;
 }
 .leftOffset {
-    padding-left:80px;
+    padding-left:100px;
 }
 h2 {
     margin-top:0;
@@ -158,53 +120,105 @@ h2 {
     padding:2em;
     height:auto!important;
     display: block;
-    clear: both;
     overflow: hidden;
     opacity:0.95;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
 }
+.panel .formSpacer {
+    padding:1em 2em;
+    height: auto!important;
+    overflow: hidden;
+}
+.threeQtr {
+    width:75%;
+    height: auto!important;
+    overflow: hidden;
+}
+.formSpacer input {
+    float:left;
+    margin:0!important;
+    border:1px solid #bebebe;
+    height:3em;
+}
+.fullInput {
+    width:100%!important;
+}
+.qtrInput {
+    width:18%!important;
+    margin-left:2%;
+}
+.thirdInput {
+    width:31%!important;
+    margin-left:2% !important;
+}
+.halfInput {
+    width:32%!important;
+}
+.nineCol {
+    width:90%!important;
+}
+.oneCol {
+    width:10%!important;
+}
+
+.formSpacer select {
+    float:left;
+    margin:0!important;
+}
+.fullWidthPanel {
+    padding:1em 0 0 0!important;
+}
+.fullWidthPanel .action:hover {
+
+}
+.noPadding {
+    padding:0!important;
+}
+.pleft100 {
+    padding-left:100px !important;
+}
+.pright100 {
+    padding-right:100px!important;
+}
+.leftPanel {
+    width:43%;
+    margin: 2em 0  1em 5%;
+    float:left;
+}
+.rightPanel {
+    width:43%;
+    margin: 2em 5% 1em 0;
+    float:right;
+}
 .spacerPanel {
      padding:1em 2em !important;
 }
 .panel label {
-    width:33%;
-    font-size:1.2em;
-    padding:0.5em 1.2em;
+    width:100%;
+    font-size:0.9em;
+    padding:0.5em 0;
     display: block;
     margin:0;
+}
+.fullWidthPanel label {
+    float:left;
+    line-height: 3em;
+    padding:0!important;
 }
 .panel select {
-    width:60%;
     margin:0;
     display: block;
     -webkit-appearance: none;
     font-family: 'Roboto';
     font-size:1em;
     padding:0.5em 1.2em;
-    border:0;
-}
-.searchPanel{
-    width:90%;
-    margin:2em 0%;
-    display: block;
-    -webkit-appearance: none;
-    font-family: 'Roboto';
-    font-size:1em;
-    padding:0.5em 1.2em;
-    border:0;
-}
-.card {
-    width:90%;
-    margin:2em 0%;
-    display: block;
-    -webkit-appearance: none;
-    font-family: 'Roboto';
-    font-size:1em;
-    padding:0.5em 1.2em;
-    background-color:#efefef;
-    border:0;
+    border:1px solid #bebebe;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+
 }
 .subPanel {
     max-width:40%!important;
@@ -218,16 +232,25 @@ h2 {
 .offsetPanel {
     position:relative;
     z-index: 10;
-    top:100px;
+    top:50px;
     opacity:0.97;
 }
 .modalPanel {
-    max-width:50%!important;
+    max-width:500px!important;
     margin-left:auto!important;
     margin-right:auto!important;
 }
+.brand_header {
+    width:100%;
+    display: block;
+    height:100px;
+    background-image:url('../img/icons/logo_signup.png');
+    background-repeat:  no-repeat;
+    background-position: center center;
+}
 .panel h3 {
-    padding-left:1.2em;
+    font-size:1.2em;
+    text-transform: capitalize;
 }
 .panel h4 {
     margin:0;
@@ -236,7 +259,19 @@ h2 {
     margin-bottom:1em;
     font-weight: 200;
     letter-spacing: 1px;
-    font-size:1.4em;
+    font-size:1em;
+    text-transform: uppercase;
+    line-height: 45px;
+}
+.fullWidthPanel h4 {
+    margin:0;
+    padding:0 2em;
+    width:100%;
+    margin-bottom:1em;
+    font-weight: 200;
+    letter-spacing: 1px;
+    font-size:1em;
+    text-transform: uppercase;
     line-height: 45px;
 }
 .panel h4 i {
@@ -263,10 +298,6 @@ h2 {
 .boxShadow {
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
 }
-.searchBar {
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
-}
-
 .smallPanel {
     padding:1em 10%;
     width:100%;
@@ -275,53 +306,58 @@ h2 {
     clear: both;
     overflow: hidden;
 }
-form {
-    padding:0 1.2em 1.2em 1.2em;
-}
 .button {
     border:0;
     border-radius: 0;
     margin:1em 0 0.5em 0;
     padding:0.5em 2em;
     height:3em;
+    line-height: 2em;
     width:auto;
-    font-weight: bold;
     display: block;
     -webkit-appearance: none;
     cursor: pointer;
     text-decoration: none;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
 }
 label {
     width:100%;
     margin:1em 0 0.5em 0;
     display: block;
     letter-spacing: 0.1em;
+    text-transform: capitalize;
 }
 input {
     border:0;
     border-radius: 0;
-    margin:1em 0;
+    margin:0.2em 0 1em 0;
     padding:0.5em 1.2em;
-    width:100%;
     display: block;
     -webkit-appearance: none;
     font-family: 'Roboto';
     font-size:1em;
 }
 input[type=text] {
-    background-color:#efefef;
-    height:3em;
-}
-input[type=text]:hover {
-    background-color:#efefff;
+    border:1px solid #bebebe;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
     height:3em;
 }
 input[type=email] {
-    background-color:#efefef;
+    border:1px solid #bebebe;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
     height:3em;
 }
 input[type=password] {
-    background-color:#efefef;
+    border:1px solid #bebebe;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
     height:3em;
 }
 .linkButton {
@@ -344,6 +380,9 @@ input[type="button"] {
     display: block;
     -webkit-appearance: none;
     cursor: pointer;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
 }
 input[type="submit"] {
     border:0;
@@ -354,6 +393,9 @@ input[type="submit"] {
     display: block;
     -webkit-appearance: none;
     cursor: pointer;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
 }
 .fullWidth {
     width:100% !important;
@@ -478,9 +520,10 @@ input[type="radio"] {
     height:auto!important;
     overflow: hidden;
     display: block;
+    text-align: center;
 }
 .programMetric h5 {
-
+    font-size:0.8em;
 }
 .programMetric .caption {
     width:100%;
@@ -493,8 +536,8 @@ input[type="radio"] {
 }
 .programMetric .value{
     width:100%;
-    font-size:1.4em;
-    line-height: 1.4em;
+    font-size:2em;
+    line-height: 2em;
     font-weight: 700;
     display: block;
 }
@@ -503,10 +546,26 @@ input[type="radio"] {
 }
 /** bar chart**/
 .chartContainer {
-
+    width:48%;
+    float:left;
 }
 .chartContainer h5 {
-
+    text-align: center;
+}
+/**bar icon panel**/
+.iconPanel {
+    width:80px;
+    height:auto!important;
+}
+.iconPanel .icon {
+    width:45px !important;
+    margin-left:15px;
+    margin-top:25px;
+}
+.iconPanel h6 {
+    font-size:0.8em;
+    margin-bottom:0;
+    text-align: center;
 }
 /**data count metric**/
 p .value {
@@ -549,38 +608,42 @@ p .value {
     width:100%;
     display:block;
 }
+.iconBarMetric .barBlock {
+    width:100%;
+    margin-left:45px;
+    position: relative;
+    z-index: 1;
+}
 .iconBarMetric .icon {
     width:45px;
     height:45px;
     display: block;
-    margin: 0 auto;
+    position: relative;
+    z-index: 2;
 }
 .iconBarMetric .barMetric {
-    width: 30%;
-    height:45px;
+    width: 100%;
+    height:18px;
+    line-height:18px;
     display: block;
 }
 .iconBarMetric .caption {
-    height:15px;
-    line-height: 15px;
     font-size:0.8em;
     display: block;
 }
 .iconBarMetric .value {
-    height:30px;
-    line-height: 30px;
-    font-size:1em;
+    font-size:0.8em;
     display: block;
 }
 .iconBarMetric .barOuter {
-    width: 60%;
-    height:45px;
+    width: 100%;
+    height:10px;
     display: block;
     position: relative;
 }
 .iconBarMetric .barInner {
     width: 40%;
-    height:45px;
+    height:10px;
     display: block;
     position:absolute;
     top:0;
@@ -597,4 +660,184 @@ p .value {
     top:0;
     left:0;
     z-index:2;
+}
+/**program ui**/
+.dataType {
+    width:100%;
+    min-height:60px;
+    height:auto!important;
+    padding:1em;
+    display: block;
+    overflow: hidden;
+    clear: both;
+}
+.dataType .description {
+    width:auto;
+    height:80px;
+    display: block;
+}
+.dataType h5 {
+    margin:0;
+    margin-bottom: 0.5em;
+}
+.dataType h6 {
+    margin:0;
+    text-transform: lowercase;
+}
+/**step icon**/
+.step_icon_spacer {
+    width:auto;
+    padding:0 0.2em;
+    height:44px;
+    display: block;
+    line-height: 44px;
+    font-size:1.8em;
+    text-align: center;
+    text-transform: capitalize;
+}
+.step {
+    font-size:0.6em !important;
+    line-height: 45px;
+    padding:0 1em;
+    cursor: pointer;
+}
+.step_icon_border {
+    border-width: 2px;
+    border-style: solid;
+    line-height: 40px!important;
+}
+.step_icon {
+    width:auto;
+    padding:0 0.2em;
+    height:44px;
+    display: block;
+    -webkit-border-radius: 22px;
+    -moz-border-radius:22px;
+    border-radius:22px;
+    line-height: 44px;
+    font-size:2.4em;
+    text-align: center;
+}
+/**new survey**/
+.progName {
+    font-size:1.2em!important;
+    line-height: 2em!important;
+    width:75%!important;
+}
+.question {
+    width:75%!important;
+    height:auto!important;
+    overflow:hidden;
+}
+.questionText {
+    width:100% !important;
+}
+.question select {
+    margin:1em 0!important;
+}
+.questionSubForm {
+    width:75%;
+    display: block;
+}
+.isMandatory {
+    width:100%;
+    display: block;
+    height:3em;
+    padding:0.5em 0.5;
+}
+.toggleButton {
+    border:0;
+    border-radius: 0;
+    padding:0.5em 2em;
+    height:3em;
+    line-height: 2em;
+    width:auto;
+    display: block;
+    -webkit-appearance: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+.leftToggle {
+    -webkit-border-top-left-radius: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    -moz-border-radius-topleft: 3px;
+    -moz-border-radius-bottomleft: 3px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-top:1px solid #bebebe;
+    border-left:1px solid #bebebe;
+    border-bottom:1px solid #bebebe;
+}
+.rightToggle {
+    -webkit-border-top-right-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    -moz-border-radius-topright: 3px;
+    -moz-border-radius-bottomright: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-top:1px solid #bebebe;
+    border-right:1px solid #bebebe;
+    border-bottom:1px solid #bebebe;
+}
+.smallLabel {
+    width:100% !important;
+    display: block;
+}
+.questionOptions {
+    display: block;
+    overflow: hidden;
+    width:100%;
+}
+.questionOption {
+    width:100%;
+}
+/**invites form**/
+.invitesForm {
+    padding:0 2em;
+    display: block;
+    height:auto!important;
+    overflow: hidden;
+    width:70%;
+}
+.invitesForm p {
+    font-size:1.2em;
+    line-height: 1.8em;
+    margin:0 0 0 2%;
+}
+.invitesCounter {
+    padding:0 0 0 2em;
+    display: block;
+    width:30%;
+    height:auto!important;
+    overflow: hidden;
+}
+.inviteCounterBlock {
+    width:160px;
+    height:160px;
+    display: block;
+    margin:0 auto;
+    -webkit-border-radius: 80px;
+    -moz-border-radius: 80px;
+    border-radius: 80px;
+}
+.inviteCounterBlock .value {
+    width:100%;
+    font-size: 3em;
+    padding-top:30px;
+    display: block;
+    text-align: center;
+}
+.inviteCounterBlock .caption {
+    width:100%;
+    height:1em;
+    display: block;
+    text-align: center;
+    text-transform: uppercase
+}
+.participantQuit {
+    height:3em;
+    padding: 0.5em 1.2em;
+    display: block;
+    line-height: 2em;
+    text-align: center;
 }

@@ -126,11 +126,18 @@ var CtcModel = function() {
         _id: false
     });
 
+    var UserCollection = new Schema({ 
+      email: String,
+      collectionName: String
+    });
+
+
     this.Logs = db.model('Logs', Log);
     this.Users = db.model('Users', User);
     this.AccessTokens = db.model('AccessTokens', AccessToken);
     this.RefreshTokens = db.model('RefreshTokens', RefreshToken);
     this.Searchs = db.model('Searchs', Search);
+    this.UserCollections = db.model('UserCollections', UserCollection);
     this.db = db;
 
 };

@@ -60,7 +60,7 @@
     var index = require('./routes/index.js')(app, constants, utils, log);
     var login = require('./routes/login.js')(app, constants, utils, log);
     var search = require('./routes/search.js')(app, ctcModel, constants, utils, log);
-    var collections = require('./routes/collections.js')(app, constants, utils, log);
+    var collections = require('./routes/collections.js')(app, ctcModel, constants, utils, log);
     var drone = require('./routes/drone.js')(app, constants, utils, log);
 
     https.createServer(options, app).listen(app.get('port'), function() {

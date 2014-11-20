@@ -172,6 +172,16 @@ body {
     overflow: hidden;
   -webkit-overflow-scrolling:touch;
 }
+.leftPanel {
+    width:43%;
+    margin: 2em 0  1em 5%;
+    float:left;
+}
+.rightPanel {
+    width:43%;
+    margin: 2em 5% 1em 0;
+    float:right;
+}
 .dashboard{
   width: 70%;
   background-color:#EFFBF8;

@@ -40,13 +40,13 @@ module.exports = function(app, constants, utils, log) {
                     break;
 
                 case 1000:
-                    res.render('index', {
+                    res.render('home', {
                         error: response.message
                     });
                     break;
 
                 default:
-                    res.render('index', {
+                    res.render('home', {
                         error: 'Unexpected error'
                     });
                     break;
@@ -54,4 +54,5 @@ module.exports = function(app, constants, utils, log) {
         });
     };
     app.post('/login', login);
+    app.get('/login', login);
 }

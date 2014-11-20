@@ -2,22 +2,12 @@ doctype html
 html(lang='en', xmlns='http://www.w3.org/1999/html')
 
 include ./head.jade
-link(href='assets/css/base.css', type='text/css', rel='stylesheet', media='screen and (min-width: 100px)')
-link(href='assets/css/core.css', type='text/css', rel='stylesheet', media='screen and (min-width: 100px)')
-link(href='assets/css/ctc_wide.css', type='text/css', rel='stylesheet', media='screen and (min-width: 100px)')
-body
-  div#ctcApp
-    div.header.boxShadow.bg_gray
-      div.menu.left.mleft2
-        a(href="/collections").right.menuItem.white My Collections
-      div.menu.right.mright2
-        a(href="/logout").right.menuItem.white Logout
-    div.main.right.leftOffset.mbottom3
-      div.profile.clear
-        div.searchPanel.bg_blueGreen
-            input#searchText(type="text", name="searchText").bg_white.mtop2
-            input#searchButton(type="button", value="Search").bg_red.white
-        div#spinner.displaySpinner
-        #cardList
-include ./../public/template/card.template.jade
-include ./processHome.jade
+include ./menu.jade
+include ./sidebar.jade
+include ./footer.jade
+include ./../public/template/collection.template.jade
+include ./processCollection.jade
+
+
+script(type='text/javascript').
+  setActiveMenu('catalog');
