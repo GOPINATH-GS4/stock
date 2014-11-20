@@ -85,6 +85,7 @@ module.exports = function(app, ctcModel, constants, utils, log) {
             ctc.conditions = results[i].condition;
             ctc.primary_outcomes = results[i].primary_outcome;
             ctc.secondary_outcomes = results[i].secondary_outcome;
+            ctc.clinical_results = results[i].clinical_results;
             search.ctcs.push(ctc);
         }
 

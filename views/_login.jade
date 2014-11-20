@@ -1,0 +1,54 @@
+.entry-page-title.container
+  h3.entry-title Sign In/Sign Up
+.container
+  // Main component
+  #login
+    .signinregforms
+      br
+      br
+      .row
+        .col-lg-6.col-md-6.col-sm-6
+          form#loginForm.form-horizontal(role='form', action='', method='post')
+            fieldset
+              span
+                legend Sign in
+              .form-group
+                label(for='user_Login')
+                  i.fa.fa-user
+                  | Username
+                input.login-input.form-control(name='user_login', type='text', title='Username', placeholder='Enter Email Address')
+              .form-group
+                label(for='user_pass')
+                  i.fa.fa-key
+                  | Password
+                input.login-input.form-control(name='user_pass', type='password', placeholder='Enter Password')
+              .form-group
+                button.btn.btn-warning.btn-lg(type='submit')
+                  i.fa.fa-sign-in
+                  | Sign in
+                a(href='#', title='Forgot Password')  Forgot Password? 
+        .col-lg-6.col-md-6.col-sm-6
+          form#registrationForm.form-horizontal(action='', method='POST')
+            fieldset
+              span
+                legend Sign Up 
+              .form-group
+                label(for='user_first') First Name
+                input.login-input.form-control(name='user_first', type='text', value='', placeholder='Enter First Name')
+              .form-group
+                label(for='user_last') Last Name
+                input.login-input.form-control(name='user_last', type='text', value='', placeholder='Enter Last Name')
+              .form-group
+                label(for='user_email') Email
+                input.login-input.form-control(name='user_email', type='email', value='', placeholder='Enter Email Address')
+              //
+                 <div class="form-group">
+                                    <label for="registration_login">Username</label>
+                                    <input name="registration_login" class="login-input" type="text" value="" placeholder="Enter Username">
+                                  </div> 
+              .form-group
+                label(for='user_password') Password
+                input.login-input.form-control(name='user_password', type='password', value='', placeholder='Enter Password')
+              .form-group
+                button.btn.btn-warning.btn-lg(type='submit') Sign Up
+// /container

@@ -40,13 +40,13 @@ module.exports = function(app, constants, utils, log) {
                     break;
 
                 case 1000:
-                    res.render('home', {
+                    res.render('login', {
                         error: response.message
                     });
                     break;
 
                 default:
-                    res.render('home', {
+                    res.render('login', {
                         error: 'Unexpected error'
                     });
                     break;
