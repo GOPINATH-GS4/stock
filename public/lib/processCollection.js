@@ -1,13 +1,14 @@
-var collections = new app.CollectionCollection({email: 'gopinathjmad@gmail.com'});
+var collections = new app.CollectionCollection({
+    userId: 1000001
+});
 
 collections.fetch({
-  reset: true,
-  success: function(e, response) {
-    console.log(response); 
-    processModels(response);
-  },
-  error: function(e, response) {
-  }
+    reset: true,
+    success: function(e, response) {
+        console.log(response);
+        processModels(response);
+    },
+    error: function(e, response) {}
 });
 
 function processModels(collections) {

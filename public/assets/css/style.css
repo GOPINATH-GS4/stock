@@ -61,7 +61,13 @@ body {
     padding-top: 7px;
     padding-bottom: 7px;
     margin: 10px 5px;
-    color: #999;
+    color: red;
+}
+#navbar .signup>li>a:hover {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin: 10px 5px;
+    background-color: red;
 }
 .navbar {
     margin-bottom: 0px;
@@ -259,6 +265,7 @@ select.form-control{
     text-anchor: end;
 }
 
+
 .btn-default {
 
     background-color: transparent;
@@ -273,8 +280,8 @@ select.form-control{
 }
 
 .entry-page-title.container {
-    background: #ccc !important;
-    border-radius: 20px 20px 0 0;
+    background: #00B1B5; !important;
+    border-radius: 0 0 0 0 ;
     margin-top: 30px;
     color: #333;
 }
@@ -285,6 +292,9 @@ select.form-control{
     color: #333;
 }
 
+.entry-page-title.container>.entry-title {
+    color: white;
+}
 
 .form-horizontal .form-group {
     margin-right: 0px;
@@ -348,6 +358,18 @@ menu {
 }
 .red {
     color: #FA7D7D;
+.col-lg-7>.input-group>.input-group-btn>.btn-default:hover {
+  color:red;
+}
+
+menu, dir {
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
 }
 .green {
     color: #2d9d23;

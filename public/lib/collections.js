@@ -3,7 +3,7 @@
   // Models 
 
   app.CollectionModel = Backbone.Model.extend({
-      idAttribute: "email",
+      idAttribute: "userId",
       urlRoot: function() {
           var u = '/collection/' + this.id;
           return u;
@@ -21,7 +21,7 @@
       },
       initialize: function(options) {
           if (typeof options != 'undefined')
-              this.id = options.email;
+              this.id = options.userId;
       }
   });
 
