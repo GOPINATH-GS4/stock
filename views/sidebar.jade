@@ -2,3 +2,392 @@
   .row
     #sidebar-left.col-xs-2.col-sm-2
       ul#collection.nav.main-menu
+    #content.col-xs-10.col-sm-10.col-md-10.col-lg-10
+      // Search Form
+      .entry-page-title.container-fluid
+        h4.entry-title Search
+      .search.container-fluid
+        #search
+          form#searchForm.form-horizontal(role='form', action='', method='post')
+            .row
+              .col-lg-6.col-md-6
+                .form-group
+                  input.form-control.login-input(name='searchText', type='text', title='Search', placeholder='Enter Search Term')
+              .col-lg-2.col-md-2
+                .form-group
+                  button.btn.btn-warning.btn-lg(type='submit')
+                    i.fa.fa-search
+                    | Search
+              .col-lg-2.col-md-2
+                .form-group
+                  button#advbutton.btn.btn-primary.btn-lg(type='button')
+                    | Advance Search
+                    i.fa.fa-chevron-down
+            #advance.row
+              .col-lg-2.col-md-2.col-sm-2
+                .form-group
+                  input#results(type='checkbox', name='results', value='results', aria-label='results')
+                  label(for='results') Results
+              .col-lg-3.col-md-3.col-sm-3
+                .form-group
+                  label(for='status') Status
+                  select#status.form-control(name='status')
+                    option(value='completed') Completed
+                    option(value='active') Active
+              .col-lg-5.col-md-5.col-sm-5
+                .form-group
+                  label(for='condition') Conditions (multiple conditions should be comma separated)
+                  input#condition.form-control(name='condition', type='text', title='condition', placeholder='Enter Conditions')
+      // End Search Form
+      // Search Results
+      #search-results
+        h4.text-center 1200 Study found matching the search criteria
+        .panel.panel-default
+          .panel-heading
+            .row
+              .col-lg-2.col-md-2
+                span.text-center.text-label NCT ID:
+                span.text-center.text-value NCT00552448
+              .col-lg-5.col-md-5
+                span.text-center.text-label Study:
+                span.text-center.text-value
+                  | Vaccine Therapy in Treating Patients With Stage IIIB, Stage IIIC, or Stage IV Melanoma
+              .col-lg-2.col-md-2
+                span.text-center.text-label Status:
+                span.text-center.text-value Completed
+              .col-lg-2.col-md-2
+                span.text-center.text-label Results:
+                span.text-center.text-value Yes
+              .col-lg-1.col-md-1
+                span.pull-right.header-icon
+                  i.fa.fa-chevron-up
+          .panel-body
+            .row
+              .col-lg-6.col-md-6
+                span.text-center.text-label Conditions:
+                span.text-center.text-value Melanoma;   Malignant Melanoma;   Melanoma, Experimental
+              .col-lg-6.col-md-6
+                span.text-center.text-label Interventions:
+                span.text-center.text-value
+                  | Drug: DMF5 Melanoma Reactive TIL;   Drug: Cyclophosphamide;   Drug: Fludarabine;   Drug: Aldesleukin
+            .row
+              .col-lg-4.col-md-4
+                svg.chart(width='420', height='120')
+                  g(transform='translate(0,0)')
+                    rect(width='40', height='19')
+                    text(x='37', y='9.5', dy='.35em') 4
+                  g(transform='translate(0,20)')
+                    rect(width='80', height='19')
+                    text(x='77', y='9.5', dy='.35em') 8
+                  g(transform='translate(0,40)')
+                    rect(width='150', height='19')
+                    text(x='147', y='9.5', dy='.35em') 15
+                  g(transform='translate(0,60)')
+                    rect(width='160', height='19')
+                    text(x='157', y='9.5', dy='.35em') 16
+                  g(transform='translate(0,80)')
+                    rect(width='230', height='19')
+                    text(x='227', y='9.5', dy='.35em') 23
+              .col-lg-4.col-md-4
+                svg.chart(width='420', height='120')
+                  g(transform='translate(0,0)')
+                    rect(width='40', height='19')
+                    text(x='37', y='9.5', dy='.35em') 4
+                  g(transform='translate(0,20)')
+                    rect(width='80', height='19')
+                    text(x='77', y='9.5', dy='.35em') 8
+                  g(transform='translate(0,40)')
+                    rect(width='150', height='19')
+                    text(x='147', y='9.5', dy='.35em') 15
+                  g(transform='translate(0,60)')
+                    rect(width='160', height='19')
+                    text(x='157', y='9.5', dy='.35em') 16
+                  g(transform='translate(0,80)')
+                    rect(width='230', height='19')
+                    text(x='227', y='9.5', dy='.35em') 23
+              .col-lg-4.col-md-4
+                svg.chart(width='420', height='120')
+                  g(transform='translate(0,0)')
+                    rect(width='40', height='19')
+                    text(x='37', y='9.5', dy='.35em') 4
+                  g(transform='translate(0,20)')
+                    rect(width='80', height='19')
+                    text(x='77', y='9.5', dy='.35em') 8
+                  g(transform='translate(0,40)')
+                    rect(width='150', height='19')
+                    text(x='147', y='9.5', dy='.35em') 15
+                  g(transform='translate(0,60)')
+                    rect(width='160', height='19')
+                    text(x='157', y='9.5', dy='.35em') 16
+                  g(transform='translate(0,80)')
+                    rect(width='230', height='19')
+                    text(x='227', y='9.5', dy='.35em') 23
+          .panel-footer
+            button.btn.btn-primary.btn-sm(type='button')
+              i.fa.fa-archive
+              | Add to Collection
+            button.btn.btn-danger.btn-sm.pull-right(type='button')
+              i.fa.fa-trash
+              | Remove from Collection
+        .panel.panel-default
+          .panel-heading
+            .row
+              .col-lg-2.col-md-2
+                span.text-center.text-label NCT ID:
+                span.text-center.text-value NCT00552448
+              .col-lg-5.col-md-5
+                span.text-center.text-label Study:
+                span.text-center.text-value
+                  | Vaccine Therapy in Treating Patients With Stage IIIB, Stage IIIC, or Stage IV Melanoma
+              .col-lg-2.col-md-2
+                span.text-center.text-label Status:
+                span.text-center.text-value.green Completed
+              .col-lg-2.col-md-2
+                span.text-center.text-label Results:
+                span.text-center.text-value Yes
+              .col-lg-1.col-md-1
+                span.pull-right.header-icon
+                  i.fa.fa-chevron-up(title='Collapse')
+          .panel-body
+            .row
+              .col-lg-6.col-md-6
+                span.text-center.text-label Conditions:
+                span.text-center.text-value Melanoma;   Malignant Melanoma;   Melanoma, Experimental
+              .col-lg-6.col-md-6
+                span.text-center.text-label Interventions:
+                span.text-center.text-value
+                  | Drug: DMF5 Melanoma Reactive TIL;   Drug: Cyclophosphamide;   Drug: Fludarabine;   Drug: Aldesleukin
+            .row
+              .col-lg-4.col-md-4
+                svg.chart(width='420', height='120')
+                  g(transform='translate(0,0)')
+                    rect(width='40', height='19')
+                    text(x='37', y='9.5', dy='.35em') 4
+                  g(transform='translate(0,20)')
+                    rect(width='80', height='19')
+                    text(x='77', y='9.5', dy='.35em') 8
+                  g(transform='translate(0,40)')
+                    rect(width='150', height='19')
+                    text(x='147', y='9.5', dy='.35em') 15
+                  g(transform='translate(0,60)')
+                    rect(width='160', height='19')
+                    text(x='157', y='9.5', dy='.35em') 16
+                  g(transform='translate(0,80)')
+                    rect(width='230', height='19')
+                    text(x='227', y='9.5', dy='.35em') 23
+              .col-lg-4.col-md-4
+                svg.chart(width='420', height='120')
+                  g(transform='translate(0,0)')
+                    rect(width='40', height='19')
+                    text(x='37', y='9.5', dy='.35em') 4
+                  g(transform='translate(0,20)')
+                    rect(width='80', height='19')
+                    text(x='77', y='9.5', dy='.35em') 8
+                  g(transform='translate(0,40)')
+                    rect(width='150', height='19')
+                    text(x='147', y='9.5', dy='.35em') 15
+                  g(transform='translate(0,60)')
+                    rect(width='160', height='19')
+                    text(x='157', y='9.5', dy='.35em') 16
+                  g(transform='translate(0,80)')
+                    rect(width='230', height='19')
+                    text(x='227', y='9.5', dy='.35em') 23
+              .col-lg-4.col-md-4
+                svg.chart(width='420', height='120')
+                  g(transform='translate(0,0)')
+                    rect(width='40', height='19')
+                    text(x='37', y='9.5', dy='.35em') 4
+                  g(transform='translate(0,20)')
+                    rect(width='80', height='19')
+                    text(x='77', y='9.5', dy='.35em') 8
+                  g(transform='translate(0,40)')
+                    rect(width='150', height='19')
+                    text(x='147', y='9.5', dy='.35em') 15
+                  g(transform='translate(0,60)')
+                    rect(width='160', height='19')
+                    text(x='157', y='9.5', dy='.35em') 16
+                  g(transform='translate(0,80)')
+                    rect(width='230', height='19')
+                    text(x='227', y='9.5', dy='.35em') 23
+          .panel-footer
+            button.btn.btn-primary.btn-sm(type='button')
+              i.fa.fa-archive
+              | Add to Collection
+            button.btn.btn-danger.btn-sm.pull-right(type='button')
+              i.fa.fa-trash
+              | Remove from Collection
+        .panel.panel-default
+          .panel-heading
+            .row
+              .col-lg-2.col-md-2
+                span.text-center.text-label NCT ID:
+                span.text-center.text-value NCT00552448
+              .col-lg-5.col-md-5
+                span.text-center.text-label Study:
+                span.text-center.text-value
+                  | Vaccine Therapy in Treating Patients With Stage IIIB, Stage IIIC, or Stage IV Melanoma
+              .col-lg-2.col-md-2
+                span.text-center.text-label Status:
+                span.text-center.text-value.green Completed
+              .col-lg-2.col-md-2
+                span.text-center.text-label Results:
+                span.text-center.text-value Yes
+              .col-lg-1.col-md-1
+                span.pull-right.header-icon
+                  i.fa.fa-chevron-up(title='Collapse')
+          .panel-body
+            .row
+              .col-lg-6.col-md-6
+                span.text-center.text-label Conditions:
+                span.text-center.text-value Melanoma;   Malignant Melanoma;   Melanoma, Experimental
+              .col-lg-6.col-md-6
+                span.text-center.text-label Interventions:
+                span.text-center.text-value
+                  | Drug: DMF5 Melanoma Reactive TIL;   Drug: Cyclophosphamide;   Drug: Fludarabine;   Drug: Aldesleukin
+            .row
+              .col-lg-4.col-md-4
+                svg.chart(width='420', height='120')
+                  g(transform='translate(0,0)')
+                    rect(width='40', height='19')
+                    text(x='37', y='9.5', dy='.35em') 4
+                  g(transform='translate(0,20)')
+                    rect(width='80', height='19')
+                    text(x='77', y='9.5', dy='.35em') 8
+                  g(transform='translate(0,40)')
+                    rect(width='150', height='19')
+                    text(x='147', y='9.5', dy='.35em') 15
+                  g(transform='translate(0,60)')
+                    rect(width='160', height='19')
+                    text(x='157', y='9.5', dy='.35em') 16
+                  g(transform='translate(0,80)')
+                    rect(width='230', height='19')
+                    text(x='227', y='9.5', dy='.35em') 23
+              .col-lg-4.col-md-4
+                svg.chart(width='420', height='120')
+                  g(transform='translate(0,0)')
+                    rect(width='40', height='19')
+                    text(x='37', y='9.5', dy='.35em') 4
+                  g(transform='translate(0,20)')
+                    rect(width='80', height='19')
+                    text(x='77', y='9.5', dy='.35em') 8
+                  g(transform='translate(0,40)')
+                    rect(width='150', height='19')
+                    text(x='147', y='9.5', dy='.35em') 15
+                  g(transform='translate(0,60)')
+                    rect(width='160', height='19')
+                    text(x='157', y='9.5', dy='.35em') 16
+                  g(transform='translate(0,80)')
+                    rect(width='230', height='19')
+                    text(x='227', y='9.5', dy='.35em') 23
+              .col-lg-4.col-md-4
+                svg.chart(width='420', height='120')
+                  g(transform='translate(0,0)')
+                    rect(width='40', height='19')
+                    text(x='37', y='9.5', dy='.35em') 4
+                  g(transform='translate(0,20)')
+                    rect(width='80', height='19')
+                    text(x='77', y='9.5', dy='.35em') 8
+                  g(transform='translate(0,40)')
+                    rect(width='150', height='19')
+                    text(x='147', y='9.5', dy='.35em') 15
+                  g(transform='translate(0,60)')
+                    rect(width='160', height='19')
+                    text(x='157', y='9.5', dy='.35em') 16
+                  g(transform='translate(0,80)')
+                    rect(width='230', height='19')
+                    text(x='227', y='9.5', dy='.35em') 23
+          .panel-footer
+            button.btn.btn-primary.btn-sm(type='button')
+              i.fa.fa-archive
+              | Add to Collection
+            button.btn.btn-danger.btn-sm.pull-right(type='button')
+              i.fa.fa-trash
+              | Remove from Collection
+        .panel.panel-default
+          .panel-heading
+            .row
+              .col-lg-2.col-md-2
+                span.text-center.text-label NCT ID:
+                span.text-center.text-value NCT00552448
+              .col-lg-5.col-md-5
+                span.text-center.text-label Study:
+                span.text-center.text-value
+                  | Vaccine Therapy in Treating Patients With Stage IIIB, Stage IIIC, or Stage IV Melanoma
+              .col-lg-2.col-md-2
+                span.text-center.text-label Status:
+                span.text-center.text-value.green Completed
+              .col-lg-2.col-md-2
+                span.text-center.text-label Results:
+                span.text-center.text-value Yes
+              .col-lg-1.col-md-1
+                span.pull-right.header-icon
+                  i.fa.fa-chevron-up(title='Collapse')
+          .panel-body
+            .row
+              .col-lg-6.col-md-6
+                span.text-center.text-label Conditions:
+                span.text-center.text-value Melanoma;   Malignant Melanoma;   Melanoma, Experimental
+              .col-lg-6.col-md-6
+                span.text-center.text-label Interventions:
+                span.text-center.text-value
+                  | Drug: DMF5 Melanoma Reactive TIL;   Drug: Cyclophosphamide;   Drug: Fludarabine;   Drug: Aldesleukin
+            .row
+              .col-lg-4.col-md-4
+                svg.chart(width='420', height='120')
+                  g(transform='translate(0,0)')
+                    rect(width='40', height='19')
+                    text(x='37', y='9.5', dy='.35em') 4
+                  g(transform='translate(0,20)')
+                    rect(width='80', height='19')
+                    text(x='77', y='9.5', dy='.35em') 8
+                  g(transform='translate(0,40)')
+                    rect(width='150', height='19')
+                    text(x='147', y='9.5', dy='.35em') 15
+                  g(transform='translate(0,60)')
+                    rect(width='160', height='19')
+                    text(x='157', y='9.5', dy='.35em') 16
+                  g(transform='translate(0,80)')
+                    rect(width='230', height='19')
+                    text(x='227', y='9.5', dy='.35em') 23
+              .col-lg-4.col-md-4
+                svg.chart(width='420', height='120')
+                  g(transform='translate(0,0)')
+                    rect(width='40', height='19')
+                    text(x='37', y='9.5', dy='.35em') 4
+                  g(transform='translate(0,20)')
+                    rect(width='80', height='19')
+                    text(x='77', y='9.5', dy='.35em') 8
+                  g(transform='translate(0,40)')
+                    rect(width='150', height='19')
+                    text(x='147', y='9.5', dy='.35em') 15
+                  g(transform='translate(0,60)')
+                    rect(width='160', height='19')
+                    text(x='157', y='9.5', dy='.35em') 16
+                  g(transform='translate(0,80)')
+                    rect(width='230', height='19')
+                    text(x='227', y='9.5', dy='.35em') 23
+              .col-lg-4.col-md-4
+                svg.chart(width='420', height='120')
+                  g(transform='translate(0,0)')
+                    rect(width='40', height='19')
+                    text(x='37', y='9.5', dy='.35em') 4
+                  g(transform='translate(0,20)')
+                    rect(width='80', height='19')
+                    text(x='77', y='9.5', dy='.35em') 8
+                  g(transform='translate(0,40)')
+                    rect(width='150', height='19')
+                    text(x='147', y='9.5', dy='.35em') 15
+                  g(transform='translate(0,60)')
+                    rect(width='160', height='19')
+                    text(x='157', y='9.5', dy='.35em') 16
+                  g(transform='translate(0,80)')
+                    rect(width='230', height='19')
+                    text(x='227', y='9.5', dy='.35em') 23
+          .panel-footer
+            button.btn.btn-primary.btn-sm(type='button')
+              i.fa.fa-archive
+              | Add to Collection
+            button.btn.btn-danger.btn-sm.pull-right(type='button')
+              i.fa.fa-trash.fa-2x
+              | Remove from Collection
+      // End Search Results
