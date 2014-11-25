@@ -1,0 +1,38 @@
+.entry-page-title.container
+  h3.entry-title Validate 
+.container
+  #login
+    .signinregforms
+      br
+      br
+      .row
+        .col-lg-6.col-md-6.col-sm-6
+          form#loginForm.form-horizontal(role='form', action='/validate', method='post')
+            fieldset
+              span
+                legend 
+                  | Validate email 
+                  span(style="color:red;margin-left:1em;") #{validate_error}
+              .form-group
+                label(for='user_Login')
+                  i.fa.fa-user
+                  | Username
+                input.login-input.form-control(name='email', type='text', title='Username', placeholder='Enter Email Address')
+              .form-group
+                label(for='user_pass')
+                  i.fa.fa-key
+                  | Password
+                input.login-input.form-control(name='password', type='password', placeholder='Enter Password')
+              .form-group.hidden
+                label(for='usertoken')
+                  i.fa.fa-key
+                  | User Token
+                input#user_token.login-input.form-control(name='accountToken', type='text', placeholder='Enter key')
+              .form-group
+                button#validate.btn.btn-warning.btn-lg(type='submit')
+                  i.fa.fa-sign-in
+                  | Sign in
+                a(href='#', title='Forgot Password')  Forgot Password? 
+
+script(type='text/javascript'). 
+  document.getElementById('user_token').value = "#{clientToken}";

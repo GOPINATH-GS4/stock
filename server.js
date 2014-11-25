@@ -7,6 +7,7 @@
         path = require('path'),
         fs = require('fs'),
         log = require('winston'),
+        request = require('request'),
         session = require('redis'),
         UTILS = require('./lib/utils.js').utils,
         CTCMODEL = require('./models/ctcModel.js').ctcModel,
@@ -58,14 +59,9 @@
     }
 
     var index = require('./routes/index.js')(app, constants, utils, log);
-    var login = require('./routes/login.js')(app, constants, utils, log);
     var search = require('./routes/search.js')(app, ctcModel, constants, utils, log);
     var collections = require('./routes/collections.js')(app, ctcModel, constants, utils, log);
-    //
-    // Drop these routes later after authentication is implemented
-
-    var home = require('./routes/home.js')(app, ctcModel, constants, utils, log);
-    var drone = require('./routes/drone.js')(app, constants, utils, log);
+    var auth = require('./routes/auth.js')(app, ctcModel, constants, utils, request, log);
 
     https.createServer(options, app).listen(app.get('port'), function() {
         log.info('Express server listening on port ' + app.get('port'));

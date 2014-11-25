@@ -126,9 +126,9 @@ var CtcModel = function() {
         _id: false
     });
 
-    var UserCollection = new Schema({ 
-      email: String,
-      collectionName: String
+    var UserCollection = new Schema({
+        userId: Number,
+        collectionName: String
     });
 
 

@@ -6,7 +6,7 @@ module.exports = function(app, constants, utils, log) {
     // Author: Janakiraman Gopinath 
     //
     var home = function(req, res) {
-      res.render('home');
+        res.render('home');
     };
     app.get('/home', home);
 }
