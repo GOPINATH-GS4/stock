@@ -18,7 +18,7 @@ module.exports = function(app, stock, constants, utils, request, log) {
         utils.encodeDecodeBase64(req.body.password, true, function(base64Passwd) {
             body.password = base64Passwd;
 
-            request(makePayload(idsUrl + '/version/user/register', body), function(error, response, body) {
+            request(makePayload(idsUrl + '/version/user/register', 'POST', body), function(error, response, body) {
                 switch (response.statusCode) {
                     case 200:
                         var resp = (typeof body === 'string') ? JSON.parse(body) : body;
@@ -54,6 +54,41 @@ module.exports = function(app, stock, constants, utils, request, log) {
 
         });
     }
+    var is_logged_in = function(req, res) {
+
+        switch (req.method) {
+            case 'POST':
+                var body = {};
+                var payLoad = makePayload(idsUrl + '/version/session', 'GET', body);
+                payLoad.headers.userToken = req.body.userToken;
+
+                request(payLoad, function(error, response, body) {
+                    switch (response.statusCode) {
+                        case 200:
+                            var resp = (typeof body === 'string') ? JSON.parse(body) : body;
+
+                            console.log('RESP = ' + JSON.stringify(resp));
+                            switch (resp.status) {
+                                case 200:
+                                    utils.writeResponse(req, res, resp);
+                                    break;
+                                default:
+                                    utils.writeResponse(req, res, resp);
+                                    break;
+                            }
+                            break;
+                        default:
+                            utils.writeResponse(req, res, resp);
+                            break;
+                    }
+                });
+                break;
+            case 'GET':
+                break;
+            default:
+                break;
+        }
+    }
     var validate_account = function(req, res) {
 
         switch (req.method) {
@@ -67,7 +102,7 @@ module.exports = function(app, stock, constants, utils, request, log) {
             case 'POST':
                 utils.encodeDecodeBase64(req.body.password, true, function(base64Passwd) {
                     req.body.password = base64Passwd;
-                    request(makePayload(idsUrl + '/version/user/validate', req.body), function(error, response, body) {
+                    request(makePayload(idsUrl + '/version/user/validate', 'POST', req.body), function(error, response, body) {
 
                         switch (response.statusCode) {
                             case 200:
@@ -102,7 +137,7 @@ module.exports = function(app, stock, constants, utils, request, log) {
 
     }
 
-    var makePayload = function(url, body) {
+    var makePayload = function(url, method, body) {
         var payload = {
             url: url,
             headers: {
@@ -110,7 +145,7 @@ module.exports = function(app, stock, constants, utils, request, log) {
                 'ClientToken': process.env.CLIENTTOKEN
             },
             jar: false,
-            method: 'POST',
+            method: method,
             form: body,
             rejectUnauthorized: false,
             requestCert: true,
@@ -166,7 +201,7 @@ module.exports = function(app, stock, constants, utils, request, log) {
                 console.log(req.body);
                 utils.encodeDecodeBase64(req.body.password, true, function(base64Passwd) {
                     req.body.password = base64Passwd;
-                    request(makePayload(idsUrl + '/version/user/login', req.body), function(error, response, body) {
+                    request(makePayload(idsUrl + '/version/user/login', 'POST', req.body), function(error, response, body) {
 
                         switch (response.statusCode) {
                             case 200:
@@ -207,4 +242,6 @@ module.exports = function(app, stock, constants, utils, request, log) {
     app.get('/signin', signin);
     app.get('/validate/:user_token', validate_account);
     app.post('/validate', validate_account);
+    app.post('/is_logged_in', is_logged_in);
+    app.get('/is_logged_in', is_logged_in);
 }

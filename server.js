@@ -61,6 +61,7 @@
     var index = require('./routes/index.js')(app, constants, utils, log);
     var search = require('./routes/search.js')(app, ctcModel, constants, utils, log);
     var collections = require('./routes/collections.js')(app, ctcModel, constants, utils, log);
+    var catalog = require('./routes/catalog.js')(app, ctcModel, constants, utils, log);
     var auth = require('./routes/auth.js')(app, ctcModel, constants, utils, request, log);
 
     https.createServer(options, app).listen(app.get('port'), function() {
