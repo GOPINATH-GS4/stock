@@ -48,10 +48,10 @@ function addSpinner() {
 
 function searchCtc() {
     removeElements('cardList');
-    addSpinner();
 
     var searchText = document.getElementById('searchText').value;
     var sessionToken = guid();
+    console.log('Search Text ' + searchText);
     HTTPRequest.post('/search', {
         searchText: searchText,
         sessionToken: sessionToken

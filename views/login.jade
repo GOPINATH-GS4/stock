@@ -1,7 +1,69 @@
-doctype html 
-html(lang='en', xmlns='http://www.w3.org/1999/html')
+.entry-page-title.container
+  h3.entry-title Sign In/Sign Up
+.container
+  #login
+    .signinregforms
+      br
+      br
+      .row(style="background-color:#F5FBEF;")
+        .col-lg-6.col-md-6.col-sm-6
+          form#loginForm.form-horizontal(role='form', action='/signin', method='post')
+            fieldset
+              span
+                legend 
+                  | Sign in 
+                  span(style="color:red;margin-left:1em;") #{login_error}
+              .form-group
+                label(for='user_Login')
+                  i.fa.fa-user
+                  | Username
+                input.login-input.form-control(name='email', type='text', title='Username', placeholder='Enter Email Address')
+              .form-group
+                label(for='user_pass')
+                  i.fa.fa-key
+                  | Password
+                input.login-input.form-control(name='password', type='password', placeholder='Enter Password')
+              .form-group
+                button.btn.btn-warning.btn-lg(type='submit')
+                  i.fa.fa-sign-in
+                  | Sign in
+                a(href='#', title='Forgot Password')  Forgot Password? 
+        .col-lg-6.col-md-6.col-sm-6
+          form#registrationForm.form-horizontal(action='/signup', method='POST', novalidate)
+            fieldset
+              span
+                legend 
+                  | Sign Up 
+                  span(style="color:red;margin-left:1em;") #{signup_error}
+                  span(style="color:green;margin-left:1em;") #{signup_success}
+              .form-group
+                label(for='user_first') First Name 
+                input.login-input.form-control(name='firstname', data_toggle = 'tooltip', data-original-title='Enter a user name, required',type='text', value='', placeholder='Enter First Name')
+              .form-group
+                label(for='user_last') Last Name
+                input.login-input.form-control(name='lastname', type='text', value='', placeholder='Enter Last Name')
+              .form-group
+                label(for='user_screenName') Screen Name
+                input.login-input.form-control(name='username', type='text', value='', placeholder='Enter Screen Name')
+              .form-group
+                label(for='user_email') Email
+                input.login-input.form-control(name='email', type='email', value='', placeholder='Enter Email Address')
+              .form-group
+                label(for='user_password') Password
+                input.login-input.form-control(name='password', type='password', value='', placeholder='Enter Password')
+              .form-group
+                input(type='radio', name='acceptTerms', value='I accept terms and conditions') 
+                | 
+                span(style='padding-left:.5em;') 
+                | I accept 
+                a(href='/terms_conditions') Terms & Conditions
+              .form-group
+                button.btn.btn-warning.btn-lg(type='submit') Sign Up
 
-include ./head.jade
-include ./menu.jade
-include ./_login.jade
-include ./footer.jade
+script(type='text/javascript').
+  var a = document.getElementById('login-button');
+  a.text = 'Back';
+  a.href = '/';
+  document.forms['registrationForm'].reset();
+  document.forms['loginForm'].reset();
+

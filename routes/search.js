@@ -52,11 +52,12 @@ module.exports = function(app, ctcModel, constants, utils, log) {
                         utils._.each(search.ctcs, function(ctc) {
                             var response = {};
                             response.nct_id = ctc.nct_id;
-                            response.condition = ctc.conditions;
+                            response.conditions = ctc.conditions;
                             response.overall_status = ctc.overall_status;
                             response.summary = ctc.summary;
                             response.primary_outcomes = ctc.primary_outcomes;
                             response.secondary_outcomes = ctc.secondary_outcomes;
+                            response.clinical_results = ctc.clinical_results;
                             resp.push(response);
                         });
                     });
@@ -85,6 +86,7 @@ module.exports = function(app, ctcModel, constants, utils, log) {
             ctc.conditions = results[i].condition;
             ctc.primary_outcomes = results[i].primary_outcome;
             ctc.secondary_outcomes = results[i].secondary_outcome;
+            ctc.clinical_results = utils._.size(results[i].clinical_results) > 0 ? 'Yes' : 'No';
             search.ctcs.push(ctc);
         }
 

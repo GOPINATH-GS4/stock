@@ -1,5 +1,3 @@
-  var app = {};
-
   // Models 
 
   app.SearchModel = Backbone.Model.extend({

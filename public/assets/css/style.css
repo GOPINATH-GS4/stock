@@ -23,7 +23,7 @@ body {
     margin-left: 0px;
 }
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
-    color: #ccc;
+    color: #DF7401;
     background-color: transparent;
 }
 .navbar-default .navbar-nav > li > a:hover,
@@ -67,7 +67,6 @@ body {
     padding-top: 7px;
     padding-bottom: 7px;
     margin: 10px 5px;
-    background-color: red;
 }
 .navbar {
     margin-bottom: 0px;
@@ -208,7 +207,7 @@ body {
 }
 
 .search {
-    background-color: #F4F1E3;
+    background-color:#F5FBEF;
     padding: 20px 20px;
 
 }
@@ -286,8 +285,8 @@ select.form-control{
     color: #333;
 }
 .entry-page-title.container-fluid {
-    background: #ccc !important;
-    border-radius: 20px 20px 0 0;
+    background: #00B1B5; !important;
+    border-radius: 0 0 0 0;
     margin-top:20px;
     color: #333;
 }
@@ -316,7 +315,7 @@ select.form-control{
     margin: 20px 0;
 }
 .footer {
-    position: absolute;
+    position: auto;
     bottom: 0;
     width: 100%;
     /* Set the fixed height of the footer here */

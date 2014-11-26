@@ -111,6 +111,7 @@ var CtcModel = function() {
         overall_status: String,
         study_type: String,
         conditions: [String],
+        clinical_results: String,
         primary_outcomes: [Outcomes],
         secondary_outcomes: [Outcomes]
     }, {

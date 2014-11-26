@@ -1,16 +1,90 @@
 script#card-template(type="text/template")
-  p.bigText.centerText <%= card.nct_id %>  
-  p.panel.leftPanel.bg_white.mtop2.boxShadow.summary <%= card.summary %>
-  div.profile.clear
-    div.panel.leftPanel.bg_white.mtop2.boxShadow.summary Conditions Treated
-      <% _.each(card.condition, function(cond) { %>
-      li.normaltext.blue <%= cond %>
-      <% }); %>
-    div.leftPanel.bg_white.mtop2.boxShadow.summary Primary outcomes 
-      <% _.each(card.primary_outcomes, function(outcome) { %>
-      p.normaltext.blue <%= outcome.measure %>
-      <% }); %>
-    div.rightPanel.bg_white.mtop2.boxShadow.summary Secondary outcomes 
-      <% _.each(card.secondary_outcomes, function(outcome) { %>
-      p.normaltext.blue <%= outcome.measure %>
-      <% }); %>
+        .panel.panel-default
+          .panel-heading
+            .row
+              .col-lg-2.col-md-2
+                span.text-center.text-label ID:
+                span.text-center.text-value(style="padding-left:.5em;") <%= card.nct_id %>
+              .col-lg-5.col-md-5
+                span.text-center.text-value
+                  | <%= card.summary %>
+              .col-lg-2.col-md-2
+                span.text-center.text-label Status:
+                span.text-center.text-value(style="padding-left:.5em;") <%= card.overall_status %>
+              .col-lg-2.col-md-2
+                span.text-center.text-label Results:
+                span.text-center.text-value(style="padding-left:.5em;") <%= card.clinical_results %>
+              .col-lg-1.col-md-1
+                span.pull-right.header-icon
+                  i.fa.fa-chevron-up(title='Collapse')
+          .panel-body(style="background-color:#F5FBEF;")
+            .row
+              .col-lg-6.col-md-6
+                span.text-center.text-label Outcomes
+                <% _.each(card.primary_outcomes, function(outcome) { %>
+                li.text-left.text-value <%= outcome.measure %>
+                <% }); %>
+              .col-lg-6.col-md-6
+                span.text-center.text-label Conditions
+                <% _.each(card.conditions, function(condition) { %>
+                li.text-left.text-value <%= condition %>
+                <% }); %>
+            .row
+              .col-lg-4.col-md-4
+                svg.chart(width='420', height='120')
+                  g(transform='translate(0,0)')
+                    rect(width='40', height='19')
+                    text(x='37', y='9.5', dy='.35em') 4
+                  g(transform='translate(0,20)')
+                    rect(width='80', height='19')
+                    text(x='77', y='9.5', dy='.35em') 8
+                  g(transform='translate(0,40)')
+                    rect(width='150', height='19')
+                    text(x='147', y='9.5', dy='.35em') 15
+                  g(transform='translate(0,60)')
+                    rect(width='160', height='19')
+                    text(x='157', y='9.5', dy='.35em') 16
+                  g(transform='translate(0,80)')
+                    rect(width='230', height='19')
+                    text(x='227', y='9.5', dy='.35em') 23
+              .col-lg-4.col-md-4
+                svg.chart(width='420', height='120')
+                  g(transform='translate(0,0)')
+                    rect(width='40', height='19')
+                    text(x='37', y='9.5', dy='.35em') 4
+                  g(transform='translate(0,20)')
+                    rect(width='80', height='19')
+                    text(x='77', y='9.5', dy='.35em') 8
+                  g(transform='translate(0,40)')
+                    rect(width='150', height='19')
+                    text(x='147', y='9.5', dy='.35em') 15
+                  g(transform='translate(0,60)')
+                    rect(width='160', height='19')
+                    text(x='157', y='9.5', dy='.35em') 16
+                  g(transform='translate(0,80)')
+                    rect(width='230', height='19')
+                    text(x='227', y='9.5', dy='.35em') 23
+              .col-lg-4.col-md-4
+                svg.chart(width='420', height='120')
+                  g(transform='translate(0,0)')
+                    rect(width='40', height='19')
+                    text(x='37', y='9.5', dy='.35em') 4
+                  g(transform='translate(0,20)')
+                    rect(width='80', height='19')
+                    text(x='77', y='9.5', dy='.35em') 8
+                  g(transform='translate(0,40)')
+                    rect(width='150', height='19')
+                    text(x='147', y='9.5', dy='.35em') 15
+                  g(transform='translate(0,60)')
+                    rect(width='160', height='19')
+                    text(x='157', y='9.5', dy='.35em') 16
+                  g(transform='translate(0,80)')
+                    rect(width='230', height='19')
+                    text(x='227', y='9.5', dy='.35em') 23
+          .panel-footer
+            button.btn.btn-primary.btn-sm(type='button')
+              i.fa.fa-archive
+              | Add to Collection
+            button.btn.btn-danger.btn-sm.pull-right(type='button')
+              i.fa.fa-trash
+              | Remove from Collection

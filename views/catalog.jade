@@ -3,11 +3,13 @@ html(lang='en', xmlns='http://www.w3.org/1999/html')
 
 include ./head.jade
 include ./menu.jade
-include ./sidebar.jade
-include ./footer.jade
+include ./cards.jade
+include ./../public/template/card.template.jade
 include ./../public/template/collection.template.jade
+include ./footer.jade
+include ./app.jade
+include ./processCard.jade
 include ./processCollection.jade
-
 
 script(type='text/javascript').
   setActiveMenu('catalog');

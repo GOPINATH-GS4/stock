@@ -32,7 +32,7 @@ module.exports = function(app, stock, constants, utils, request, log) {
                                 sendEmail(req, res, b);
                                 break;
                             default:
-                                res.render('login', {
+                                res.render('signin', {
                                     signup_error: resp.message
                                 });
                                 break;
@@ -40,12 +40,12 @@ module.exports = function(app, stock, constants, utils, request, log) {
                         break;
 
                     case 401:
-                        res.render('login', {
+                        res.render('signin', {
                             signup_error: 'Not authorized'
                         });
                         break;
                     default:
-                        res.render('login', {
+                        res.render('signin', {
                             signup_error: 'Something went wrong. Please contact support'
                         });
                         break;
@@ -74,7 +74,7 @@ module.exports = function(app, stock, constants, utils, request, log) {
                                 var resp = (typeof body === 'string') ? JSON.parse(body) : body;
                                 switch (resp.status) {
                                     case 200:
-                                        res.render('home');
+                                        res.render('catalog');
                                         break;
                                     default:
                                         res.render('validate', {
@@ -85,12 +85,12 @@ module.exports = function(app, stock, constants, utils, request, log) {
                                 break;
 
                             case 401:
-                                res.render('login', {
+                                res.render('signin', {
                                     validate_error: 'Not authorized'
                                 });
                                 break;
                             default:
-                                res.render('login', {
+                                res.render('signin', {
                                     validate_error: 'Something went wrong. Please contact support'
                                 });
                                 break;
@@ -146,11 +146,11 @@ module.exports = function(app, stock, constants, utils, request, log) {
         };
         request(payload, function(err, response, body) {
             if (err) {
-                res.render('login', {
+                res.render('signin', {
                     signup_error: err
                 });
             } else
-                res.render('login', {
+                res.render('signin', {
                     signup_success: 'Success - Please see your email'
                 });
         });
@@ -160,7 +160,7 @@ module.exports = function(app, stock, constants, utils, request, log) {
 
         switch (req.method) {
             case 'GET':
-                res.render('login');
+                res.render('signin');
                 break;
             case 'POST':
                 console.log(req.body);
@@ -173,10 +173,12 @@ module.exports = function(app, stock, constants, utils, request, log) {
                                 var resp = (typeof body === 'string') ? JSON.parse(body) : body;
                                 switch (resp.status) {
                                     case 200:
-                                        res.render('home');
+                                        res.render('catalog', {
+                                            username: resp.username
+                                        });
                                         break;
                                     default:
-                                        res.render('login', {
+                                        res.render('signin', {
                                             login_error: resp.message
                                         });
                                         break;
@@ -184,12 +186,12 @@ module.exports = function(app, stock, constants, utils, request, log) {
                                 break;
 
                             case 401:
-                                res.render('login', {
+                                res.render('signin', {
                                     login_error: 'Not authorized'
                                 });
                                 break;
                             default:
-                                res.render('login', {
+                                res.render('signin', {
                                     login_error: 'Something went wrong. Please contact support'
                                 });
                                 break;
