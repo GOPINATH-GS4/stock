@@ -109,7 +109,9 @@ module.exports = function(app, stock, constants, utils, request, log) {
                                 var resp = (typeof body === 'string') ? JSON.parse(body) : body;
                                 switch (resp.status) {
                                     case 200:
-                                        res.render('catalog');
+                                        res.render('catalog', {
+                                            username: resp.username
+                                        });
                                         break;
                                     default:
                                         res.render('validate', {
