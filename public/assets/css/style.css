@@ -1,5 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 
+@-moz-document url-prefix() {
+    fieldset { display: table-cell; }
+}
+
 html {
     position: relative;
     min-height: 100%;

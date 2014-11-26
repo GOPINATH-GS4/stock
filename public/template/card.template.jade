@@ -19,16 +19,22 @@ script#card-template(type="text/template")
                   i.fa.fa-chevron-up(title='Collapse')
           .panel-body(style="background-color:#F5FBEF;")
             .row
-              .col-lg-6.col-md-6
-                span.text-center.text-label Outcomes
+              .col-lg-4.col-md-4
+                span.text-center.text-label Primary Outcomes
                 <% _.each(card.primary_outcomes, function(outcome) { %>
                 li.text-left.text-value <%= outcome.measure %>
                 <% }); %>
-              .col-lg-6.col-md-6
-                span.text-center.text-label Conditions
+              .col-lg-4.col-md-4
+                span.text-center.text-label Secondary Outcomes
+                <% _.each(card.secondary_outcomes, function(outcome) { %>
+                li.text-left.text-value <%= outcome.measure %>
+                <% }); %>
+              .col-lg-4.col-md-4
+                span.text-center.text-label Conditions Treated
                 <% _.each(card.conditions, function(condition) { %>
                 li.text-left.text-value <%= condition %>
                 <% }); %>
+          .panel-body(style="background-color:#F2F5A9;")
             .row
               .col-lg-4.col-md-4
                 svg.chart(width='420', height='120')
