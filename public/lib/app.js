@@ -1,5 +1,53 @@
 var app = {};
 
+
+function updateCookie() {
+
+    var ctcToken = getCookie('ctcToken');
+    var btn = document.getElementById('login-button');
+
+    if (btn.name === 'login') {
+        btn.name = 'logout';
+        btn.text = 'Logout';
+        btn.href = '/signout';
+        if (ctcToken != null && ctcToken != "") {
+            var dt = new Date();
+            dt = new Date(dt.getTime() + 5 * 60 * 1000);
+            //dt.setHours(dt.getHours() + 12);
+            setCookie('ctcToken', ctcToken, dt);
+            setUserCookie(dt);
+        } else {
+            btn.name = 'login';
+            btn.text = 'Log In'
+            btn.href = '/signin';
+            deleteCookie('ctcToken');
+            deleteCookie('ctcUsername');
+            deleteCookie('ctcUser_id');
+        }
+    } else if (btn.name === 'logout') {
+        btn.name = 'login';
+        btn.text = 'Log In'
+        btn.href = '/signin';
+        deleteCookie('ctcToken');
+        deleteCookie('ctcUsername');
+        deleteCookie('ctcUser_id');
+    }
+
+}
+
+function setUserCookie(dt) {
+    if (typeof username != 'undefined' &&
+        username != null &&
+        username != "") {
+        setCookie('ctcUsername', username, dt, '/');
+    }
+    if (typeof user_id != 'undefined' &&
+        user_id != null &&
+        user_id != "") {
+        setCookie('ctcUser_id', user_id, dt, '/');
+    }
+}
+
 function setCookie(name, value, expires, path, domain) {
     var cookie = name + "=" + escape(value) + ";";
 
@@ -17,7 +65,6 @@ function setCookie(name, value, expires, path, domain) {
         cookie += "path=" + path + ";";
     if (domain)
         cookie += "domain=" + domain + ";";
-    console.log('Set cookie = ' + cookie);
     document.cookie = cookie;
 }
 
@@ -45,3 +92,5 @@ function deleteCookie(name) {
         if (c.indexOf(x) != -1) setCookie(name, '', new Date(), '/');
     }
 }
+
+updateCookie();

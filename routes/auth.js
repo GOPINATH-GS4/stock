@@ -4,7 +4,6 @@ module.exports = function(app, stock, constants, utils, request, log) {
     //
     //  Author : Janakiraman Gopinath 
 
-    var idsUrl = process.env.IDSURL;
     var signup = function(req, res) {
 
         var body = {};
@@ -18,7 +17,7 @@ module.exports = function(app, stock, constants, utils, request, log) {
         utils.encodeDecodeBase64(req.body.password, true, function(base64Passwd) {
             body.password = base64Passwd;
 
-            request(makePayload(idsUrl + '/version/user/register', 'POST', body), function(error, response, body) {
+            request(utils.makePayload(utils.idsUrl + '/version/user/register', 'POST', body), function(error, response, body) {
                 switch (response.statusCode) {
                     case 200:
                         var resp = (typeof body === 'string') ? JSON.parse(body) : body;
@@ -59,7 +58,7 @@ module.exports = function(app, stock, constants, utils, request, log) {
         switch (req.method) {
             case 'POST':
                 var body = {};
-                var payLoad = makePayload(idsUrl + '/version/session', 'GET', body);
+                var payLoad = utils.makePayload(utils.idsUrl + '/version/session', 'GET', body);
                 payLoad.headers.userToken = req.body.userToken;
 
                 request(payLoad, function(error, response, body) {
@@ -67,7 +66,6 @@ module.exports = function(app, stock, constants, utils, request, log) {
                         case 200:
                             var resp = (typeof body === 'string') ? JSON.parse(body) : body;
 
-                            console.log('RESP = ' + JSON.stringify(resp));
                             switch (resp.status) {
                                 case 200:
                                     utils.writeResponse(req, res, resp);
@@ -102,15 +100,19 @@ module.exports = function(app, stock, constants, utils, request, log) {
             case 'POST':
                 utils.encodeDecodeBase64(req.body.password, true, function(base64Passwd) {
                     req.body.password = base64Passwd;
-                    request(makePayload(idsUrl + '/version/user/validate', 'POST', req.body), function(error, response, body) {
+                    request(utils.makePayload(utils.idsUrl + '/version/user/validate', 'POST', req.body), function(error, response, body) {
 
                         switch (response.statusCode) {
                             case 200:
                                 var resp = (typeof body === 'string') ? JSON.parse(body) : body;
                                 switch (resp.status) {
                                     case 200:
+                                        res.cookie('ctcToken', resp.accessToken, {
+                                            maxAge: 60 * 1000 * 60 * 12
+                                        });
                                         res.render('catalog', {
-                                            username: resp.username
+                                            username: resp.username,
+                                            userId: resp.userId
                                         });
                                         break;
                                     default:
@@ -139,22 +141,6 @@ module.exports = function(app, stock, constants, utils, request, log) {
 
     }
 
-    var makePayload = function(url, method, body) {
-        var payload = {
-            url: url,
-            headers: {
-                'User-Agent': 'request',
-                'ClientToken': process.env.CLIENTTOKEN
-            },
-            jar: false,
-            method: method,
-            form: body,
-            rejectUnauthorized: false,
-            requestCert: true,
-            agent: false
-        };
-        return payload;
-    }
 
     var sendEmail = function(req, res, body) {
 
@@ -200,18 +186,21 @@ module.exports = function(app, stock, constants, utils, request, log) {
                 res.render('signin');
                 break;
             case 'POST':
-                console.log(req.body);
                 utils.encodeDecodeBase64(req.body.password, true, function(base64Passwd) {
                     req.body.password = base64Passwd;
-                    request(makePayload(idsUrl + '/version/user/login', 'POST', req.body), function(error, response, body) {
+                    request(utils.makePayload(utils.idsUrl + '/version/user/login', 'POST', req.body), function(error, response, body) {
 
                         switch (response.statusCode) {
                             case 200:
                                 var resp = (typeof body === 'string') ? JSON.parse(body) : body;
                                 switch (resp.status) {
                                     case 200:
+                                        res.cookie('ctcToken', resp.accessToken, {
+                                            maxAge: 60 * 1000 * 60 * 12
+                                        });
                                         res.render('catalog', {
-                                            username: resp.username
+                                            username: resp.username,
+                                            userId: resp.userId
                                         });
                                         break;
                                     default:
@@ -238,9 +227,79 @@ module.exports = function(app, stock, constants, utils, request, log) {
                 break;
         }
     }
+    var signout = function(req, res) {
+
+        switch (req.method) {
+            case 'POST':
+                break;
+            case 'GET':
+                utils.isLoggedIn(req, res, function(logIn) {
+                    if (logIn.exists) {
+                        var body = {};
+                        var payLoad = utils.makePayload(utils.idsUrl + '/version/user/logout', 'POST', body);
+
+                        payLoad.headers.userToken = logIn.ctcToken;
+
+                        request(payLoad, function(error, response, body) {
+
+                            switch (response.statusCode) {
+                                case 200:
+                                    var resp = (typeof body === 'string') ? JSON.parse(body) : body;
+                                    switch (resp.status) {
+                                        case 200:
+                                            res.cookie('ctcToken', '', {
+                                                maxAge: 0
+                                            });
+                                            res.render('signin', {
+                                                username: resp.username
+                                            });
+                                            break;
+                                        default:
+                                            res.cookie('ctcToken', '', {
+                                                maxAge: 0
+                                            });
+                                            res.render('signin', {
+                                                login_error: resp.message
+                                            });
+                                            break;
+                                    }
+                                    break;
+
+                                case 401:
+                                    res.cookie('ctcToken', '', {
+                                        maxAge: 0
+                                    });
+                                    res.render('signin', {
+                                        login_error: 'Not authorized'
+                                    });
+                                    break;
+                                default:
+                                    res.cookie('ctcToken', '', {
+                                        maxAge: 0
+                                    });
+                                    res.render('signin', {
+                                        login_error: 'Something went wrong. Please contact support'
+                                    });
+                                    break;
+                            }
+                        });
+                    } else {
+                        res.cookie('ctcToken', '', {
+                            maxAge: 0
+                        });
+                        res.render('signin', {
+                            login_error: 'Not logged in'
+                        });
+                    }
+                });
+            default:
+                break;
+        }
+    }
     app.post('/signup', signup);
     app.get('/signup', signin);
     app.post('/signin', signin);
+    app.get('/signout', signout);
     app.get('/signin', signin);
     app.get('/validate/:user_token', validate_account);
     app.post('/validate', validate_account);

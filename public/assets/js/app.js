@@ -1,10 +1,10 @@
-$(document).ready(function () {
+$(document).ready(function() {
     //For advance search options
-    $('#advbutton').on('click', function (e) {
+    $('#advbutton').on('click', function(e) {
         var style = $('#advance').toggle();
     });
     // for Sidebar
-    $('.main-menu').on('click', 'a', function (e) {
+    $('.main-menu').on('click', 'a', function(e) {
         var parents = $(this).parents('li');
         var li = $(this).closest('li.dropdown');
         var another_items = $('.main-menu li').not(parents);
@@ -16,13 +16,11 @@ $(document).ready(function () {
             if (current.is(':visible')) {
                 li.find("ul.dropdown-menu").slideUp('fast');
                 li.find("ul.dropdown-menu a").removeClass('active')
-            }
-            else {
+            } else {
                 another_items.find("ul.dropdown-menu").slideUp('fast');
                 current.slideDown('fast');
             }
-        }
-        else {
+        } else {
             if (li.find('a.dropdown-toggle').hasClass('active-parent')) {
                 var pre = $(this).closest('ul.dropdown-menu');
                 pre.find("li.dropdown").not($(this).closest('li')).find('ul.dropdown-menu').slideUp('fast');
@@ -38,16 +36,16 @@ $(document).ready(function () {
     });
 
     //for Expand and Collapse
-    $('#content').on('click','.header-icon', function(e){
-       var button = $(this).find('i');
+    $('#content').on('click', '.header-icon', function(e) {
+        var button = $(this).find('i');
         var parent = $(this).parent('div').parent('div').parent('div').parent('div');
-        if(button.hasClass('fa-chevron-up')){
+        if (button.hasClass('fa-chevron-up')) {
             var content = parent.find('.panel-body');
             var footer = parent.find('.panel-footer');
             content.slideToggle('fast');
             footer.slideToggle('fast');
             button.toggleClass('fa-chevron-up').toggleClass('fa-chevron-down');
-        }else{
+        } else {
             var content = parent.find('.panel-body');
             var footer = parent.find('.panel-footer');
             content.slideToggle('fast');

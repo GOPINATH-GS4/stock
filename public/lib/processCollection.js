@@ -1,5 +1,5 @@
 var collections = new app.CollectionCollection({
-    userId: 1000001
+    userId: user_id
 });
 
 collections.fetch({
@@ -21,8 +21,8 @@ function processCollectionModels(collections) {
 
     var collectionDrops = document.getElementsByName('droptocollections');
 
-    for(var i = 0; i < collectionDrops.length; i++) 
-      collectionDrops[i].setAttribute('id', collections[i].collectionName);
+    for (var i = 0; i < collectionDrops.length; i++)
+        collectionDrops[i].setAttribute('id', collections[i].collectionName);
 
 };
 

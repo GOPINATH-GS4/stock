@@ -8,11 +8,8 @@ module.exports = function(app, ctcModel, constants, utils, log) {
 
         switch (req.method) {
             case 'POST':
-                console.log('Body : ' + utils.util.inspect(req.body));
                 // 1. make a call to lilly coi 
                 // 2. 
-                console.log('Body : ' +
-                    'http://api.lillycoi.com/v1/trials/search.json?query=' + req.body.searchText);
                 var resp = {
                     status: 200,
                     data: {
@@ -35,12 +32,8 @@ module.exports = function(app, ctcModel, constants, utils, log) {
                     });
                 break;
             case 'GET':
-                console.log('Body : ' + utils.util.inspect(req.body));
-                console.log('Path : ' + utils.util.inspect(req.url));
-                console.log('Query : ' + utils.util.inspect(req.query));
                 var sessionToken = req.url.split('/').pop();
 
-                console.log('Session Token : ' + sessionToken);
 
                 ctcModel.Searchs.find(sessionToken === 'search' ? {} : {
                     session_token: sessionToken
@@ -48,7 +41,6 @@ module.exports = function(app, ctcModel, constants, utils, log) {
                     var resp = [];
 
                     utils._.each(searchs, function(search) {
-                        console.log('search : ' + utils.util.inspect(search));
                         utils._.each(search.ctcs, function(ctc) {
                             var response = {};
                             response.nct_id = ctc.nct_id;

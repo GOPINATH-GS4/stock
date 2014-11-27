@@ -11,9 +11,9 @@ nav.navbar.navbar-default.navbar-static-top(role='navigation')
     #navbar.navbar-collapse.collapse
       ul.nav.navbar-nav.navbar-left
         li#home
-          a(href='#home') Home
+          a(href='/') Home
         li#catalog
-          a(href='#catalog') Catalog
+          a#catalog-id(href='/catalog') Catalog
       ul.nav.navbar-nav.navbar-right.signup
         li
-          a#login-button.btn.btn-default.btn-sm(href='/signin') Log In
+          a#login-button.btn.btn-default.btn-sm(name='login', href='/signin') Log In

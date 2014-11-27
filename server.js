@@ -11,7 +11,9 @@
         session = require('redis'),
         UTILS = require('./lib/utils.js').utils,
         CTCMODEL = require('./models/ctcModel.js').ctcModel,
+        cookieParser = require('cookie-parser'),
         constants = require('./lib/constants.js')
+
 
     // Initialize log and add a transport file 
     log.add(log.transports.File, {
@@ -19,7 +21,7 @@
     });
 
     var app = express();
-    var utils = new UTILS(log);
+    var utils = new UTILS(request, log);
     var ctcModel = new CTCMODEL();
 
     // Set this in all environments
@@ -37,6 +39,7 @@
     app.use(express.methodOverride());
     app.use(app.router);
     app.use(express.static(path.join(__dirname, 'public')));
+    app.use(cookieParser())
 
     // development only
     if ('development' === process.env.environment) {

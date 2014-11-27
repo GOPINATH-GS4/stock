@@ -34,8 +34,8 @@ function processModels(search) {
     });
     // Assign Ids for Drag and Drop to add to collection
     var cardsAddToCollection = document.getElementsByName('addtocollection');
-    for(var i = 0; i < cardsAddToCollection.length; i++) 
-      cardsAddToCollection[i].setAttribute('id', search[i].nct_id);
+    for (var i = 0; i < cardsAddToCollection.length; i++)
+        cardsAddToCollection[i].setAttribute('id', search[i].nct_id);
 };
 
 
@@ -60,7 +60,6 @@ function searchCtc() {
 
     var searchText = document.getElementById('searchText').value;
     var sessionToken = guid();
-    console.log('Search Text ' + searchText);
     HTTPRequest.post('/search', {
         searchText: searchText,
         sessionToken: sessionToken
@@ -80,7 +79,6 @@ function searchCtc() {
                     },
                     error: function(e, response) {
                         removeElements('spinner');
-                        console.log('Something went wrong ... ' + JSON.stringify(response));
                     }
                 });
         }

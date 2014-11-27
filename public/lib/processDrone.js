@@ -18,8 +18,6 @@ function dispatch(drone) {
 function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
-    console.log('data = ' + data);
-    console.log('Dispatching drone');
     dispatch(data);
 }
 
