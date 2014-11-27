@@ -1,4 +1,4 @@
 script#collection-template(type="text/template")
   a.active.ajax-link(href='ajax/dashboard.html', style="background-color:#F5FBEF")
     i.fa.fa-book.fa-2x.fa-2x
-    span.hidden-xs(style="padding-left:.5em;") <%= collection.collectionName %>
+    span.hidden-xs(name='droptocollections', ondrop="drop(event)", ondragover="allowDrop(event)",  style="padding-left:.5em;") <%= collection.collectionName %>

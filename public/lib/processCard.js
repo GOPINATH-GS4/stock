@@ -32,7 +32,16 @@ function processModels(search) {
         var card = new app.cardView(data);
         card.render(cardList);
     });
+    // Assign Ids for Drag and Drop to add to collection
+    var cardsAddToCollection = document.getElementsByName('addtocollection');
+    for(var i = 0; i < cardsAddToCollection.length; i++) 
+      cardsAddToCollection[i].setAttribute('id', search[i].nct_id);
 };
+
+
+function drag(ev) {
+    ev.dataTransfer.setData("nct_id", ev.target.id);
+}
 
 function addSpinner() {
     var spinner = document.getElementById('spinner');
