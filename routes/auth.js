@@ -28,7 +28,11 @@ module.exports = function(app, stock, constants, utils, request, log) {
                                     id: resp.userId,
                                     template: "ctc_validate",
                                 };
-                                sendEmail(req, res, b);
+                                var extra = {
+                                    name: 'VALIDATELINK',
+                                    content: process.env.APPURL + 'validate/'
+                                };
+                                sendEmail(req, res, b, extra, 'signin');
                                 break;
                             default:
                                 res.render('signin', {
@@ -142,15 +146,12 @@ module.exports = function(app, stock, constants, utils, request, log) {
     }
 
 
-    var sendEmail = function(req, res, body) {
+    var sendEmail = function(req, res, body, extra, page_to_render) {
 
         var mergevars = [{
             name: 'APPNAME',
             content: 'Clin analytics'
-        }, {
-            name: 'VALIDATELINK',
-            content: process.env.APPURL + 'validate/'
-        }];
+        }, extra];
 
         body.mergevars = mergevars;
 
@@ -169,11 +170,11 @@ module.exports = function(app, stock, constants, utils, request, log) {
         };
         request(payload, function(err, response, body) {
             if (err) {
-                res.render('signin', {
+                res.render(page_to_render, {
                     signup_error: err
                 });
             } else
-                res.render('signin', {
+                res.render(page_to_render, {
                     signup_success: 'Success - Please see your email'
                 });
         });
@@ -296,13 +297,144 @@ module.exports = function(app, stock, constants, utils, request, log) {
                 break;
         }
     }
+    var setNewPassword = function(req, res) {
+
+        switch (req.method) {
+            case 'POST':
+                var passwd = req.body.password;
+                var passwd_confirm = req.body.password_confirm;
+                console.log('req.body : ' + JSON.stringify(req.body));
+                if (passwd != passwd_confirm) {
+                    res.render('setNewPassword', {
+                        signup_error: 'both passwords don\'t match'
+                    });
+                    return;
+                }
+
+                var body = {};
+                body.accountToken = req.body.accountToken;
+                utils.encodeDecodeBase64(req.body.password, true, function(base64Passwd) {
+                    body.password = base64Passwd;
+                    request(utils.makePayload(utils.idsUrl + '/version/user/set_new_password', 'POST', body), function(error, response, body) {
+
+                        switch (response.statusCode) {
+                            case 200:
+                                var resp = (typeof body === 'string') ? JSON.parse(body) : body;
+                                switch (resp.status) {
+                                    case 200:
+                                        res.render('setNewPassword', {
+                                            signup_success: resp.message
+                                        });
+                                        break;
+                                    default:
+                                        res.render('setNewPassword', {
+                                            signup_error: resp.message
+                                        });
+                                        break;
+                                }
+                                break;
+
+                            case 401:
+                                res.render('setNewPassword', {
+                                    signup_error: 'Not authorized'
+                                });
+                                break;
+                            default:
+                                res.render('setNewPassword', {
+                                    signup_error: 'Something went wrong. Please contact support'
+                                });
+                                break;
+                        }
+                    });
+                });
+                break;
+            case 'GET':
+                res.cookie('ctcToken', '', {
+                    maxAge: 0
+                });
+                var userToken = req.path.split('/').pop();
+                res.render('setNewPassword', {
+                    clientToken: userToken
+                });
+                break;
+            default:
+                break;
+        }
+    }
+    var reset = function(req, res) {
+
+        switch (req.method) {
+            case 'POST':
+                var body = {};
+                body.email = req.body.email;
+                var email = body.email;
+                request(utils.makePayload(utils.idsUrl + '/version/user/reset', 'POST', body), function(error, response, body) {
+
+                    switch (response.statusCode) {
+                        case 200:
+                            var resp = (typeof body === 'string') ? JSON.parse(body) : body;
+                            switch (resp.status) {
+                                case 200:
+                                    var b = {
+                                        identifier: 'email',
+                                        id: email,
+                                        template: "ctc_reset_password"
+                                    };
+                                    var extra = {
+                                        name: 'RESETLINK',
+                                        content: process.env.APPURL + 'set_new_password/'
+                                    };
+                                    sendEmail(req, res, b, extra, 'resetPassword');
+                                    break;
+                                default:
+                                    res.render('resetPassword', {
+                                        signup_error: resp.message
+                                    });
+                                    break;
+                            }
+                            break;
+
+                        case 401:
+                            res.render('resetPassword', {
+                                signup_error: 'Not authorized'
+                            });
+                            break;
+                        default:
+                            res.render('resetPassword', {
+                                signup_error: 'Something went wrong. Please contact support'
+                            });
+                            break;
+                    }
+                });
+                break;
+            case 'GET':
+                res.cookie('ctcToken', '', {
+                    maxAge: 0
+                });
+                res.render('resetPassword');
+                break;
+            default:
+                break;
+        }
+    }
+
     app.post('/signup', signup);
     app.get('/signup', signin);
+
     app.post('/signin', signin);
-    app.get('/signout', signout);
     app.get('/signin', signin);
+
+    app.get('/signout', signout);
+
+    app.get('/reset', reset);
+    app.post('/reset', reset);
+
+    app.get('/set_new_password/:user_token', setNewPassword);
+    app.post('/set_new_password', setNewPassword);
+
     app.get('/validate/:user_token', validate_account);
     app.post('/validate', validate_account);
+
     app.post('/is_logged_in', is_logged_in);
     app.get('/is_logged_in', is_logged_in);
 }
