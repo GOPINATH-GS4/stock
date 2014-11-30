@@ -36,7 +36,7 @@ module.exports = function(app, stock, constants, utils, request, log) {
                                 break;
                             default:
                                 res.render('signin', {
-                                    signup_error: resp.message
+                                    error: resp.message
                                 });
                                 break;
                         }
@@ -44,12 +44,12 @@ module.exports = function(app, stock, constants, utils, request, log) {
 
                     case 401:
                         res.render('signin', {
-                            signup_error: 'Not authorized'
+                            error: 'Not authorized'
                         });
                         break;
                     default:
                         res.render('signin', {
-                            signup_error: 'Something went wrong. Please contact support'
+                            error: 'Something went wrong. Please contact support'
                         });
                         break;
                 }
@@ -121,7 +121,7 @@ module.exports = function(app, stock, constants, utils, request, log) {
                                         break;
                                     default:
                                         res.render('validate', {
-                                            validate_error: resp.message
+                                            error: resp.message
                                         });
                                         break;
                                 }
@@ -129,12 +129,12 @@ module.exports = function(app, stock, constants, utils, request, log) {
 
                             case 401:
                                 res.render('signin', {
-                                    validate_error: 'Not authorized'
+                                    error: 'Not authorized'
                                 });
                                 break;
                             default:
                                 res.render('signin', {
-                                    validate_error: 'Something went wrong. Please contact support'
+                                    error: 'Something went wrong. Please contact support'
                                 });
                                 break;
                         }
@@ -171,11 +171,11 @@ module.exports = function(app, stock, constants, utils, request, log) {
         request(payload, function(err, response, body) {
             if (err) {
                 res.render(page_to_render, {
-                    signup_error: err
+                    error: err
                 });
             } else
                 res.render(page_to_render, {
-                    signup_success: 'Success - Please see your email'
+                    success: 'Success - Please see your email'
                 });
         });
 
@@ -206,7 +206,7 @@ module.exports = function(app, stock, constants, utils, request, log) {
                                         break;
                                     default:
                                         res.render('signin', {
-                                            login_error: resp.message
+                                            error: resp.message
                                         });
                                         break;
                                 }
@@ -214,12 +214,12 @@ module.exports = function(app, stock, constants, utils, request, log) {
 
                             case 401:
                                 res.render('signin', {
-                                    login_error: 'Not authorized'
+                                    error: 'Not authorized'
                                 });
                                 break;
                             default:
                                 res.render('signin', {
-                                    login_error: 'Something went wrong. Please contact support'
+                                    error: 'Something went wrong. Please contact support'
                                 });
                                 break;
                         }
@@ -260,7 +260,7 @@ module.exports = function(app, stock, constants, utils, request, log) {
                                                 maxAge: 0
                                             });
                                             res.render('signin', {
-                                                login_error: resp.message
+                                                error: resp.message
                                             });
                                             break;
                                     }
@@ -271,7 +271,7 @@ module.exports = function(app, stock, constants, utils, request, log) {
                                         maxAge: 0
                                     });
                                     res.render('signin', {
-                                        login_error: 'Not authorized'
+                                        error: 'Not authorized'
                                     });
                                     break;
                                 default:
@@ -279,7 +279,7 @@ module.exports = function(app, stock, constants, utils, request, log) {
                                         maxAge: 0
                                     });
                                     res.render('signin', {
-                                        login_error: 'Something went wrong. Please contact support'
+                                        error: 'Something went wrong. Please contact support'
                                     });
                                     break;
                             }
@@ -289,7 +289,7 @@ module.exports = function(app, stock, constants, utils, request, log) {
                             maxAge: 0
                         });
                         res.render('signin', {
-                            login_error: 'Not logged in'
+                            error: 'Not logged in'
                         });
                     }
                 });
@@ -306,7 +306,7 @@ module.exports = function(app, stock, constants, utils, request, log) {
                 console.log('req.body : ' + JSON.stringify(req.body));
                 if (passwd != passwd_confirm) {
                     res.render('setNewPassword', {
-                        signup_error: 'both passwords don\'t match'
+                        error: 'both passwords don\'t match'
                     });
                     return;
                 }
@@ -323,12 +323,12 @@ module.exports = function(app, stock, constants, utils, request, log) {
                                 switch (resp.status) {
                                     case 200:
                                         res.render('setNewPassword', {
-                                            signup_success: resp.message
+                                            success: resp.message
                                         });
                                         break;
                                     default:
                                         res.render('setNewPassword', {
-                                            signup_error: resp.message
+                                            error: resp.message
                                         });
                                         break;
                                 }
@@ -336,12 +336,12 @@ module.exports = function(app, stock, constants, utils, request, log) {
 
                             case 401:
                                 res.render('setNewPassword', {
-                                    signup_error: 'Not authorized'
+                                    error: 'Not authorized'
                                 });
                                 break;
                             default:
                                 res.render('setNewPassword', {
-                                    signup_error: 'Something went wrong. Please contact support'
+                                    error: 'Something went wrong. Please contact support'
                                 });
                                 break;
                         }
@@ -384,11 +384,16 @@ module.exports = function(app, stock, constants, utils, request, log) {
                                         name: 'RESETLINK',
                                         content: process.env.APPURL + 'set_new_password/'
                                     };
-                                    sendEmail(req, res, b, extra, 'resetPassword');
+                                    if (resp.message != 'success')
+                                        res.render('resetPassword', {
+                                            error: resp.message
+                                        });
+                                    else
+                                        sendEmail(req, res, b, extra, 'resetPassword');
                                     break;
                                 default:
                                     res.render('resetPassword', {
-                                        signup_error: resp.message
+                                        error: resp.message
                                     });
                                     break;
                             }
@@ -396,12 +401,12 @@ module.exports = function(app, stock, constants, utils, request, log) {
 
                         case 401:
                             res.render('resetPassword', {
-                                signup_error: 'Not authorized'
+                                error: 'Not authorized'
                             });
                             break;
                         default:
                             res.render('resetPassword', {
-                                signup_error: 'Something went wrong. Please contact support'
+                                error: 'Something went wrong. Please contact support'
                             });
                             break;
                     }

@@ -12,7 +12,7 @@
               span
                 legend 
                   | Sign in 
-                  span(style="color:red;margin-left:1em;") #{login_error}
+                  span(style="color:red;margin-left:1em;") #{error}
               .form-group
                 label(for='user_Login')
                   i.fa.fa-user
@@ -34,8 +34,8 @@
               span
                 legend 
                   | Sign Up 
-                  span(style="color:red;margin-left:1em;") #{signup_error}
-                  span(style="color:green;margin-left:1em;") #{signup_success}
+                  span(style="color:red;margin-left:1em;") #{error}
+                  span(style="color:green;margin-left:1em;") #{success}
               .form-group
                 label(for='user_first') First Name 
                 input.login-input.form-control(name='firstname', data_toggle = 'tooltip', data-original-title='Enter a user name, required',type='text', value='', placeholder='Enter First Name')

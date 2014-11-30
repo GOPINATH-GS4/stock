@@ -34,8 +34,10 @@ function processModels(search) {
     });
     // Assign Ids for Drag and Drop to add to collection
     var cardsAddToCollection = document.getElementsByName('addtocollection');
-    for (var i = 0; i < cardsAddToCollection.length; i++)
+    for (var i = 0; i < cardsAddToCollection.length; i++) {
         cardsAddToCollection[i].setAttribute('id', search[i].nct_id);
+        console.log('Rendering card ...' + i);
+    }
 };
 
 
@@ -76,6 +78,7 @@ function searchCtc() {
                     success: function(e, response) {
                         removeElements('spinner');
                         processModels(response);
+                        chart_info();
                     },
                     error: function(e, response) {
                         removeElements('spinner');
