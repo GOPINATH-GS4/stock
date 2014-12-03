@@ -26,7 +26,7 @@ module.exports = function(app, stock, constants, utils, request, log) {
                                 var b = {
                                     identifier: 'userId',
                                     id: resp.userId,
-                                    template: "ctc_validate",
+                                    template: "ctc_validate"
                                 };
                                 var extra = {
                                     name: 'VALIDATELINK',

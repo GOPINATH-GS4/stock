@@ -319,12 +319,13 @@ select.form-control{
     margin: 20px 0;
 }
 .footer {
-    position: auto;
+    position: absolute;
     bottom: 0;
     width: 100%;
     /* Set the fixed height of the footer here */
     height: auto;
-    background-color: #36454A;;
+    background-color: #36454A;
+    margin-top: 20px;
 }
 menu {
     display: block;
