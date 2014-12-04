@@ -239,6 +239,10 @@ select.form-control{
 #search-results>.panel>.panel-body>.row{
     margin-bottom: 20px;
 }
+
+#cardList {
+    margin-top: 30px;
+}
 .text-label {
     margin-top: 11.5px;
     margin-bottom: 11.5px;
@@ -256,6 +260,53 @@ select.form-control{
     text-align: right;
     cursor: pointer; cursor: hand;
     vertical-align: top;
+}
+.expand-collapse-icon{
+    text-align: right;
+    cursor: pointer; cursor: hand;
+    vertical-align: top;
+    height: 10px;
+}
+/* For Carousel */
+.ca-container{
+    position:relative;
+    margin:0px auto 0px auto;
+    height:200px;
+    padding: 30px;
+}
+
+.ca-wrapper{
+    width:100%;
+    height:100%;
+    position:relative;
+}
+.ca-item{
+    position:relative;
+    float:left;
+    height:100%;
+    text-align:center;
+}
+
+.ca-nav span{
+    width:25px;
+    height:38px;
+    background:transparent url("../../img/arrows.png") no-repeat top left;
+    position:absolute;
+    top:50%;
+    margin-top:-19px;
+    left: 2px;
+    text-indent:-9000px;
+    opacity:0.7;
+    cursor:pointer;
+    z-index:100;
+}
+.ca-nav span.ca-nav-next{
+    background-position:top right;
+    left:auto;
+    right:2px;
+}
+.ca-nav span:hover{
+    opacity:1.0;
 }
 
 .chart rect {
@@ -362,6 +413,8 @@ menu {
 }
 .red {
     color: #FA7D7D;
+}
+
 .col-lg-7>.input-group>.input-group-btn>.btn-default:hover {
   color:red;
 }

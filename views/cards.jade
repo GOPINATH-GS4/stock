@@ -48,7 +48,18 @@
       
       // End Search Form
       // Search Results
-      #cardList
+      #search-results
+        #expandCollapse.container-fluid
+          .row
+            .col-lg-12.col-md-12.pull-right
+              span.pull-right
+                button#expand.btn.btn-success.btn-xs(type='button')
+                  i.fa.fa-plus
+                  | Expand All
+                button#collapse.btn.btn-success.btn-xs(type='button')
+                  i.fa.fa-minus
+                  | Collapse All
+        #cardList
   script.
     var username = '#{username}'
     var user_id = '#{userId}'

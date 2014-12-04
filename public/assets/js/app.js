@@ -1,4 +1,12 @@
 $(document).ready(function() {
+    $('#sidebar-left').affix({
+        offset: {
+            top: 64,
+            bottom: function () {
+                return (this.bottom = $('.footer').outerHeight(true))
+            }
+        }
+    })
     //For advance search options
     $('#advbutton').on('click', function(e) {
         var style = $('#advance').toggle();
@@ -55,4 +63,44 @@ $(document).ready(function() {
 
     });
 
+    $('#content').on('click','.expand-collapse-icon',function(e){
+        var button = $(this).find('i');
+        var parent = $(this).parent('div').parent('div').parent('div');
+        if(button.hasClass('fa-minus')){
+            var sibling = parent.next('div');
+            sibling.slideToggle('fast');
+            button.toggleClass('fa-minus').toggleClass('fa-plus');
+        }else {
+            var sibling = parent.next('div');
+            sibling.slideToggle('fast');
+            button.toggleClass('fa-plus').toggleClass('fa-minus');
+        }
+    });
+
+    $('#expand').on('click',function(e){
+       alert("Expand") ;
+       var parent = $(this).parent('div').parent('div').parent('div').parent('div');
+       var cardList = parent.next('div');
+       var cards = parent.find('.panel-default');
+        parent.find('.panel-default').each(function(index){
+            $(this).find('i').toggleClass('fa-chevron-down').toggleClass('fa-chevron-up');
+            $(this).find('.panel-body').each(function(i){
+                $(this).slideToggle('fast');
+            })
+            $(this).find('.panel-footer').slideToggle('fast');
+        })
+    });
+
+    $('#collapse').on('click',function(e){
+        alert("Collapse");
+        var parent = $(this).parent('div').parent('div').parent('div').parent('div');
+        alert(parent.text());
+        parent.find('.panel-default').each(function(index){
+            $(this).find('i').toggleClass('fa-chevron-up').toggleClass('fa-chevron-down');
+            $(this).find('.panel-body').each(function(i){
+                $(this).slideToggle('fast');
+            })
+            $(this).find('.panel-footer').slideToggle('fast');
+        })
+    });
 });
