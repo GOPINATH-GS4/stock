@@ -165,7 +165,7 @@
 						cache.itemW			= $items.width();
 						// save the number of total items
 						cache.totalItems	= $items.length;
-						alert(cache.totalItems);
+						//alert(cache.totalItems);
 						// add navigation buttons
 						if( cache.totalItems > 3 )	
 							$el.prepend('<div class="ca-nav"><span class="ca-nav-prev">Previous</span><span class="ca-nav-next">Next</span></div>')	
@@ -245,11 +245,11 @@
 		};
 	
 	$.fn.contentcarousel = function(method) {
-		alert("Hi");
+		//alert("Hi");
 		if ( methods[method] ) {
 			return methods[method].apply( this, Array.prototype.slice.call( arguments, 1 ));
 		} else if ( typeof method === 'object' || ! method ) {
-			alert("1");
+			//alert("1");
 			return methods.init.apply( this, arguments );
 		} else {
 			$.error( 'Method ' +  method + ' does not exist on jQuery.contentcarousel' );
