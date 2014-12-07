@@ -1,10 +1,10 @@
-function chart_info() {
+function donut_chart(element, width, height, data) {
 
-    var c = document.getElementsByName('charts');
+    var c = document.getElementsByName(element);
 
     console.log('length of charts = ' + c.length);
-    var width = 200,
-        height = 150,
+    var width = width,
+        height = height,
         radius = Math.min(width, height) / 2;
 
     var color = d3.scale.ordinal()
@@ -17,22 +17,9 @@ function chart_info() {
     var pie = d3.layout.pie()
         .sort(null)
         .value(function(d) {
-            return d.data;
+            return d.y;
         });
 
-    var data = [{
-        "group": "trt1",
-        "data": 24
-    }, {
-        "group": "trt2",
-        "data": 84
-    }, {
-        "group": "trt3",
-        "data": 8
-    }, {
-        "group": "trt4",
-        "data": 50
-    }];
 
     for (var i = 0; i < c.length; i++) {
         console.log(c[i]);
@@ -50,7 +37,7 @@ function chart_info() {
         g.append("path")
             .attr("d", arc)
             .style("fill", function(d) {
-                return color(d.data.data);
+                return color(d.data.x);
             });
 
     }

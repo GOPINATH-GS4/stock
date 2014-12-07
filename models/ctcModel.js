@@ -113,7 +113,8 @@ var CtcModel = function() {
         conditions: [String],
         clinical_results: String,
         primary_outcomes: [Outcomes],
-        secondary_outcomes: [Outcomes]
+        secondary_outcomes: [Outcomes],
+        results: Schema.Types.Mixed
     }, {
         _id: false
     });

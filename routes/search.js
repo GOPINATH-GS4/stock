@@ -79,6 +79,7 @@ module.exports = function(app, ctcModel, constants, utils, log) {
             ctc.primary_outcomes = results[i].primary_outcome;
             ctc.secondary_outcomes = results[i].secondary_outcome;
             ctc.clinical_results = utils._.size(results[i].clinical_results) > 0 ? 'Yes' : 'No';
+            ctc.results = utils._.size(results[i].clinical_results) > 0 ? results[i].clinical_results : {};
             search.ctcs.push(ctc);
         }
 

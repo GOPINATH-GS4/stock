@@ -78,7 +78,19 @@ function searchCtc() {
                     success: function(e, response) {
                         removeElements('spinner');
                         processModels(response);
-                        chart_info();
+                        donut_chart('charts', 200, 150, [{
+                            "x": "trt1",
+                            "y": 30
+                        }, {
+                            "x": "trt2",
+                            "y": 20
+                        }, {
+                            "x": "trt3",
+                            "y": 40
+                        }, {
+                            "x": "trt4",
+                            "y": 90
+                        }]);
                     },
                     error: function(e, response) {
                         removeElements('spinner');
