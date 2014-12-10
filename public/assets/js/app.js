@@ -77,30 +77,47 @@ $(document).ready(function() {
         }
     });
 
-    $('#expand').on('click',function(e){
-       alert("Expand") ;
-       var parent = $(this).parent('div').parent('div').parent('div').parent('div');
-       var cardList = parent.next('div');
-       var cards = parent.find('.panel-default');
-        parent.find('.panel-default').each(function(index){
-            $(this).find('i').toggleClass('fa-chevron-down').toggleClass('fa-chevron-up');
-            $(this).find('.panel-body').each(function(i){
-                $(this).slideToggle('fast');
-            })
-            $(this).find('.panel-footer').slideToggle('fast');
-        })
+   /* $('#content').on('click','#expand',function(e){
+       var allCards = $(".card");
+        allCards.each(function(indx){
+            $(this).find('.panel-default').each(function(index){
+                $(this).find('i').toggleClass('fa-chevron-down').toggleClass('fa-chevron-up');
+                $(this).find('.panel-body').each(function(i){
+                    $(this).slideToggle('fast');
+                });
+                $(this).find('.panel-footer').slideToggle('fast');
+            });
+        });
+    });*/
+
+    $('#content').on('click','#collapse',function(e){
+        var allCards = $( ".card" );
+        if($('#collapse').find('i').hasClass('fa-minus')){
+            allCards.each(function(indx){
+                $(this).find('.panel-default').each(function(index){
+                    $(this).find('i').toggleClass('fa-chevron-up').toggleClass('fa-chevron-down');
+                    $(this).find('.panel-body').each(function(i){
+                        $(this).slideToggle('fast');
+                    });
+                    $(this).find('.panel-footer').slideToggle('fast');
+                });
+            });
+            $('#collapse').find('i').toggleClass('fa-minus').toggleClass('fa-plus');
+            $('#collapse span').text('Expand');
+        }else{
+            allCards.each(function(indx){
+                $(this).find('.panel-default').each(function(index){
+                    $(this).find('i').toggleClass('fa-chevron-up').toggleClass('fa-chevron-down');
+                    $(this).find('.panel-body').each(function(i){
+                        $(this).slideToggle('fast');
+                    });
+                    $(this).find('.panel-footer').slideToggle('fast');
+                });
+            });
+            $('#collapse').find('i').toggleClass('fa-plus').toggleClass('fa-minus');
+            $('#collapse span').text('Collapse');
+        }
+
     });
 
-    $('#collapse').on('click',function(e){
-        alert("Collapse");
-        var parent = $(this).parent('div').parent('div').parent('div').parent('div');
-        alert(parent.text());
-        parent.find('.panel-default').each(function(index){
-            $(this).find('i').toggleClass('fa-chevron-up').toggleClass('fa-chevron-down');
-            $(this).find('.panel-body').each(function(i){
-                $(this).slideToggle('fast');
-            })
-            $(this).find('.panel-footer').slideToggle('fast');
-        })
-    });
 });
