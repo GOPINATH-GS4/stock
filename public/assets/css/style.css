@@ -98,6 +98,9 @@ body {
     padding-left: 10px;
     font-size: 18px;
 }
+#new-collection {
+    padding: 10px 0px;
+ }
 #sidebar-left {
     background-color: #F4F1E3;
     padding-top: 23px;

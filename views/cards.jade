@@ -5,6 +5,12 @@
         li
           i.fa.fa-user-md.fa-2x
             span(style="font-size:.8em;")  #{username}
+      ul#new-collection.nav
+        li
+          .form-group
+            input#newCollection.form-control(name='newCollection', type='text', placeholder='Enter Collection Name')
+          .form-group
+            button#createCollection.btn.btn-warning.btn-sm(type='submit') Create
       ul#collection.nav.main-menu
     #content.col-xs-10.col-sm-10.col-md-10.col-lg-10
       // Search Form
