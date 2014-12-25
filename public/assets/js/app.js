@@ -1,13 +1,13 @@
 $(document).ready(function() {
     $('#sidebar-left').affix({
-        offset: {
-            top: 64,
-            bottom: function () {
-                return (this.bottom = $('.footer').outerHeight(true))
+            offset: {
+                top: 64,
+                bottom: function() {
+                    return (this.bottom = $('.footer').outerHeight(true))
+                }
             }
-        }
-    })
-    //For advance search options
+        })
+        //For advance search options
     $('#advbutton').on('click', function(e) {
         var style = $('#advance').toggle();
     });
@@ -63,40 +63,40 @@ $(document).ready(function() {
 
     });
 
-    $('#content').on('click','.expand-collapse-icon',function(e){
+    $('#content').on('click', '.expand-collapse-icon', function(e) {
         var button = $(this).find('i');
         var parent = $(this).parent('div').parent('div').parent('div');
-        if(button.hasClass('fa-minus')){
+        if (button.hasClass('fa-minus')) {
             var sibling = parent.next('div');
             sibling.slideToggle('fast');
             button.toggleClass('fa-minus').toggleClass('fa-plus');
-        }else {
+        } else {
             var sibling = parent.next('div');
             sibling.slideToggle('fast');
             button.toggleClass('fa-plus').toggleClass('fa-minus');
         }
     });
 
-   /* $('#content').on('click','#expand',function(e){
-       var allCards = $(".card");
-        allCards.each(function(indx){
-            $(this).find('.panel-default').each(function(index){
-                $(this).find('i').toggleClass('fa-chevron-down').toggleClass('fa-chevron-up');
-                $(this).find('.panel-body').each(function(i){
-                    $(this).slideToggle('fast');
-                });
-                $(this).find('.panel-footer').slideToggle('fast');
-            });
-        });
-    });*/
+    /* $('#content').on('click','#expand',function(e){
+        var allCards = $(".card");
+         allCards.each(function(indx){
+             $(this).find('.panel-default').each(function(index){
+                 $(this).find('i').toggleClass('fa-chevron-down').toggleClass('fa-chevron-up');
+                 $(this).find('.panel-body').each(function(i){
+                     $(this).slideToggle('fast');
+                 });
+                 $(this).find('.panel-footer').slideToggle('fast');
+             });
+         });
+     });*/
 
-    $('#content').on('click','#collapse',function(e){
-        var allCards = $( ".card" );
-        if($('#collapse').find('i').hasClass('fa-minus')){
-            allCards.each(function(indx){
-                $(this).find('.panel-default').each(function(index){
+    $('#content').on('click', '#collapse', function(e) {
+        var allCards = $(".card");
+        if ($('#collapse').find('i').hasClass('fa-minus')) {
+            allCards.each(function(indx) {
+                $(this).find('.panel-default').each(function(index) {
                     $(this).find('i').toggleClass('fa-chevron-up').toggleClass('fa-chevron-down');
-                    $(this).find('.panel-body').each(function(i){
+                    $(this).find('.panel-body').each(function(i) {
                         $(this).slideToggle('fast');
                     });
                     $(this).find('.panel-footer').slideToggle('fast');
@@ -104,11 +104,11 @@ $(document).ready(function() {
             });
             $('#collapse').find('i').toggleClass('fa-minus').toggleClass('fa-plus');
             $('#collapse span').text('Expand');
-        }else{
-            allCards.each(function(indx){
-                $(this).find('.panel-default').each(function(index){
+        } else {
+            allCards.each(function(indx) {
+                $(this).find('.panel-default').each(function(index) {
                     $(this).find('i').toggleClass('fa-chevron-up').toggleClass('fa-chevron-down');
-                    $(this).find('.panel-body').each(function(i){
+                    $(this).find('.panel-body').each(function(i) {
                         $(this).slideToggle('fast');
                     });
                     $(this).find('.panel-footer').slideToggle('fast');

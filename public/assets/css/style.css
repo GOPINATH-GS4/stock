@@ -270,7 +270,9 @@ select.form-control{
     vertical-align: top;
     height: 10px;
 }
+
 /* For Carousel */
+
 .ca-container{
     position:relative;
     margin:0px auto 0px auto;

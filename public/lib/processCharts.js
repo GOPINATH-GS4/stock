@@ -42,3 +42,129 @@ function donut_chart(element, width, height, data) {
 
     }
 }
+
+function barChart(element, width, height, data) {
+
+    var chart1 = new Highcharts.Chart({
+        chart: {
+            renderTo: element,
+            type: 'bar'
+        },
+        title: {
+            text: 'Fruit Consumption'
+        },
+        xAxis: {
+            categories: ['Apples', 'Bananas', 'Oranges']
+        },
+        yAxis: {
+            title: {
+                text: 'Fruit eaten'
+            }
+        },
+        series: [{
+            name: 'Jane',
+            data: [1, 0, 4]
+        }, {
+            name: 'John',
+            data: [5, 7, 3]
+        }]
+    });
+}
+
+function drawLabel(ren, text, x, y, fillColor, stroke, height, width, fontColor, fontSize, fontWeight) {
+    return ren.label(text, x, y)
+        .attr({
+            fill: fillColor,
+            stroke: stroke,
+            'stroke-width': 2,
+            padding: 5,
+            r: 5,
+        })
+        .css({
+            color: fontColor,
+            fontSize: fontSize
+        })
+        .add()
+        .shadow(true);
+}
+
+function participantFlowChart(element, width, height, data) {
+
+    var flowChart = new Highcharts.Chart({
+        chart: {
+            renderTo: element,
+            backgroundColor: 'white',
+            events: {
+                load: function() {
+
+                    console.log('element  ' + element.offsetHeight + ':' + element.offsetWidth);
+                    var height = element.offsetHeight;
+                    var width = element.offsetWidth;
+                    var start = 70;
+                    var lane = 100;
+                    var take = 50;
+                    var pad = 10;
+                    var center = element.offsetWidth / 2;
+                    var fontSize = (width < 300) ? '8px' : '10';
+                    var level = 0;
+
+
+
+                    // Draw the flow chart
+                    var ren = this.renderer,
+                        colors = Highcharts.getOptions().colors;
+
+                    var root = drawLabel(ren, 'Number of Participants', center - take, start + (lane * level), colors[1], 'white', 25, 75, 'white', fontSize, null);
+                    drawLabel(ren, '120', center - take + root.width, start + (lane * level), 'red', null, null, null, 'white', fontSize, 'bold');
+
+                    // No of sub titles  eg  3
+                    var titleWidth = width / 3;
+                    var rootCenterY = center - take + root.width / 2;
+                    var rootCenterX = start + root.height;
+                    level = 1;
+
+                    for (var i = 0; i < 3; i++) {
+                        var ncenter = (i * titleWidth) + titleWidth / 2;
+                        var trt = drawLabel(ren, 'treatment - 1234567890' + i, ncenter - take, start + (lane * level), colors[1], 'white', 25, 75, 'white', fontSize, null);
+
+                        var leafCenterY = ncenter - take + trt.width / 2;
+                        var leafCenterX = start + lane;
+                        ren.path(['M', rootCenterY, rootCenterX, 'L', leafCenterY, leafCenterX])
+                            .attr({
+                                'stroke-width': 2,
+                                stroke: colors[2]
+                            })
+                            .add();
+                        drawLabel(ren, '120', (rootCenterY + leafCenterY) / 2, (rootCenterX + leafCenterX) / 2, 'red', null, null, null, 'white', fontSize, 'bold');
+
+                        var _titleWidth = width / (3 * 2);
+                        var _rootCenterY = ncenter - take + trt.width / 2;
+                        var _rootCenterX = start + (1 * lane) + trt.height;
+
+                        for (var j = 0; j < 2; j++) {
+                            var _ncenter = (j * _titleWidth) + (i * titleWidth) + _titleWidth / 2;
+                            var active = drawLabel(ren, (!j) ? 'Active/Completed' : 'discontinued', _ncenter - take, start + (2 * lane), colors[1], 'white', 25, 75, 'white', fontSize, null);
+                            var _leafCenterY = _ncenter - take + active.width / 2;
+                            var _leafCenterX = start + (2 * lane);
+                            ren.path(['M', _rootCenterY, _rootCenterX, 'L', _leafCenterY, _leafCenterX])
+                                .attr({
+                                    'stroke-width': 2,
+                                    stroke: colors[2]
+                                })
+                                .add();
+                            drawLabel(ren, (!j) ? '80' : '40', (_rootCenterY + _leafCenterY) / 2, (_rootCenterX + _leafCenterX) / 2, 'red', null, null, null, 'white', fontSize, 'bold');
+                        }
+                    }
+
+                }
+            }
+        },
+        title: {
+            text: 'Participant Flow',
+            style: {
+                color: 'black'
+            }
+        }
+
+    });
+}

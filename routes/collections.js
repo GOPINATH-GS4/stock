@@ -5,19 +5,26 @@ module.exports = function(app, ctcModel, constants, utils, log) {
     //
     var collections = function(req, res) {
 
-        var userId = {};
+        switch (req.method) {
 
-        if (req.path.split('/').pop() === 'collection')
-            userId = {};
-        else
-            userId.userId = req.path.split('/').pop();
+            case 'GET':
+                var userId = {};
 
-        console.log('fetching data for  ' + utils.util.inspect(userId));
+                if (req.path.split('/').pop() === 'collection')
+                    userId = {};
+                else
+                    userId.userId = req.path.split('/').pop();
 
-        ctcModel.UserCollections.find(userId, function(err, collections) {
-            utils.writeResponse(req, res, collections);
-        });
+                console.log('fetching data for  ' + utils.util.inspect(userId));
 
+                ctcModel.UserCollections.find(userId, function(err, collections) {
+                    utils.writeResponse(req, res, collections);
+                });
+                break;
+            case 'POST':
+
+                break;
+        }
     };
     app.post('/collection', collections);
     app.get('/collection', collections);

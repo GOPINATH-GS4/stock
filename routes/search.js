@@ -50,6 +50,7 @@ module.exports = function(app, ctcModel, constants, utils, log) {
                             response.primary_outcomes = ctc.primary_outcomes;
                             response.secondary_outcomes = ctc.secondary_outcomes;
                             response.clinical_results = ctc.clinical_results;
+                            response.results = ctc.results;
                             resp.push(response);
                         });
                     });
