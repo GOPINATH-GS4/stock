@@ -88,12 +88,12 @@ function drawLabel(ren, text, x, y, fillColor, stroke, height, width, fontColor,
         .shadow(true);
 }
 
-function participantFlowChart(element, width, height, data) {
+function participantFlowChart(element, data) {
 
     var flowChart = new Highcharts.Chart({
         chart: {
             renderTo: element,
-            backgroundColor: 'white',
+            backgroundColor: '#F5F6CE',
             events: {
                 load: function() {
 
@@ -125,7 +125,7 @@ function participantFlowChart(element, width, height, data) {
 
                     for (var i = 0; i < 3; i++) {
                         var ncenter = (i * titleWidth) + titleWidth / 2;
-                        var trt = drawLabel(ren, 'treatment - 1234567890' + i, ncenter - take, start + (lane * level), colors[1], 'white', 25, 75, 'white', fontSize, null);
+                        var trt = drawLabel(ren, 'treatment -' + i, ncenter - take, start + (lane * level), colors[1], 'white', 25, 75, 'white', fontSize, null);
 
                         var leafCenterY = ncenter - take + trt.width / 2;
                         var leafCenterX = start + lane;
@@ -135,7 +135,7 @@ function participantFlowChart(element, width, height, data) {
                                 stroke: colors[2]
                             })
                             .add();
-                        drawLabel(ren, '120', (rootCenterY + leafCenterY) / 2, (rootCenterX + leafCenterX) / 2, 'red', null, null, null, 'white', fontSize, 'bold');
+                        drawLabel(ren, '40', (rootCenterY + leafCenterY) / 2, (rootCenterX + leafCenterX) / 2, 'red', null, null, null, 'white', fontSize, 'bold');
 
                         var _titleWidth = width / (3 * 2);
                         var _rootCenterY = ncenter - take + trt.width / 2;
@@ -152,7 +152,7 @@ function participantFlowChart(element, width, height, data) {
                                     stroke: colors[2]
                                 })
                                 .add();
-                            drawLabel(ren, (!j) ? '80' : '40', (_rootCenterY + _leafCenterY) / 2, (_rootCenterX + _leafCenterX) / 2, 'red', null, null, null, 'white', fontSize, 'bold');
+                            drawLabel(ren, (!j) ? '30' : '10', (_rootCenterY + _leafCenterY) / 2, (_rootCenterX + _leafCenterX) / 2, 'red', null, null, null, 'white', fontSize, 'bold');
                         }
                     }
 
@@ -160,9 +160,9 @@ function participantFlowChart(element, width, height, data) {
             }
         },
         title: {
-            text: 'Participant Flow',
+            text: 'NCT00001',
             style: {
-                color: 'black'
+                color: 'red'
             }
         }
 

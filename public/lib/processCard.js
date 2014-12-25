@@ -38,7 +38,7 @@ function processModels(search) {
         var card = new app.cardView(data);
         card.render(cardList);
         var fc = document.getElementById('flowChart');
-        participantFlowChart(fc, 400, 400, {});
+        participantFlowChart(fc, {});
         fc.setAttribute('id', 'flowChart-' + index);
     });
 
@@ -68,7 +68,7 @@ function resizeend() {
         timeout = false;
         var elements = getElementsStartsWithId('flowChart-');
         for (var i = 0; i < elements.length; i++)
-            participantFlowChart(elements[i], 400, 400, {});
+            participantFlowChart(elements[i], {});
     }
 }
 
