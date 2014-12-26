@@ -82,7 +82,7 @@ function drawLabel(ren, text, x, y, fillColor, stroke, height, width, fontColor,
         })
         .css({
             color: fontColor,
-            fontSize: fontSize
+            fontSize: 8
         })
         .add()
         .shadow(true);
@@ -93,7 +93,7 @@ function participantFlowChart(element, data) {
     var flowChart = new Highcharts.Chart({
         chart: {
             renderTo: element,
-            backgroundColor: '#F5F6CE',
+            backgroundColor: '#00B1B5',
             events: {
                 load: function() {
 
@@ -102,11 +102,12 @@ function participantFlowChart(element, data) {
                     var width = element.offsetWidth;
                     var start = 70;
                     var lane = 100;
-                    var take = 50;
+                    var take = width/1024 * 50;
                     var pad = 10;
                     var center = element.offsetWidth / 2;
-                    var fontSize = (width < 300) ? '8px' : '10';
+                    var fontSize = width / 1024 * 10;
                     var level = 0;
+                    var no_of_trts = 4;
 
 
 
@@ -114,18 +115,18 @@ function participantFlowChart(element, data) {
                     var ren = this.renderer,
                         colors = Highcharts.getOptions().colors;
 
-                    var root = drawLabel(ren, 'Number of Participants', center - take, start + (lane * level), colors[1], 'white', 25, 75, 'white', fontSize, null);
-                    drawLabel(ren, '120', center - take + root.width, start + (lane * level), 'red', null, null, null, 'white', fontSize, 'bold');
+                    var root = drawLabel(ren, '#', center - take, start + (lane * level), colors[1], 'white', 25, 75, 'white', fontSize, 'bold');
+                    drawLabel(ren, '120', center - take + root.width, start + (lane * level), 'red', null, null, null, 'white', 8, 'bold');
 
                     // No of sub titles  eg  3
-                    var titleWidth = width / 3;
+                    var titleWidth = width / no_of_trts;
                     var rootCenterY = center - take + root.width / 2;
                     var rootCenterX = start + root.height;
                     level = 1;
 
-                    for (var i = 0; i < 3; i++) {
+                    for (var i = 0; i < no_of_trts; i++) {
                         var ncenter = (i * titleWidth) + titleWidth / 2;
-                        var trt = drawLabel(ren, 'treatment -' + i, ncenter - take, start + (lane * level), colors[1], 'white', 25, 75, 'white', fontSize, null);
+                        var trt = drawLabel(ren, 'G' + i, ncenter - take, start + (lane * level), colors[1], 'white', 25, 75, 'white', fontSize, 'bold');
 
                         var leafCenterY = ncenter - take + trt.width / 2;
                         var leafCenterX = start + lane;
@@ -135,15 +136,15 @@ function participantFlowChart(element, data) {
                                 stroke: colors[2]
                             })
                             .add();
-                        drawLabel(ren, '40', (rootCenterY + leafCenterY) / 2, (rootCenterX + leafCenterX) / 2, 'red', null, null, null, 'white', fontSize, 'bold');
+                        drawLabel(ren, '40', (rootCenterY + leafCenterY) / 2, (rootCenterX + leafCenterX) / 2, 'red', null, null, null, 'white', 8, 'bold');
 
-                        var _titleWidth = width / (3 * 2);
+                        var _titleWidth = width / (no_of_trts * 2);
                         var _rootCenterY = ncenter - take + trt.width / 2;
                         var _rootCenterX = start + (1 * lane) + trt.height;
 
                         for (var j = 0; j < 2; j++) {
                             var _ncenter = (j * _titleWidth) + (i * titleWidth) + _titleWidth / 2;
-                            var active = drawLabel(ren, (!j) ? 'Active/Completed' : 'discontinued', _ncenter - take, start + (2 * lane), colors[1], 'white', 25, 75, 'white', fontSize, null);
+                            var active = drawLabel(ren, (!j) ? 'A/C' : 'D', _ncenter - take, start + (2 * lane), colors[1], 'white', 25, 75, 'white', fontSize, 'bold');
                             var _leafCenterY = _ncenter - take + active.width / 2;
                             var _leafCenterX = start + (2 * lane);
                             ren.path(['M', _rootCenterY, _rootCenterX, 'L', _leafCenterY, _leafCenterX])
@@ -152,7 +153,7 @@ function participantFlowChart(element, data) {
                                     stroke: colors[2]
                                 })
                                 .add();
-                            drawLabel(ren, (!j) ? '30' : '10', (_rootCenterY + _leafCenterY) / 2, (_rootCenterX + _leafCenterX) / 2, 'red', null, null, null, 'white', fontSize, 'bold');
+                            drawLabel(ren, (!j) ? '30' : '10', (_rootCenterY + _leafCenterY) / 2, (_rootCenterX + _leafCenterX) / 2, 'red', null, null, null, 'white', 8, 'bold');
                         }
                     }
 
