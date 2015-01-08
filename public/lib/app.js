@@ -1,5 +1,15 @@
 var app = {};
 
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var nct_id = ev.dataTransfer.getData("nct_id");
+    // call the end point to add the nct_id to a collection 
+    console.log('User ' + username + ' added nct_id ' + nct_id + ' to collection ' + ev.toElement.id);
+}
 
 function updateCookie() {
 

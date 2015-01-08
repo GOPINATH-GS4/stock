@@ -105,7 +105,7 @@ function participantFlowChart(element, data) {
                     var take = width/880 * 50;
                     var pad = 10;
                     var center = element.offsetWidth / 2;
-                    var fontSize = width / 880 * 10 + 'px';
+                    var fontSize = width / 880 * 14 + 'px';
                     var level = 0;
                     var no_of_trts = 4;
 

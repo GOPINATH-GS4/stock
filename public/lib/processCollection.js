@@ -26,12 +26,3 @@ function processCollectionModels(collections) {
 
 };
 
-function allowDrop(ev) {
-    ev.preventDefault();
-}
-
-function drop(ev) {
-    ev.preventDefault();
-    var nct_id = ev.dataTransfer.getData("nct_id");
-    console.log('User ' + username + ' added nct_id ' + nct_id + ' to collection ' + ev.toElement.id);
-}
