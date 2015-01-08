@@ -66,7 +66,7 @@
     var collections = require('./routes/collections.js')(app, ctcModel, constants, utils, log);
     var catalog = require('./routes/catalog.js')(app, ctcModel, constants, utils, log);
     var auth = require('./routes/auth.js')(app, ctcModel, constants, utils, request, log);
-
+    var save = require('./routes/save.js')(app, ctcModel, constants, utils, request, log);
     https.createServer(options, app).listen(app.get('port'), function() {
         log.info('Express server listening on port ' + app.get('port'));
     });
