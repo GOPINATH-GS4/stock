@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
     db = mongoose.createConnection(process.env.DATABASE_URL),
+    //db = mongoose.createConnection('mongodb://localhost/clinalytics'),    		
     Schema = mongoose.Schema,
     ObjectId = Schema.ObjectId;
 
@@ -128,18 +129,47 @@ var CtcModel = function() {
         _id: false
     });
 
+    /**
+    *
+    * @type {mongoose.Schema}
+    * User Collection to hold user + NCTID association
+    */      
     var UserCollection = new Schema({
-        userId: Number,
-        collectionName: String
+    	UserId: Number,
+    	CollectionName: String,
+        nctids : [NctidInfo]
     });
 
+   //     Added collection to define NCTID attributes
 
+    var NctidInfo = new Schema({
+        nctid: String,
+        VersionDate: String,
+        InsertDate: Date
+    }, {
+        _id: false
+    });
+
+    /**
+    *
+    * @type {mongoose.Schema}
+    * CTC Trial data
+    */
+    var CtcNctids = new Schema({
+        nctid: String,        
+        VersionDate: String,
+        data:  Schema.Types.Mixed,
+        InsertDate: Date
+    });    
+
+ 
     this.Logs = db.model('Logs', Log);
     this.Users = db.model('Users', User);
     this.AccessTokens = db.model('AccessTokens', AccessToken);
     this.RefreshTokens = db.model('RefreshTokens', RefreshToken);
     this.Searchs = db.model('Searchs', Search);
-    this.UserCollections = db.model('UserCollections', UserCollection);
+    this.UserCollections = db.model('usercollections', UserCollection);
+    this.CtcNctids = db.model('CtcNctids', CtcNctids);
     this.db = db;
 
 };
