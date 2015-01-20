@@ -1,6 +1,6 @@
 var mongoose = require('mongoose'),
     db = mongoose.createConnection(process.env.DATABASE_URL),
-    //db = mongoose.createConnection('mongodb://localhost/clinalytics'),    		
+    //db = mongoose.createConnection('mongodb://localhost/clinalytics'),
     Schema = mongoose.Schema,
     ObjectId = Schema.ObjectId;
 
@@ -145,7 +145,8 @@ var CtcModel = function() {
     var NctidInfo = new Schema({
         nctid: String,
         VersionDate: String,
-        InsertDate: Date
+        InsertDate: Date,
+        Staleness: String
     }, {
         _id: false
     });
