@@ -16,13 +16,20 @@ var guid = (function() {
 
 window.addEventListener('resize', redrawParticipantFlowCharts);
 
-document.getElementById('searchText').addEventListener('keydown', checkEnter);
+document.getElementById('searchText').addEventListener('keydown', checkEnter1);
+document.getElementById('newCollection').addEventListener('keydown', checkEnter2);
 document.getElementById('searchButton').addEventListener('click', searchCtc);
+document.getElementById('createCollection').addEventListener('click', createCollection);
 
-function checkEnter(event) {
+function checkEnter1(event) {
 
     if (event.keyCode === 13)
         searchCtc();
+}
+
+function checkEnter2(event) {
+    if (event.keyCode === 13)
+        createCollection();
 }
 
 function removeElements(elementName) {
@@ -117,6 +124,38 @@ function searchCtc() {
                         removeElements('spinner');
                     }
                 });
+        }
+    });
+}
+
+function createCollection() {
+    var collectionName = document.getElementById('newCollection').value;
+
+    if (collectionName === null || collectionName === '') return;
+
+    console.log(collectionName);
+    console.log(user_id);
+
+    var c = new app.CollectionModel({
+        u: user_id,
+        collectionName: collectionName
+    });
+    c.save({
+        wait: true
+    }, {
+        success: function(e, response) {
+            removeElements('collection');
+
+            collections.fetch({
+                reset: true,
+                success: function(e, response) {
+                    document.getElementById('newCollection').value = '';
+                    processCollectionModels(response);
+                },
+                error: function(e, response) {
+                    console.log(response);
+                }
+            });
         }
     });
 }

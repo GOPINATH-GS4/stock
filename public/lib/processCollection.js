@@ -14,6 +14,8 @@ function processCollectionModels(collections) {
     var collection = new app.collectionList();
     _.each(collections, function(data, index) {
         var c = new app.collectionView(data);
+        console.log('Rendering collection ');
+        console.log(collection);
         c.render(collection);
     });
 
@@ -21,8 +23,8 @@ function processCollectionModels(collections) {
 
     var collectionDrops = document.getElementsByName('droptocollections');
 
-    for (var i = 0; i < collectionDrops.length; i++)
-        collectionDrops[i].setAttribute('id', collections[i].collectionName);
+    for (var i = 0; i < collectionDrops.length; i++) {
+        collectionDrops[i].setAttribute('id', collections[i].CollectionName);
+    }
 
 };
-

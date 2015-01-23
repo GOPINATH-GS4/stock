@@ -72,7 +72,7 @@ module.exports = function(app, ctcModel, constants, utils, request, log) {
      * This method is used to refresh the data of existing NCT ID of a collection
      */
     var refreshCollection = function(req, res) {
-       /* req.body = {
+        /* req.body = {
 			userId : '11',
 			collectionName : 'collection',
 			nctids : ['NCT01646047']
@@ -82,33 +82,33 @@ module.exports = function(app, ctcModel, constants, utils, request, log) {
             case 'POST':
                 var userid = req.body.userId,
                     collectionName = req.body.collectionName;
-                	nctids = req.body.nctids;
-                	// Update Staleness flag to stale and start refresh process
+                nctids = req.body.nctids;
+                // Update Staleness flag to stale and start refresh process
                 ctcModel.UserCollections.update({
-                	UserId: userid,
-                	CollectionName: collectionName,
-                    nctids: {
-                        $elemMatch: {}
-                    }                
-                }, {
-                	$set: {
-                		"nctids.$.Staleness": "Stale"
-                	}
-                },
-                function(err) {
-                	if (err) {
-                		resp = {
-                				status: 500,
+                        UserId: userid,
+                        CollectionName: collectionName,
+                        nctids: {
+                            $elemMatch: {}
+                        }
+                    }, {
+                        $set: {
+                            "nctids.$.Staleness": "Stale"
+                        }
+                    },
+                    function(err) {
+                        if (err) {
+                            resp = {
+                                status: 500,
                                 message: err
-                		};
-                		utils.writeResponse(req, res, resp);
-                	} 
-                });
-//                var fun = function (err, callback) {
-//                    var log = _.bind(console.log, console);
-//                    _.delay(log, 10000, 'logged later');                
-//                    callback;
-//                }
+                            };
+                            utils.writeResponse(req, res, resp);
+                        }
+                    });
+                //                var fun = function (err, callback) {
+                //                    var log = _.bind(console.log, console);
+                //                    _.delay(log, 10000, 'logged later');                
+                //                    callback;
+                //                }
                 for (var i = 0; i < nctids.length; i++) {
                     saveIDData(
                         nctids[i],
@@ -196,7 +196,7 @@ module.exports = function(app, ctcModel, constants, utils, request, log) {
                                                     } else {
                                                         resp = {
                                                             status: 500,
-                                                            message: 'NCTID '+keys.nctid +' data is not available to refresh'
+                                                            message: 'NCTID ' + keys.nctid + ' data is not available to refresh'
                                                         };
                                                         utils.writeResponse(req, res, resp);
                                                         //callback(null, resp, null);
@@ -217,7 +217,7 @@ module.exports = function(app, ctcModel, constants, utils, request, log) {
      * This method is used to add NCT ID to a collection
      */
     var addToCollection = function(req, res) {
-       /* console.log("Entered");
+        /* console.log("Entered");
 		req.body = {
 				userId : '11',
 					collectionName : 'collection',
@@ -260,7 +260,7 @@ module.exports = function(app, ctcModel, constants, utils, request, log) {
                                         };
                                         utils.writeResponse(req, res, resp);
                                     } else {
-                                   	
+
                                         // If latest version is not available in the database, check if old version record is available.
                                         ctcModel.UserCollections.count({
                                                 UserId: userid,
@@ -310,11 +310,11 @@ module.exports = function(app, ctcModel, constants, utils, request, log) {
                                                                 }
                                                             });
                                                     } else {
-                                                        	// If there is no version available for NCTID, add latest version in to collection
-                                                        	ctcModel.UserCollections.count({
-                                                        		UserId: userid,
+                                                        // If there is no version available for NCTID, add latest version in to collection
+                                                        ctcModel.UserCollections.count({
+                                                                UserId: userid,
                                                                 CollectionName: collectionName
-                                                        	},
+                                                            },
                                                             function(err, count) {
                                                                 if (err) {
                                                                     resp = {
@@ -323,49 +323,49 @@ module.exports = function(app, ctcModel, constants, utils, request, log) {
                                                                     };
                                                                     utils.writeResponse(req, res, resp);
                                                                 } else {
-                                                                	if (count) {
-                                                                		ctcModel.UserCollections.update({
-                                                                			UserId: userid,
-                                                                			CollectionName: collectionName
-                                                                		}, {
-                                                                			$addToSet: {
-                                                                				nctids: {
-                                                                					nctid: keys.nctid,
-                                                                					VersionDate: keys.VersionDate,
-                                                                					InsertDate: new Date(),
-                                                                					Staleness: 'Fresh'
-                                                                				}
-                                                                			}
-                                                                		},
-                                                                		function(err) {
-                                                                			if (err) {
-                                                                				resp = {
-                                                                						status: 500,
+                                                                    if (count) {
+                                                                        ctcModel.UserCollections.update({
+                                                                                UserId: userid,
+                                                                                CollectionName: collectionName
+                                                                            }, {
+                                                                                $addToSet: {
+                                                                                    nctids: {
+                                                                                        nctid: keys.nctid,
+                                                                                        VersionDate: keys.VersionDate,
+                                                                                        InsertDate: new Date(),
+                                                                                        Staleness: 'Fresh'
+                                                                                    }
+                                                                                }
+                                                                            },
+                                                                            function(err) {
+                                                                                if (err) {
+                                                                                    resp = {
+                                                                                        status: 500,
                                                                                         message: err
-                                                                				};
-                                                                				utils.writeResponse(req, res, resp);                                                                                
-                                                                			} else {
-                                                                				resp = {
-                                                                						status: 200,
-                                                                                        message: 'NCTID ('+keys.nctid+') added successfully in to the collection.'
-                                                                				};
-                                                                				utils.writeResponse(req, res, resp);
-                                                                               
+                                                                                    };
+                                                                                    utils.writeResponse(req, res, resp);
+                                                                                } else {
+                                                                                    resp = {
+                                                                                        status: 200,
+                                                                                        message: 'NCTID (' + keys.nctid + ') added successfully in to the collection.'
+                                                                                    };
+                                                                                    utils.writeResponse(req, res, resp);
+
                                                                                 }
                                                                             });
                                                                     } else {
                                                                         resp = {
-                                                                                status: 500,
-                                                                                message: 'Collection doesn not exists to add NCTID.'
-                                                                            };
-                                                                    	utils.writeResponse(req, res, resp);                                                     
+                                                                            status: 500,
+                                                                            message: 'Collection doesn not exists to add NCTID.'
+                                                                        };
+                                                                        utils.writeResponse(req, res, resp);
                                                                     }
                                                                 }
                                                             });
 
                                                     }
                                                 }
-                                            });                                    	
+                                            });
                                     }
                                 }
                             });

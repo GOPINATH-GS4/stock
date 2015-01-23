@@ -102,7 +102,7 @@ function participantFlowChart(element, data) {
                     var width = element.offsetWidth;
                     var start = 70;
                     var lane = 100;
-                    var take = width/880 * 50;
+                    var take = width / 880 * 50;
                     var pad = 10;
                     var center = element.offsetWidth / 2;
                     var fontSize = width / 880 * 14 + 'px';

@@ -1,9 +1,9 @@
-module.exports = function (app, ctcModel, constants, utils, log) {
+module.exports = function(app, ctcModel, constants, utils, log) {
     //
     // collections.js
     // Author: Janakiraman Gopinath
     //
-    var collections = function (req, res) {
+    var collections = function(req, res) {
 
         switch (req.method) {
 
@@ -19,80 +19,82 @@ module.exports = function (app, ctcModel, constants, utils, log) {
                 } else {
                     userId.UserId = req.path.split('/').pop();
                     console.log('fetching data for  ' + utils.util.inspect(userId));
-                    ctcModel.UserCollections.find(userId, function (err, collections) {
+                    ctcModel.UserCollections.find(userId, function(err, collections) {
                         utils.writeResponse(req, res, collections);
                     });
                 }
                 break;
 
             case 'POST':
-                var userId;
                 var collectionName;
                 var resp = {};
 
                 // Check if request has collection name and userid  .. https://localhost/save/collection/userid
                 console.log(req.path);
-                console.log(req.path.split('/', 3).pop());
-                console.log(req.path.split('/', 4).pop());
-                if ((req.path.split('/', 3).pop() !== 'save' && req.path.split('/', 3).pop() !== '') &&
-                    (req.path.split('/', 3).pop() !== req.path.split('/', 4).pop() && req.path.split('/', 4).pop() !== '')) {
+                console.log(req.body);
 
-                    userId = req.path.split('/', 4).pop();
-                    collectionName = req.path.split('/', 3).pop();
+                var userId = req.body.u;
+
+                var collectionName = req.body.collectionName;
+
+                console.log(userId);
+                console.log(collectionName);
+
+                if (typeof collectionName != 'undefined' || collectionName != null) {
+
                     ctcModel.UserCollections.count({
-                        UserId: userId,
-                        CollectionName: collectionName
-                    },
-                    function(err, count) {
-                        if (err) {
-                            resp = {
-                                status: 500,
-                                message: err
-                            };
-                            utils.writeResponse(req, res, resp);                          
-                        } else {
-                        	if (count) {
+                            UserId: userId,
+                            CollectionName: collectionName
+                        },
+                        function(err, count) {
+                            if (err) {
                                 resp = {
-                                        status: 500,
+                                    status: 500,
+                                    message: err
+                                };
+                                utils.writeResponse(req, res, resp);
+                            } else {
+                                if (count) {
+                                    resp = {
+                                        status: 200,
                                         message: 'This collection already exists.'
                                     };
-                                    utils.writeResponse(req, res, resp);                                                		
-                        	} else {
-                        		console.log('Saving data for userId : ' + userId + ' Collection :' + collectionName);
-                                var userCollection = new ctcModel.UserCollections({
-                                	UserId: userId,
-                                    CollectionName: collectionName
-                                });
-                                userCollection.save(function (err) {
-                                	if (err) {
-                                		resp = {
-                                				status: 500,
-                                				message: err
-                                		};
-                                		utils.writeResponse(req, res, resp);
-                                	} else {
-                                		resp = {
-                                				status: 200,
-                                				message: 'Success'
-                                        };
-                                		utils.writeResponse(req, res, resp);
-                                	}
-                                });
-                        	}
-                        }
-                    });
+                                    utils.writeResponse(req, res, resp);
+                                } else {
+                                    console.log('Saving data for userId : ' + userId + ' Collection :' + collectionName);
+                                    var userCollection = new ctcModel.UserCollections({
+                                        UserId: userId,
+                                        CollectionName: collectionName
+                                    });
+                                    userCollection.save(function(err) {
+                                        if (err) {
+                                            resp = {
+                                                status: 500,
+                                                message: err
+                                            };
+                                            utils.writeResponse(req, res, resp);
+                                        } else {
+                                            resp = {
+                                                status: 200,
+                                                message: 'Success'
+                                            };
+                                            utils.writeResponse(req, res, resp);
+                                        }
+                                    });
+                                }
+                            }
+                        });
                 } else {
                     resp = {
-                    		status: 500,
-                    		message: 'Invalid Request'
+                        status: 200,
+                        message: 'Invalid Request'
                     };
                     utils.writeResponse(req, res, resp);
                 }
                 break;
         }
     };
-    app.post('/save', collections);
-    app.post('/save/*', collections);
+    app.post('/collection', collections);
     app.get('/collection', collections);
     app.get('/collection/*', collections);
 }

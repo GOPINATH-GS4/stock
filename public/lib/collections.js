@@ -3,7 +3,10 @@
 app.CollectionModel = Backbone.Model.extend({
     idAttribute: "userId",
     urlRoot: function() {
-        var u = '/collection/' + this.id;
+        if (typeof this.id === 'undefined')
+            var u = '/collection';
+        else
+            var u = '/collection/' + this.id;
         return u;
     }
 });
