@@ -27,4 +27,41 @@ function processCollectionModels(collections) {
         collectionDrops[i].setAttribute('id', collections[i].CollectionName);
     }
 
+    var deleteCollections = document.getElementsByName('deleteCollection');
+
+    for (var i = 0; i < deleteCollections.length; i++) {
+        deleteCollections[i].setAttribute('id', collections[i].CollectionName);
+        deleteCollections[i].addEventListener('click', deleteCollection);
+    }
+
 };
+
+function deleteCollection(e) {
+
+    var collectionId = e.target.id;
+    console.log(collectionId);
+    console.log('Removing collection ' + collectionId + ' for user ' + user_id);
+
+    var c = new app.CollectionModel({
+        userId: user_id,
+        collectionName: collectionId
+    });
+    c.save({
+        wait: true
+    }, {
+        success: function(e, response) {
+            removeElements('collection');
+
+            collections.fetch({
+                reset: true,
+                success: function(e, response) {
+                    document.getElementById('newCollection').value = '';
+                    processCollectionModels(response);
+                },
+                error: function(e, response) {
+                    console.log(response);
+                }
+            });
+        }
+    });
+}

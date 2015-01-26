@@ -1,4 +1,5 @@
 script#collection-template(type="text/template")
-  a.active.ajax-link(href='ajax/dashboard.html', style="background-color:#F5FBEF")
+  a.active(style="background-color:#F5FBEF")
     i.fa.fa-book.fa-2x.fa-2x
-    span.hidden-xs(name='droptocollections', ondrop="drop(event)", ondragover="allowDrop(event)",  style="padding-left:.5em;") <%= collection.CollectionName %>
+    span.hidden-xs(name='droptocollections', ondrop="drop(event)", ondragover="allowDrop(event)",  style="padding-left:.2;") <%= collection.CollectionName %>
+    button#deleteCollection.btn.btn-danger.btn-custom(name='deleteCollection', type='submit') delete

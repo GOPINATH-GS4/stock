@@ -25,6 +25,25 @@ module.exports = function(app, ctcModel, constants, utils, log) {
                 }
                 break;
 
+            case 'PUT':
+                var userId = req.path.split('/').pop();
+                console.log('User Id : ' + userId);
+                console.log(req.body);
+                var collectionName = req.body.collectionName;
+                console.log('Collection name : ' + collectionName);
+
+
+                ctcModel.UserCollections.remove({
+                    UserId: userId,
+                    CollectionName: collectionName
+                }, function(err) {
+                    console.log(err);
+                });
+
+
+                utils.writeResponse(req, res, constants.SUCCESS);
+                break;
+
             case 'POST':
                 var collectionName;
                 var resp = {};
@@ -97,4 +116,5 @@ module.exports = function(app, ctcModel, constants, utils, log) {
     app.post('/collection', collections);
     app.get('/collection', collections);
     app.get('/collection/*', collections);
+    app.put('/collection/*', collections);
 }

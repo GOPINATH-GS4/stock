@@ -133,9 +133,6 @@ function createCollection() {
 
     if (collectionName === null || collectionName === '') return;
 
-    console.log(collectionName);
-    console.log(user_id);
-
     var c = new app.CollectionModel({
         u: user_id,
         collectionName: collectionName
