@@ -54,6 +54,7 @@ module.exports = function(app, ctcModel, constants, utils, log) {
                             resp.push(response);
                         });
                     });
+
                     utils.writeResponse(req, res, resp);
                 });
         }

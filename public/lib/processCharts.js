@@ -43,31 +43,59 @@ function donut_chart(element, width, height, data) {
     }
 }
 
+function createSeries(array, obj, value) {
+    var exists = false;
+    for (var i = 0; i < array.length; i++) {
+        if (array[i].name === value) {
+            array[i].data.push(Number(obj));
+            exists = true;
+            break;
+        }
+    }
+    if (!exists) {
+        var d = {};
+        d.name = value;
+        d.data = [];
+        d.data.push(Number(obj));
+        array.push(d);
+    }
+}
+
 function barChart(element, width, height, data) {
 
+    var categories = _.pluck(data.milestones, 'name');
+    var d = _.pluck(data.milestones, 'data');
+
+    var series = [];
+
+    _.each(d, function(_d) {
+        console.log(JSON.stringify(_d));
+        var groups = _.pluck(_d, 'group');
+        _.each(groups, function(group) {
+            var c = _.findWhere(_d, {
+                group: group
+            });
+            createSeries(series, c.count, c.group);
+        });
+    });
+    console.log(JSON.stringify(series));
     var chart1 = new Highcharts.Chart({
         chart: {
             renderTo: element,
             type: 'bar'
         },
         title: {
-            text: 'Fruit Consumption'
+            text: data.chart_title
         },
         xAxis: {
-            categories: ['Apples', 'Bananas', 'Oranges']
+            categories: categories
         },
         yAxis: {
             title: {
-                text: 'Fruit eaten'
+                text: 'Count '
             }
         },
-        series: [{
-            name: 'Jane',
-            data: [1, 0, 4]
-        }, {
-            name: 'John',
-            data: [5, 7, 3]
-        }]
+        series: series
     });
 }
 

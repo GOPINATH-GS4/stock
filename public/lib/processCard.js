@@ -14,7 +14,7 @@ var guid = (function() {
     };
 })();
 
-window.addEventListener('resize', redrawParticipantFlowCharts);
+//window.addEventListener('resize', redrawParticipantFlowCharts);
 
 document.getElementById('searchText').addEventListener('keydown', checkEnter1);
 document.getElementById('newCollection').addEventListener('keydown', checkEnter2);
@@ -41,11 +41,18 @@ function removeElements(elementName) {
 
 function processModels(search) {
     var cardList = new app.cardList();
+
     _.each(search, function(data, index) {
         var card = new app.cardView(data);
         card.render(cardList);
         var fc = document.getElementById('flowChart');
-        participantFlowChart(fc, {});
+        if (typeof data.results != 'undefined' &&
+            typeof data.results.participant_flow != 'undefined' && data.results.participant_flow != null) {
+            var d = getDataForGraphs(data);
+            barChart('flowChart', 400, 400, d[0]);
+        } else {
+            fc.remove();
+        }
         fc.setAttribute('id', 'flowChart-' + index);
     });
 
@@ -57,6 +64,39 @@ function processModels(search) {
     }
 };
 
+function getDataForGraphs(data) {
+
+    var periods = data.results.participant_flow.period_list.period;
+
+    var pcharts = [];
+
+    for (var i = 0; i < periods.length; i++) {
+        var chart = {};
+        chart.chart_title = periods[i].title;
+
+        var milestones = periods[i].milestone_list.milestone;
+        chart.milestones = [];
+        for (var j = 0; j < milestones.length; j++) {
+
+            var milestone = {};
+            milestone.name = milestones[j].title;
+
+            var participants = milestones[j].participants_list.participants;
+
+            milestone.data = [];
+            chart.milestones.push(milestone);
+
+            for (var k = 0; k < participants.length; k++) {
+                var d = {};
+                d.group = participants[k].attributes.group_id;
+                d.count = participants[k].attributes.count;
+                milestone.data.push(d);
+            }
+        }
+        pcharts.push(chart);
+    }
+    return pcharts;
+}
 
 function redrawParticipantFlowCharts() {
     console.log('Event triigered');
@@ -65,7 +105,6 @@ function redrawParticipantFlowCharts() {
         timeout = true;
         setTimeout(resizeend, delta);
     }
-
 }
 
 function resizeend() {
