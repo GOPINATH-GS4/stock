@@ -61,7 +61,7 @@ function createSeries(array, obj, value) {
     }
 }
 
-function barChart(element, width, height, data) {
+function barChart(element, type, width, height, data) {
 
     var categories = _.pluck(data.milestones, 'name');
     var d = _.pluck(data.milestones, 'data');
@@ -82,7 +82,7 @@ function barChart(element, width, height, data) {
     var chart1 = new Highcharts.Chart({
         chart: {
             renderTo: element,
-            type: 'bar'
+            type: type
         },
         title: {
             text: data.chart_title
