@@ -122,11 +122,23 @@ module.exports = function(app, ctcModel, constants, utils, log) {
         });
     }
 
+    function getGroup(groupList, groupId) {
+
+        var groups = groupList.group;
+        console.log(groupList);
+        for (var i = 0; i < groups.length; i++) {
+            console.log(groupId + ':' + groups[i].attributes.group_id);
+            if (groupId === groups[i].attributes.group_id)
+                return groups[i].title || groups[i].description || groupId;
+        }
+        return group_id;
+    }
+
     function getBLDataForGraphs(data) {
 
         if (typeof data.results === 'undefined' ||
             typeof data.results.baseline === 'undefined' ||
-            typeof data.results.measure_list === 'undefined')
+            typeof data.results.baseline.measure_list === 'undefined')
             return [];
 
         var measures = data.results.baseline.measure_list.measure;
@@ -158,7 +170,9 @@ module.exports = function(app, ctcModel, constants, utils, log) {
                 var measurements = categories[j].measurement_list.measurement;
 
                 for (var k = 0; k < measurements.length; k++) {
-                    var group_id = measurements[k].attributes.group_id;
+
+                    var group_id = getGroup(data.results.baseline.group_list, measurements[k].attributes.group_id);
+                    console.log('group_id : ' + group_id);
                     var exists = false;
                     for (var l = 0; l < chart.series.length; l++) {
                         if (typeof chart.series[l].name != 'undefined' && chart.series[l].name === group_id) {
@@ -181,13 +195,14 @@ module.exports = function(app, ctcModel, constants, utils, log) {
             }
             charts.push(chart);
         }
+        console.log('Charts from BL ' + charts);
         return charts;
     }
 
     function getPFDataForGraphs(data) {
 
         if (typeof data.results === 'undefined' ||
-            typeof data.results.particpant_flow === 'undefined' ||
+            typeof data.results.participant_flow === 'undefined' ||
             typeof data.results.participant_flow.period_list === 'undefined')
             return [];
 
@@ -211,7 +226,7 @@ module.exports = function(app, ctcModel, constants, utils, log) {
                 var participants = milestones[j].participants_list.participants;
 
                 for (var k = 0; k < participants.length; k++) {
-                    var group_id = participants[k].attributes.group_id + '-' + participants[k].value;
+                    var group_id = getGroup(data.results.participant_flow.group_list, participants[k].attributes.group_id);
                     var exists = false;
                     for (var l = 0; l < chart.series.length; l++) {
                         if (typeof chart.series[l].name != 'undefined' && chart.series[l].name === group_id) {
@@ -261,7 +276,7 @@ module.exports = function(app, ctcModel, constants, utils, log) {
                 chart.categories.push(events[j].sub_title.value);
                 var counts = events[j].counts;
                 for (var k = 0; k < counts.length; k++) {
-                    var group_id = counts[k].attributes.group_id;
+                    var group_id = getGroup(data.results.reported_events.group_list, counts[k].attributes.group_id);
                     var exists = false;
                     for (var l = 0; l < chart.series.length; l++) {
                         if (typeof chart.series[l].name != 'undefined' && chart.series[l].name === group_id) {
