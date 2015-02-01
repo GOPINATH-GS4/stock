@@ -115,7 +115,11 @@ var CtcModel = function() {
         clinical_results: String,
         primary_outcomes: [Outcomes],
         secondary_outcomes: [Outcomes],
-        results: Schema.Types.Mixed
+        results: Schema.Types.Mixed,
+        other_events: [],
+        serious_events: [],
+        baseline: [],
+        participant_flow: []
     }, {
         _id: false
     });

@@ -48,20 +48,17 @@ function processModels(search) {
         var fc = document.getElementById('flowChart');
         if (typeof data.results != 'undefined' &&
             typeof data.results.participant_flow != 'undefined' && data.results.participant_flow != null) {
-            var d = getPFDataForGraphs(data);
-            _.each(d, function(c) {
 
-                var node = document.createElement('div');
-                fc.appendChild(node);
-                barChart(node, 'bar', 400, 400, c);
+            _.each(data.charts, function(c) {
+                console.log('plotting ' + c.name);
+                console.log(c.data);
+                _.each(c.data, function(x) {
+                    var node = document.createElement('div');
+                    fc.appendChild(node);
+                    barChartMultipleSeries(node, 'column', 400, 400, x);
+                });
             });
-            d = getBLDataForGraphs(data);
-            _.each(d, function(c) {
 
-                var node = document.createElement('div');
-                fc.appendChild(node);
-                barChart(node, 'column', 400, 400, c);
-            });
         } else {
             fc.remove();
         }
@@ -76,80 +73,7 @@ function processModels(search) {
     }
 };
 
-function getBLDataForGraphs(data) {
 
-    var measures = data.results.baseline.measure_list.measure;
-
-    var pcharts = [];
-
-    for (var i = 0; i < measures.length; i++) {
-        var chart = {};
-        chart.chart_title = measures[i].title;
-        if (typeof measures[i].dispersion != 'undefined' && measures[i].dispersion != null)
-            chart.chart_title += ' ' + measures[i].dispersion;
-
-        var categories = measures[i].category_list.category;
-        chart.milestones = [];
-        for (var j = 0; j < categories.length; j++) {
-
-            var milestone = {};
-
-            if (typeof categories[j].sub_title != 'undefined' && categories[j].sub_title != null) {
-                milestone.name = categories[j].sub_title;
-            } else
-                milestone.name = measures[i].title;
-
-
-            var participants = categories[j].measurement_list.measurement;
-
-            milestone.data = [];
-            chart.milestones.push(milestone);
-
-            for (var k = 0; k < participants.length; k++) {
-                var d = {};
-                d.group = participants[k].attributes.group_id;
-                d.count = participants[k].attributes.value;
-                milestone.data.push(d);
-            }
-        }
-        pcharts.push(chart);
-    }
-    return pcharts;
-}
-
-function getPFDataForGraphs(data) {
-
-    var periods = data.results.participant_flow.period_list.period;
-
-    var pcharts = [];
-
-    for (var i = 0; i < periods.length; i++) {
-        var chart = {};
-        chart.chart_title = periods[i].title;
-
-        var milestones = periods[i].milestone_list.milestone;
-        chart.milestones = [];
-        for (var j = 0; j < milestones.length; j++) {
-
-            var milestone = {};
-            milestone.name = milestones[j].title;
-
-            var participants = milestones[j].participants_list.participants;
-
-            milestone.data = [];
-            chart.milestones.push(milestone);
-
-            for (var k = 0; k < participants.length; k++) {
-                var d = {};
-                d.group = participants[k].attributes.group_id;
-                d.count = participants[k].attributes.count;
-                milestone.data.push(d);
-            }
-        }
-        pcharts.push(chart);
-    }
-    return pcharts;
-}
 
 function redrawParticipantFlowCharts() {
     console.log('Event triigered');
