@@ -125,9 +125,7 @@ module.exports = function(app, ctcModel, constants, utils, log) {
     function getGroup(groupList, groupId) {
 
         var groups = groupList.group;
-        console.log(groupList);
         for (var i = 0; i < groups.length; i++) {
-            console.log(groupId + ':' + groups[i].attributes.group_id);
             if (groupId === groups[i].attributes.group_id)
                 return groups[i].title || groups[i].description || groupId;
         }
@@ -172,7 +170,6 @@ module.exports = function(app, ctcModel, constants, utils, log) {
                 for (var k = 0; k < measurements.length; k++) {
 
                     var group_id = getGroup(data.results.baseline.group_list, measurements[k].attributes.group_id);
-                    console.log('group_id : ' + group_id);
                     var exists = false;
                     for (var l = 0; l < chart.series.length; l++) {
                         if (typeof chart.series[l].name != 'undefined' && chart.series[l].name === group_id) {
@@ -195,7 +192,6 @@ module.exports = function(app, ctcModel, constants, utils, log) {
             }
             charts.push(chart);
         }
-        console.log('Charts from BL ' + charts);
         return charts;
     }
 
@@ -221,7 +217,7 @@ module.exports = function(app, ctcModel, constants, utils, log) {
 
             for (var j = 0; j < milestones.length; j++) {
 
-                chart.categories.push(milestones[i].title);
+                chart.categories.push(milestones[j].title);
 
                 var participants = milestones[j].participants_list.participants;
 

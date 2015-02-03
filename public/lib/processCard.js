@@ -62,7 +62,7 @@ function processModels(search) {
         } else {
             fc.remove();
         }
-        fc.setAttribute('id', 'flowChart-' + index);
+        fc.setAttribute('id', 'flowChart-' + data.nct_id);
     });
 
 
@@ -134,7 +134,6 @@ function searchCtc() {
                     success: function(e, response) {
                         removeElements('spinner');
                         processModels(response);
-
                     },
                     error: function(e, response) {
                         removeElements('spinner');
@@ -143,6 +142,7 @@ function searchCtc() {
         }
     });
 }
+
 
 function createCollection() {
     var collectionName = document.getElementById('newCollection').value;
