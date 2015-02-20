@@ -2,4 +2,6 @@ script#collection-template(type="text/template")
   a.active(style="background-color:#F5FBEF")
     i.fa.fa-book.fa-2x.fa-2x
     span.hidden-xs(name='droptocollections', ondrop="drop(event)", ondragover="allowDrop(event)",  style="padding-left:.2;") <%= collection.CollectionName %>
-    button#deleteCollection.btn.btn-danger.btn-custom(name='deleteCollection', type='submit') delete
+    span.label.label-success.label-as-badge 0
+    button#deleteCollection.btn.btn-danger.btn-xs.pull-right(name='deleteCollection', type='submit')
+      i.fa.fa-trash.fa-2x
