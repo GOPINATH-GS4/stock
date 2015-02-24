@@ -1,17 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 
-@-moz-document url-prefix() {
-    fieldset { display: table-cell; }
+body,html,.row-offcanvas {
+    height:100%;
 }
 
-html {
-    position: relative;
-    min-height: 100%;
-}
 body {
-    font-family: 'Montserrat', sans-serif;
-    /* Margin bottom by footer height */
-    margin-bottom: 64px;
+    padding-top: 50px;
 }
 .navbar-default {
     background-color: #16547e;
@@ -27,7 +21,7 @@ body {
     margin-left: 0px;
 }
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
-    color: #DF7401;
+    color: #ccc;
     background-color: transparent;
 }
 .navbar-default .navbar-nav > li > a:hover,
@@ -65,21 +59,15 @@ body {
     padding-top: 7px;
     padding-bottom: 7px;
     margin: 10px 5px;
-    color: red;
-}
-#navbar .signup>li>a:hover {
-    padding-top: 7px;
-    padding-bottom: 7px;
-    margin: 10px 5px;
+    color: #999;
 }
 .navbar {
     margin-bottom: 0px;
 }
-
 /* Left side menu Starts here */
 #toggle-header {
-    top: 60px;
-    background-color: #413F3E;
+    margin-top: 64px;
+    background-color: #36454A;
 }
 #toggle-header .navbar-toggle {
     float: left;
@@ -99,6 +87,7 @@ body {
 #toggle-header .navbar-toggle .icon-bar {
     background-color: #fff;
 }
+
 #user {
     margin-top: 20px;
     margin-bottom: 10px;
@@ -106,10 +95,18 @@ body {
     color: #fff;
     font-size: 18px;
 }
-#main {
+
+/*#main {
     min-height: 635px;
     overflow: auto;
     padding: 0px 15px;
+    //margin-top: 64px;
+
+}*/
+#main {
+    height:100%;
+    overflow:auto;
+    padding: 30px 15px;
 }
 .nav.main-menu {
     margin-left: -15px;
@@ -128,82 +125,27 @@ body {
     padding-left: 10px;
     font-size: 18px;
 }
-#new-collection {
-    padding: 10px 0px;
- }
-#sidebar-left {
-
+/*#sidebar-left {
     background-color: #F4F1E3;
     padding-top: 23px;
     color: #fff;
-    //position:relative;
-    z-index: inherit;
-    padding-bottom: 3000px !important;
-    //margin-bottom: -3000px !important;
-    -webkit-transition: 0.1s;
-    -moz-transition: 0.1s;
-    -o-transition: 0.1s;
-    transition: 0.1s;
-}
-
-/* Left side menu Ends here */
-
-#sidebar {
-    width: inherit;
-    min-width: 250px;
-    max-width: 250px;
-    float: left;
-    height:100%;
-    position:relative;
-    /*overflow-y:auto;
-    overflow-x:hidden;*/
-    overflow: hidden;
-    background-color: #F4F1E3;
-    padding-top: 23px;
-    color: #fff;
+    //position:static;
     z-index: inherit;
     padding-bottom: 3000px !important;
     margin-bottom: -3000px !important;
+    overflow: hidden;
     -webkit-transition: 0.1s;
     -moz-transition: 0.1s;
     -o-transition: 0.1s;
     transition: 0.1s;
-}
+}*/
 
-
-/*
- * off Canvas sidebar
- * --------------------------------------------------
- */
-
-.row-offcanvas {
-    position: relative;
-    -webkit-transition: all 0.25s ease-out;
-    -moz-transition: all 0.25s ease-out;
-    transition: all 0.25s ease-out;
-    width:calc(100% + 220px);
-}
-
-.row-offcanvas-left
-{
-    left: -250px;
-}
-
-.row-offcanvas-left.active {
-    left: 0;
-}
-
-.sidebar-offcanvas {
-    position: absolute;
-    top: 0;
-}
-
-#sidebar>.nav>li>a{
+#sidebar>.col-md-12>.nav>li>a{
     color: #413F3E;
     border-bottom: 1px solid #879aac;
 }
 
-#sidebar>.nav>li>a:hover{
+#sidebar>.col-md-12>.nav>li>a:hover{
     color: #16547E;
 }
 
@@ -283,13 +225,66 @@ body {
         border-radius: 0 !important;
     }
 }
-
-.label-as-badge {
-    border-radius: 1em;
-    font-size: 18px;
-}
-
 /* Left side menu Ends here */
+
+#sidebar {
+    width: inherit;
+    min-width: 250px;
+    max-width: 250px;
+    float: left;
+    height:100%;
+    position:relative;
+    overflow-y:hidden;
+    overflow-x:hidden;
+    background-color: #F4F1E3;
+    padding-top: 23px;
+    color: #fff;
+    z-index: inherit;
+    padding-bottom: 3000px !important;
+    margin-bottom: -3000px !important;
+    -webkit-transition: 0.1s;
+    -moz-transition: 0.1s;
+    -o-transition: 0.1s;
+    transition: 0.1s;
+}
+/*#sidebar {
+    width: inherit;
+    min-width: 220px;
+    max-width: 220px;
+    background-color:#f5f5f5;
+    float: left;
+    height:100%;
+    position:relative;
+    overflow-y:auto;
+    overflow-x:hidden;
+}*/
+
+/*
+ * off Canvas sidebar
+ * --------------------------------------------------
+ */
+@media screen and (max-width: 768px) {
+    .row-offcanvas {
+        position: relative;
+        -webkit-transition: all 0.25s ease-out;
+        -moz-transition: all 0.25s ease-out;
+        transition: all 0.25s ease-out;
+        width: calc(100% + 220px);
+    }
+
+    .row-offcanvas-left {
+        left: -250px;
+    }
+
+    .row-offcanvas-left.active {
+        left: 0;
+    }
+
+    .sidebar-offcanvas {
+        position: absolute;
+        top: 0;
+    }
+}
 
 #content {
     position: relative;
@@ -303,7 +298,7 @@ body {
 }
 
 .search {
-    background-color:#F5FBEF;
+    background-color: #F4F1E3;
     padding: 20px 20px;
 
 }
@@ -319,6 +314,7 @@ select.form-control{
 #search-results{
     margin-top: 30px;
     margin-bottom: 30px;
+//position:inherit;
 }
 
 #search-results>.panel>.panel-footer {
@@ -330,10 +326,6 @@ select.form-control{
 }
 #search-results>.panel>.panel-body>.row{
     margin-bottom: 20px;
-}
-
-#cardList {
-    margin-top: 30px;
 }
 .text-label {
     margin-top: 11.5px;
@@ -353,18 +345,10 @@ select.form-control{
     cursor: pointer; cursor: hand;
     vertical-align: top;
 }
-.expand-collapse-icon{
-    text-align: right;
-    cursor: pointer; cursor: hand;
-    vertical-align: top;
-    height: 10px;
-}
-
-/* For Carousel */
 
 .ca-container{
     position:relative;
-    margin:0px auto 0px auto;
+    margin:1px auto 1px auto;
     height:200px;
     padding: 30px;
 }
@@ -377,14 +361,16 @@ select.form-control{
 .ca-item{
     position:relative;
     float:left;
+//width:330px;
     height:100%;
     text-align:center;
+    vertical-align: middle;
 }
 
 .ca-nav span{
     width:25px;
     height:38px;
-    background:transparent url("../../img/arrows.png") no-repeat top left;
+    background:transparent url(../images/arrows.png) no-repeat top left;
     position:absolute;
     top:50%;
     margin-top:-19px;
@@ -394,25 +380,6 @@ select.form-control{
     cursor:pointer;
     z-index:100;
 }
-.wrapper { 
-        background:#EFEFEF; 
-        box-shadow: 1px 1px 10px #999; 
-        margin: auto; 
-        text-align: center; 
-        position: relative;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        border-radius: 5px;
-        margin-bottom: 20px !important;
-        width: 1024px;
-        padding-top: 5px;
-}
-.scrolls { 
-        overflow-x: scroll;
-        overflow-y: hidden;
-        height: 400px;
-    white-space:nowrap
-} 
 .ca-nav span.ca-nav-next{
     background-position:top right;
     left:auto;
@@ -432,7 +399,6 @@ select.form-control{
     text-anchor: end;
 }
 
-
 .btn-default {
 
     background-color: transparent;
@@ -440,20 +406,6 @@ select.form-control{
     margin-right:15px;
 }
 
-.btn-sm,
-.btn-group-sm > .btn {
-  padding: 5px 10px;
-  font-size: 12px;
-  line-height: 1.5;
-  border-radius: 3px;
-}
-.btn-custom {
-  padding: initial;
-  font-size: 12px;
-  line-height: 1.5;
-  border-radius: 3px;
-  float: right;
-}
 .btn-default:hover {
     color:#ccc;
     background-color:transparent;
@@ -461,21 +413,18 @@ select.form-control{
 }
 
 .entry-page-title.container {
-    background: #00B1B5; !important;
-    border-radius: 0 0 0 0 ;
+    background: #ccc !important;
+    border-radius: 20px 20px 0 0;
     margin-top: 30px;
     color: #333;
 }
 .entry-page-title.container-fluid {
-    background: #00B1B5; !important;
-    border-radius: 0 0 0 0;
+    background: #ccc !important;
+    border-radius: 20px 20px 0 0;
     margin-top:20px;
     color: #333;
 }
 
-.entry-page-title.container>.entry-title {
-    color: white;
-}
 
 .form-horizontal .form-group {
     margin-right: 0px;
@@ -493,6 +442,9 @@ select.form-control{
 
 
 
+
+
+
 .container .text-muted {
     margin: 20px 0;
 }
@@ -502,8 +454,7 @@ select.form-control{
     width: 100%;
     /* Set the fixed height of the footer here */
     height: auto;
-    background-color: #36454A;
-    margin-top: 20px;
+    background-color: #36454A;;
 }
 menu {
     display: block;
@@ -540,20 +491,6 @@ menu {
 }
 .red {
     color: #FA7D7D;
-}
-
-.col-lg-7>.input-group>.input-group-btn>.btn-default:hover {
-  color:red;
-}
-
-menu, dir {
-    display: block;
-    list-style-type: disc;
-    -webkit-margin-before: 1em;
-    -webkit-margin-after: 1em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-    -webkit-padding-start: 40px;
 }
 .green {
     color: #2d9d23;
