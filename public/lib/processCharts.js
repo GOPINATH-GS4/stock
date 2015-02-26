@@ -48,7 +48,19 @@ function barChartMultipleSeries(element, type, width, height, data) {
     var chart1 = new Highcharts.Chart({
         chart: {
             renderTo: element,
-            type: type
+            type: type,
+            events: {
+                load: function() {
+                    console.log('Chart loaded');
+                },
+                afterPrint: function() {
+                    console.log('After print ....');
+                },
+                redraw: function() {
+                    console.log('After reDraw ....');
+                }
+            }
+
         },
         title: {
             text: data.chart_title
@@ -59,6 +71,15 @@ function barChartMultipleSeries(element, type, width, height, data) {
         yAxis: {
             title: {
                 text: 'Count '
+            },
+            plotOptions: {
+                series: {
+                    animation: {
+                        complete: function() {
+                            this.hideLoading();
+                        }
+                    }
+                }
             }
         },
         series: data.series
