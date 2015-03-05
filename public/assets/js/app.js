@@ -49,7 +49,7 @@ $(document).ready(function() {
     });
 
     //for Expand and Collapse
-    $('#content').on('click', '.header-icon', function(e) {
+    $('#main').on('click', '.header-icon', function(e) {
         var button = $(this).find('i');
         var parent = $(this).parent('div').parent('div').parent('div').parent('div');
         if (button.hasClass('fa-chevron-up')) {
@@ -68,7 +68,7 @@ $(document).ready(function() {
 
     });
 
-    $('#content').on('click', '.expand-collapse-icon', function(e) {
+    $('#main').on('click', '.expand-collapse-icon', function(e) {
         var button = $(this).find('i');
         var parent = $(this).parent('div').parent('div').parent('div');
         if (button.hasClass('fa-minus')) {
@@ -95,7 +95,7 @@ $(document).ready(function() {
          });
      });*/
 
-    $('#content').on('click', '#collapse', function(e) {
+    $('#main').on('click', '#collapse', function(e) {
         var allCards = $(".card");
         if ($('#collapse').find('i').hasClass('fa-minus')) {
             allCards.each(function(indx) {

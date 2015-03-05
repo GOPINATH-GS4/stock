@@ -6,6 +6,7 @@ body,html,.row-offcanvas {
 
 body {
     padding-top: 50px;
+    font-family: 'Montserrat', sans-serif;
 }
 .navbar-default {
     background-color: #16547e;
@@ -96,18 +97,18 @@ body {
     font-size: 18px;
 }
 
-/*#main {
+#main {
     min-height: 635px;
     overflow: auto;
-    padding: 0px 15px;
+    padding: 30px 15px;
     //margin-top: 64px;
 
-}*/
-#main {
+}
+/*#main {
     height:100%;
     overflow:auto;
     padding: 30px 15px;
-}
+}*/
 .nav.main-menu {
     margin-left: -15px;
     margin-right: -15px;
@@ -414,13 +415,13 @@ select.form-control{
 
 .entry-page-title.container {
     background: #ccc !important;
-    border-radius: 20px 20px 0 0;
+    border-radius: 3px 3px 0 0;
     margin-top: 30px;
     color: #333;
 }
 .entry-page-title.container-fluid {
     background: #ccc !important;
-    border-radius: 20px 20px 0 0;
+    border-radius: 2px 2px 0 0;
     margin-top:20px;
     color: #333;
 }
