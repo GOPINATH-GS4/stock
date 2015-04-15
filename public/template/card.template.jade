@@ -2,62 +2,50 @@ script#card-template(type="text/template")
         .panel.panel-default
           .panel-heading
             .row
-              .col-lg-4.col-md-4
+              .col-sm-4
                 span.text-center.text-label ID:
                 span.text-center.text-value(style="padding-left:.5em;") <%= card.nct_id %>
-              .col-lg-4.col-md-4
+              .col-sm-4
                 span.text-center.text-label Status:
                 span.text-center.text-value(style="padding-left:.5em;") <%= card.overall_status %>
-              .col-lg-3.col-md-3
+              .col-sm-3
                 span.text-center.text-label Results:
                 span.text-center.text-value(style="padding-left:.5em;") <%= card.clinical_results %>
-              .col-lg-1.col-md-1
+              .col-sm-1
                 span.pull-right.header-icon
                   i.fa.fa-chevron-up(title='Collapse')
             .row
-              .col-lg-12.col-md-12
+              .col-sm-12
                 span.text-center.text-label Summary:
                 span.text-center.text-value
                   | <%= card.summary %>
           .panel-body(style="background-color:#F5FBEF;")
             .row
-              .col-lg-12.col-md-12
+              .col-sm-12
                 span.pull-right.expand-collapse-icon
                   i.fa.fa-minus(title='Collapse')
-          .panel-body(style="background-color:#F5FBEF;")
+          .panel-body(style="background-color:#E6E6E6;")
             .row
-              .col-lg-4.col-md-4
+              .col-sm-4
                 span.text-center.text-label Primary Outcomes
                 <% _.each(card.primary_outcomes, function(outcome) { %>
                 li.text-left.text-value <%= outcome.measure %>
                 <% }); %>
-              .col-lg-4.col-md-4
+              .col-sm-4
                 span.text-center.text-label Secondary Outcomes
                 <% _.each(card.secondary_outcomes, function(outcome) { %>
                 li.text-left.text-value <%= outcome.measure %>
                 <% }); %>
-              .col-lg-4.col-md-4
+              .col-sm-4
                 span.text-center.text-label Conditions Treated
                 <% _.each(card.conditions, function(condition) { %>
                 li.text-left.text-value <%= condition %>
                 <% }); %>
-          .panel-body(style="background-color:#F2F5A9;")
+          #pflow.panel-body(style="text-align:center;") Participant Flow
             .row
-              .col-lg-12.col-md-12
-                span.pull-right.expand-collapse-icon
-                  i.fa.fa-minus(title='Collapse')
-          .panel-body(style="background-color:#F2F5A9;text-align:center;") Participant Flow
-            .row
-              .col-lg-12.col-md-12
+              .col-sm-12
                 #flowChart
           .panel-footer
-            button.btn.btn-primary.btn-sm(name='addtocollection', draggable='true', ondragstart="drag(event)", type='button')
-              i.fa.fa-archive
-              | Drag to Collection
             button.btn.btn-primary.btn-sm.pull-right(name='DashBoard', type='button')
               i.fa.fa-archive
               | Dashboard
-
-//            button.btn.btn-danger.btn-sm.pull-right(type='button')
- //             i.fa.fa-trash
-  //            | Remove from Collection

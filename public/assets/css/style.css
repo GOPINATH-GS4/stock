@@ -264,7 +264,7 @@ body {
  * off Canvas sidebar
  * --------------------------------------------------
  */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 320px) {
     .row-offcanvas {
         position: relative;
         -webkit-transition: all 0.25s ease-out;
@@ -495,4 +495,7 @@ menu {
 }
 .green {
     color: #2d9d23;
+}
+.spacer {
+  margin-left: 50px;
 }

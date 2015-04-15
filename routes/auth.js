@@ -13,49 +13,92 @@ module.exports = function(app, stock, constants, utils, request, log) {
         body.username = req.body.username;
         body.acceptTerms = req.body.acceptTerms;
         body.orgId = process.env.ORGID;
+        body.password = req.body.password;
 
-        utils.encodeDecodeBase64(req.body.password, true, function(base64Passwd) {
-            body.password = base64Passwd;
-
-            request(utils.makePayload(utils.idsUrl + '/version/user/register', 'POST', body), function(error, response, body) {
-                switch (response.statusCode) {
-                    case 200:
-                        var resp = (typeof body === 'string') ? JSON.parse(body) : body;
-                        switch (resp.status) {
-                            case 200:
-                                var b = {
-                                    identifier: 'userId',
-                                    id: resp.userId,
-                                    template: "ctc_validate"
-                                };
-                                var extra = {
-                                    name: 'VALIDATELINK',
-                                    content: process.env.APPURL + 'validate/'
-                                };
-                                sendEmail(req, res, b, extra, 'signin');
-                                break;
-                            default:
-                                res.render('signin', {
-                                    error: resp.message
-                                });
-                                break;
-                        }
-                        break;
-
-                    case 401:
-                        res.render('signin', {
-                            error: 'Not authorized'
-                        });
-                        break;
-                    default:
-                        res.render('signin', {
-                            error: 'Something went wrong. Please contact support'
-                        });
-                        break;
-                }
+        var v = validate_body(body);
+        console.log(v);
+        if (!v.valid) {
+            res.render('signin', {
+                firstName_error: v.firstName_error,
+                lastName_error: v.lastName_error,
+                username_error: v.username_error,
+                password_error: v.password_error,
+                email_error: v.email_error
             });
+        } else
+            utils.encodeDecodeBase64(req.body.password, true, function(base64Passwd) {
+                body.password = base64Passwd;
 
-        });
+                request(utils.makePayload(utils.idsUrl + '/version/user/register', 'POST', body), function(error, response, body) {
+                    switch (response.statusCode) {
+                        case 200:
+                            var resp = (typeof body === 'string') ? JSON.parse(body) : body;
+                            switch (resp.status) {
+                                case 200:
+                                    var b = {
+                                        identifier: 'userId',
+                                        id: resp.userId,
+                                        template: "ctc_validate"
+                                    };
+                                    var extra = {
+                                        name: 'VALIDATELINK',
+                                        content: process.env.APPURL + 'validate/'
+                                    };
+                                    sendEmail(req, res, b, extra, 'signin');
+                                    break;
+                                default:
+                                    res.render('signin', {
+                                        error: resp.message
+                                    });
+                                    break;
+                            }
+                            break;
+
+                        case 401:
+                            res.render('signin', {
+                                error: 'Not authorized'
+                            });
+                            break;
+                        default:
+                            res.render('signin', {
+                                error: 'Something went wrong. Please contact support'
+                            });
+                            break;
+                    }
+                });
+
+            });
+    }
+    var validate_body = function(body) {
+
+        var o = {
+            valid: true
+        };
+
+        if (body.firstName.length < 5) {
+            o.valid =  false;
+            o.firstName_error =  'Firstname should be > 5 characters';
+        };
+        if (body.lastName.length < 5)  {
+            o.valid =  false;
+            o.lastName_error =  'Lastname should be > 5 characters'
+        };
+        if (body.username.length < 5)  {
+            o.valid =  false;
+            o.username_error =  'Username should be > 5 characters';
+        };
+        if (body.password.length < 8)  {
+            o.valid =  false;
+            o.password_error = 'password should be > 8 characters';
+        };
+
+        if (!utils.isValidEmail(body.email)) {
+            o.valid =  false;
+            o.email_error = 'Email not in valid format';
+        }
+
+        return o;
+
     }
     var is_logged_in = function(req, res) {
 
@@ -438,7 +481,6 @@ module.exports = function(app, stock, constants, utils, request, log) {
     app.post('/set_new_password', setNewPassword);
 
     app.get('/validate/:user_token', validate_account);
-    app.post('/validate', validate_account);
 
     app.post('/is_logged_in', is_logged_in);
     app.get('/is_logged_in', is_logged_in);

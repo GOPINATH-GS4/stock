@@ -3,7 +3,7 @@
 .container
   #login
     .signinregforms
-      .row(style="background-color:#F5FBEF;")
+      .row
         .col-lg-6.col-md-6.col-sm-6
           form#loginForm.form-horizontal(role='form', action='/signin', method='post')
             fieldset
@@ -35,19 +35,29 @@
                   span(style="color:red;margin-left:1em;") #{error}
                   span(style="color:green;margin-left:1em;") #{success}
               .form-group
-                label(for='user_first') First Name 
+                label(for='user_first') 
+                  | First Name  
+                  span(style="color:red;margin-left:1em;") #{firstName_error}
                 input.login-input.form-control(name='firstname', data_toggle = 'tooltip', data-original-title='Enter a user name, required',type='text', value='', placeholder='Enter First Name')
               .form-group
-                label(for='user_last') Last Name
+                label(for='user_last') 
+                  | Last Name 
+                  span(style="color:red;margin-left:1em;") #{lastName_error}
                 input.login-input.form-control(name='lastname', type='text', value='', placeholder='Enter Last Name')
               .form-group
-                label(for='user_screenName') Screen Name
+                label(for='user_screenName') 
+                  | Screen Name 
+                  span(style="color:red;margin-left:1em;") #{username_error}
                 input.login-input.form-control(name='username', type='text', value='', placeholder='Enter Screen Name')
               .form-group
-                label(for='user_email') Email
+                label(for='user_email') 
+                  | Email 
+                  span(style="color:red;margin-left:1em;") #{email_error}
                 input.login-input.form-control(name='email', type='email', value='', placeholder='Enter Email Address')
               .form-group
-                label(for='user_password') Password
+                label(for='user_password') 
+                  | Password 
+                  span(style="color:red;margin-left:1em;") #{password_error}
                 input.login-input.form-control(name='password', type='password', value='', placeholder='Enter Password')
               .form-group
                 input(type='radio', name='acceptTerms', value='I accept terms and conditions') 

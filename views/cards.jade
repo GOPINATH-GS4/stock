@@ -1,81 +1,33 @@
-//#toggle-header.container-fluid
-    .row
-        .col-lg-12.col-md-12.col-sm-12
-            button.navbar-toggle.collapsed(type='button', data-toggle='offcanvas')
-                span.sr-only Toggle Sidebar
-                span.icon-bar
-                span.icon-bar
-                span.icon-bar
-            span#user.pull-right
-                i.fa.fa-user-md.fa-2x
-                |  #{username}
 .row-offcanvas.row-offcanvas-left
     //#sidebar.sidebar-offcanvas
-        .col-md-12
+        .col-sm-12
             ul#user-profile.nav
                 li
                     i.fa.fa-user-md.fa-2x
                         span(style="font-size:.8em;")  #{username}
-            ul#new-collection.nav
-                li
-                    .form-group
-                        input#newCollection.form-control(name='newCollection', type='text', placeholder='Enter Collection Name')
-                    .form-group
-                        button#createCollection.btn.btn-warning.btn-sm(type='submit') Create
-            ul#collection.nav.main-menu
     #main
-        .col-md-12
+        .col-sm-12
           .row
-              p.visible-xs
-                button.btn.btn-info.btn-sm(type='button', data-toggle='offcanvas')
-                    i.fa.fa-bars
               // Search Form
               .entry-page-title.container-fluid
                 h4.entry-title(style="color:white;")  Search
               .search.container-fluid
                 #search
                     .row
-                      .col-lg-6.col-md-6
+                      .col-sm-10
                         .form-group
                           input#searchText.form-control.login-input(name='search', type='text', title='Search', placeholder='Enter Search Term')
-                      .col-lg-2.col-md-2
+                      .col-sm-2
                         .form-group
                           button#searchButton.btn.btn-warning.btn-lg(type='submit')
                             i.fa.fa-search
                             | Search
-                      .col-lg-2.col-md-2
-                        .form-group
-                          button#advbutton.btn.btn-primary.btn-lg(type='button')
-                            | Advance Search
-                            i.fa.fa-chevron-down(title='collapse')
-                    #advance.row
-                      .col-lg-2.col-md-2.col-sm-2
-                        .form-group
-                          input#results(type='checkbox', name='results', value='results', aria-label='results')
-                          span(style='padding-left:.5em;')
-                          | Results
-                      .col-lg-3.col-md-3.col-sm-3
-                        .form-group
-                          label(for='status') Status
-                          select#status.form-control(name='status')
-                            option(value='completed') Completed
-                            option(value='active') Active
-                            option(value='recruiting') Recruiting
-                            option(value='active, not recruting') Active, not recruiting
-                            option(value='terminated') Terminated
-                      .col-lg-5.col-md-5.col-sm-5
-
-
-                        .form-group
-                          label(for='condition') Condition(s) - comma seperated
-                          input#condition.form-control(name='condition', type='text', title='condition', placeholder='Enter Conditions')
-
               // End Search Form
               // Search Results
               #search-results
                 #expandCollapse.container-fluid
                   .row
-                    .col-lg-12.col-md-12.pull-right
+                    .col-sm-12.pull-right
                       span.pull-right
                        button#collapse.btn.btn-success.btn-xs(type='button')
                           i.fa.fa-minus

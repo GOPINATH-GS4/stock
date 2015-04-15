@@ -17,9 +17,7 @@ var guid = (function() {
 //window.addEventListener('resize', redrawParticipantFlowCharts);
 
 document.getElementById('searchText').addEventListener('keydown', checkEnter1);
-document.getElementById('newCollection').addEventListener('keydown', checkEnter2);
 document.getElementById('searchButton').addEventListener('click', searchCtc);
-document.getElementById('createCollection').addEventListener('click', createCollection);
 
 document.addEventListener('DOMNodeInserted', function(e) {
 
@@ -62,6 +60,7 @@ function renderCharts(search, element, i1, i2, i3) {
             console.log(JSON.stringify(x,null,2));
             */
             setTimeout(function() {
+                console.log('X:' + JSON.stringify(x, null, 5));
                 barChartMultipleSeries(element, 'column', 400, 400, x);
             }, 100);
         }
@@ -96,6 +95,7 @@ function dashBoard(event) {
                                 node.setAttribute("id", 'chartDiv-' + index + '-' + i1 + '-' + i2 + '-' + d.nct_id);
                                 parent.appendChild(node);
                                 setTimeout(function() {
+                                    console.log('D : ' + JSON.stringify(d, null, 5));
                                     barChartMultipleSeries(node, 'column', 400, 400, d);
                                 }, 100);
                             });
@@ -127,6 +127,7 @@ function processModels(search) {
                 fc.appendChild(node);
                 if (typeof v.data != 'undefined' && typeof v.data.length != 'undefined' && v.data.length > 0)
                     setTimeout(function() {
+                        console.log('V: ' + JSON.stringify(v.data[0], null, 5));
                         barChartMultipleSeries(node, 'column', 400, 400, v.data[0]);
                     }, 100);
             }
